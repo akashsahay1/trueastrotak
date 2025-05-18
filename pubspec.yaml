@@ -1,0 +1,112 @@
+name: trueastrotak
+description: "An Astrology app."
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  agora_rtm: ^2.2.2
+  agora_rtc_engine: ^6.5.2
+  audioplayers: ^6.4.0
+  bubble_tab_indicator: ^0.1.6
+  cached_network_image: ^3.4.1
+  cloud_firestore: ^5.6.7
+  connectivity_plus: ^6.1.4
+  cupertino_icons: ^1.0.8
+  custom_clippers: ^2.0.4
+  date_format: ^2.0.9
+  device_info_plus: ^11.4.0
+  draggable_widget: ^2.0.0
+  easy_localization: ^3.0.7+1
+  file_picker: ^10.1.9
+  firebase_auth: ^5.5.3
+  firebase_core: ^3.13.0
+  firebase_messaging: ^15.2.5
+  firebase_storage: ^12.4.5
+  flutter:
+    sdk: flutter
+  flutter_callkit_incoming: ^2.5.2
+  flutter_countdown_timer: ^4.1.0
+  flutter_google_places_sdk: ^0.4.2+1
+  flutter_holo_date_picker: ^2.0.0
+  flutter_html: ^3.0.0
+  flutter_image_slideshow: ^0.1.6
+  flutter_inappwebview: ^6.1.5
+  flutter_launcher_icons: ^0.14.3
+  flutter_local_notifications: ^19.2.1
+  flutter_rating_bar: ^4.0.1
+  flutter_svg: ^2.1.0
+  flutter_time_picker_spinner: ^2.0.0
+  fluttertoast: ^8.2.12
+  font_awesome_flutter: ^10.8.0
+  geocoding: ^3.0.0
+  get: ^4.7.2
+  get_storage: ^2.1.1
+  googleapis_auth: ^2.0.0
+  http: ^1.4.0
+  image_cropper: ^9.1.0
+  image_picker: ^1.1.2
+  intl: ^0.19.0
+  intl_phone_number_input: ^0.7.4
+  lecle_yoyo_player: ^0.0.8
+  logger: ^2.5.0
+  marquee: ^2.3.0
+  material_design_icons_flutter: ^7.0.7296
+  open_file: ^3.5.10
+  otpless_flutter: ^2.2.4
+  package_info_plus: ^8.3.0
+  path_provider: ^2.1.5
+  pdf: ^3.11.3
+  percent_indicator: ^4.2.5
+  permission_handler: ^12.0.0+1
+  photo_view: ^0.15.0
+  pin_input_text_field: ^4.5.2
+  responsive_sizer: ^3.3.1
+  share_plus: ^11.0.0
+  shared_preferences: ^2.5.3
+  skeletonizer: ^1.4.3
+  store_redirect: ^2.0.4
+  story_view: ^0.16.5
+  swipe_to: ^1.0.6
+  syncfusion_flutter_gauges: ^29.2.4
+  syncfusion_flutter_pdfviewer: ^29.2.4
+  timelines_plus: ^1.0.6
+  url_launcher: ^6.3.1
+  uuid: ^4.5.1
+  video_player: ^2.9.5
+  youtube_player_flutter: ^9.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+  generate: true
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/translations/
+    - assets/ringtone.mp3
+    - lib/utils/noti_service.json
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Black.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+        - asset: assets/fonts/Poppins-Thin.ttf
+        - asset: assets/fonts/Poppins-ExtraBold.ttf
+        - asset: assets/fonts/Poppins-ExtraLight.ttf
+        - asset: assets/fonts/Poppins-Light.ttf

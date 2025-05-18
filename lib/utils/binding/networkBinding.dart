@@ -1,0 +1,91 @@
+import 'package:trueastrotak/controllers/advancedPanchangController.dart';
+import 'package:trueastrotak/controllers/astrologerCategoryController.dart';
+import 'package:trueastrotak/controllers/astrologer_assistant_controller.dart';
+import 'package:trueastrotak/controllers/astrologyBlogController.dart';
+import 'package:trueastrotak/controllers/astromallController.dart';
+import 'package:trueastrotak/controllers/callController.dart';
+import 'package:trueastrotak/controllers/IntakeController.dart';
+import 'package:trueastrotak/controllers/chatController.dart';
+import 'package:trueastrotak/controllers/customer_support_controller.dart';
+import 'package:trueastrotak/controllers/dailyHoroscopeController.dart';
+import 'package:trueastrotak/controllers/dropDownController.dart';
+import 'package:trueastrotak/controllers/filtterTabController.dart';
+import 'package:trueastrotak/controllers/follow_astrologer_controller.dart';
+import 'package:trueastrotak/controllers/freeServiceController.dart';
+import 'package:trueastrotak/controllers/gift_controller.dart';
+import 'package:trueastrotak/controllers/history_controller.dart';
+import 'package:trueastrotak/controllers/homeController.dart';
+import 'package:trueastrotak/controllers/imageController.dart';
+import 'package:trueastrotak/controllers/kundliController.dart';
+import 'package:trueastrotak/controllers/kundliMatchingController.dart';
+import 'package:trueastrotak/controllers/languageController.dart';
+import 'package:trueastrotak/controllers/life_cycle_controller.dart';
+import 'package:trueastrotak/controllers/liveAstrologerController.dart';
+import 'package:trueastrotak/controllers/loginController.dart';
+import 'package:trueastrotak/controllers/networkController.dart';
+
+import 'package:trueastrotak/controllers/reportController.dart';
+import 'package:trueastrotak/controllers/reportTabFiltter.dart';
+import 'package:trueastrotak/controllers/reviewController.dart';
+import 'package:trueastrotak/controllers/search_controller.dart';
+import 'package:trueastrotak/controllers/search_place_controller.dart';
+import 'package:trueastrotak/controllers/settings_controller.dart';
+import 'package:trueastrotak/controllers/skillController.dart';
+import 'package:trueastrotak/controllers/splashController.dart';
+import 'package:trueastrotak/controllers/themeController.dart';
+import 'package:trueastrotak/controllers/timer_controller.dart';
+import 'package:trueastrotak/controllers/upcoming_controller.dart';
+import 'package:trueastrotak/controllers/userProfileController.dart';
+import 'package:trueastrotak/controllers/walletController.dart';
+import 'package:get/get.dart';
+import 'package:trueastrotak/controllers/bottomNavigationController.dart';
+
+import '../../controllers/counsellorController.dart';
+import '../../controllers/liveController.dart';
+
+class NetworkBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.put(BottomNavigationController());
+    Get.put(LiveController());
+    Get.lazyPut<SplashController>(() => SplashController(), fenix: true);
+    Get.lazyPut<LoginController>(() => LoginController(), fenix: true);
+    Get.lazyPut<ChatController>(() => ChatController(), fenix: true);
+    Get.lazyPut<CallController>(() => CallController(), fenix: true);
+    Get.lazyPut<UserProfileController>(() => UserProfileController(), fenix: true);
+    Get.lazyPut<ReportController>(() => ReportController(), fenix: true);
+    Get.lazyPut<DropDownController>(() => DropDownController(), fenix: true);
+    Get.lazyPut<AstromallController>(() => AstromallController(), fenix: true);
+    Get.lazyPut<WalletController>(() => WalletController(), fenix: true);
+    Get.lazyPut<DailyHoroscopeController>(() => DailyHoroscopeController(), fenix: true);
+    Get.lazyPut<KundliController>(() => KundliController(), fenix: true);
+    Get.lazyPut<HomeController>(() => HomeController(), fenix: true);
+    Get.lazyPut<AstrologerCategoryController>(() => AstrologerCategoryController(), fenix: true);
+    Get.lazyPut<FreeServiceController>(() => FreeServiceController(), fenix: true);
+    Get.lazyPut<KundliMatchingController>(() => KundliMatchingController(), fenix: true);
+    Get.lazyPut<CounsellorController>(() => CounsellorController(), fenix: true);
+    Get.lazyPut<NetworkController>(() => NetworkController(), fenix: true);
+    Get.lazyPut<GiftController>(() => GiftController(), fenix: true);
+    Get.lazyPut<SearchPlaceController>(() => SearchPlaceController(), fenix: true);
+    Get.lazyPut<ImageControlller>(() => ImageControlller(), fenix: true);
+    Get.lazyPut<SettingsController>(() => SettingsController(), fenix: true);
+    Get.lazyPut<FollowAstrologerController>(() => FollowAstrologerController(), fenix: true);
+    Get.lazyPut<ReviewController>(() => ReviewController(), fenix: true);
+    Get.lazyPut<SkillController>(() => SkillController(), fenix: true);
+    Get.lazyPut<LanguageController>(() => LanguageController(), fenix: true);
+    Get.lazyPut<HomeCheckController>(() => HomeCheckController(), fenix: true);
+    Get.lazyPut<FiltterTabController>(() => FiltterTabController(), fenix: true);
+    Get.lazyPut<TimerController>(() => TimerController(), fenix: true);
+    Get.lazyPut<LiveAstrologerController>(() => LiveAstrologerController(), fenix: true);
+    Get.lazyPut<PanchangController>(() => PanchangController(), fenix: true);
+    Get.lazyPut<IntakeController>(() => IntakeController(), fenix: true);
+    Get.lazyPut<ReportFilterTabController>(() => ReportFilterTabController(), fenix: true);
+    Get.lazyPut<SearchControllerCustom>(() => SearchControllerCustom(), fenix: true);
+    Get.lazyPut<HistoryController>(() => HistoryController(), fenix: true);
+    Get.lazyPut<BlogController>(() => BlogController(), fenix: true);
+    Get.lazyPut<CustomerSupportController>(() => CustomerSupportController(), fenix: true);
+    Get.lazyPut<AstrologerAssistantController>(() => AstrologerAssistantController(), fenix: true);
+    Get.lazyPut<UpcomingController>(() => UpcomingController(), fenix: true);
+    Get.lazyPut<ThemeController>(() => ThemeController(), fenix: true);
+  }
+}
