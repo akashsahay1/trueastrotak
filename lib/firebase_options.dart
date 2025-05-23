@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
-import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, TargetPlatform;
+import 'package:flutter/foundation.dart' show defaultTargetPlatform, TargetPlatform;
 
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
@@ -18,32 +17,34 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: "AIzaSyAyiZi-oi6QilI2X-7hNcCgtbmRT2WLAhs",
-    authDomain: "astroway-diploy.firebaseapp.com",
-    projectId: "astroway-diploy",
-    storageBucket: "astroway-diploy.appspot.com",
-    messagingSenderId: "381086206621", //381086206621
-    appId: "1:381086206621:android:b5c7542da161358d32e274",
-    measurementId: "G-KBPRBBZRYC",
+    apiKey: "AIzaSyDIyKdtH6FeOaI3I3XZ8vtwECLATnwy7Sw",
+    authDomain: "trueastrotalk-1.firebaseapp.com",
+    projectId: "trueastrotalk-1",
+    storageBucket: "trueastrotalk-1.firebasestorage.app",
+    messagingSenderId: "540290890159", //381086206621
+    appId: "1:540290890159:ios:e889c01ea401aa4904175a",
+    measurementId: "",
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: "AIzaSyDsrsuJ2tx83rRPdTrAUKQRNhmmCTbEzxA",
-    appId: "1:381086206621:ios:50ef1a4a2bd8342b32e274",
-    messagingSenderId: "381086206621",
-    projectId: "astroway-diploy",
-    storageBucket: "astroway-diploy.appspot.com",
-    iosBundleId: 'com.astrowaydiploy.user',
-    measurementId: "G-KBPRBBZRYC",
+    apiKey: "AIzaSyDIyKdtH6FeOaI3I3XZ8vtwECLATnwy7Sw",
+    authDomain: "trueastrotalk-1.firebaseapp.com",
+    projectId: "trueastrotalk-1",
+    storageBucket: "trueastrotalk-1.firebasestorage.app",
+    messagingSenderId: "540290890159", //381086206621
+    appId: "1:540290890159:ios:e889c01ea401aa4904175a",
+    iosBundleId: 'com.trueastrotalk.user',
+    measurementId: "",
   );
 
   static const FirebaseOptions web = FirebaseOptions(
-      apiKey: "AIzaSyAyiZi-oi6QilI2X-7hNcCgtbmRT2WLAhs",
-      authDomain: "astroway-diploy.firebaseapp.com",
-      databaseURL: "https://astroway-diploy-default-rtdb.firebaseio.com",
-      projectId: "astroway-diploy",
-      storageBucket: "astroway-diploy.appspot.com",
-      messagingSenderId: "381086206621",
-      appId: "1:381086206621:web:f09b5db876e2323d32e274",
-      measurementId: "G-XY1LD81J6X");
+    apiKey: "AIzaSyA3ngfZXqLCK8hZBMS3WipbxMAbsvXm3JE",
+    authDomain: "trueastrotalk-1.firebaseapp.com",
+    projectId: "trueastrotalk-1",
+    storageBucket: "trueastrotalk-1.firebasestorage.app",
+    messagingSenderId: "540290890159",
+    appId: "1:540290890159:web:de97f96cd9867c1504175a",
+    measurementId: "G-3HNMK2RYLF",
+    databaseURL: "https://trueastrotalk-1-default-rtdb.firebaseio.com/",
+  );
 }
