@@ -125,7 +125,7 @@ class LoginController extends GetxController {
   String phoneOrEmail = '';
   String otp = '';
   bool isInitIos = false;
-  static const String appId = "EGN337D0735VTPMTQY22";
+  static const String appId = "V2IXF52ONF0OEP8EY64M";
 
   timer() {
     maxSecond = 60;
