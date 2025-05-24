@@ -218,9 +218,11 @@ class SplashController extends GetxController {
 
   Future<void> createAstrologerShareLink() async {
     try {
-      await Share.share(
-        'Hey! I am using ${global.getSystemFlagValue(global.systemFlagNameList.appName)} to get predictions related to marriage/career. I would recommend you to connect with best Astrologer at ${global.getSystemFlagValue(global.systemFlagNameList.appName)}.',
-        subject: 'Hey! I am using ${global.getSystemFlagValue(global.systemFlagNameList.appName)} to get predictions related to marriage/career. I would recommend you to connect with best Astrologer at ${global.getSystemFlagValue(global.systemFlagNameList.appName)}. $appShareLinkForLiveSreaming',
+      await SharePlus.instance.share(
+        ShareParams(
+          text: "Hey! I am using ${global.getSystemFlagValue(global.systemFlagNameList.appName)} to get predictions related to marriage/career. I would recommend you to connect with best Astrologer at ${global.getSystemFlagValue(global.systemFlagNameList.appName)}.",
+          subject: "Hey! I am using ${global.getSystemFlagValue(global.systemFlagNameList.appName)} to get predictions related to marriage/career. I would recommend you to connect with best Astrologer at ${global.getSystemFlagValue(global.systemFlagNameList.appName)}. $appShareLinkForLiveSreaming",
+        ),
       );
     } catch (e) {
       print("Exception - global.dart - referAndEarn():" + e.toString());

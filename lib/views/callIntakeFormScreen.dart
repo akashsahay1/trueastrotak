@@ -103,7 +103,7 @@ class _CallIntakeFormScreenState extends State<CallIntakeFormScreen> {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Theme(
-                            data: ThemeData(dialogTheme: DialogTheme(contentTextStyle: const TextStyle(color: Colors.white), backgroundColor: Colors.grey[800], surfaceTintColor: Colors.grey[800])),
+                            data: ThemeData(dialogTheme: DialogThemeData(contentTextStyle: const TextStyle(color: Colors.white), backgroundColor: Colors.grey[800], surfaceTintColor: Colors.grey[800])),
                             child: InternationalPhoneNumberInput(
                               textFieldController: callIntakeController.phoneController,
                               inputDecoration: const InputDecoration(border: InputBorder.none, hintText: 'Phone number', hintStyle: TextStyle(color: Colors.grey, fontSize: 16, fontFamily: "verdana_regular", fontWeight: FontWeight.w400)),

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.trueastrotalk"
+    namespace = "com.trueastrotalk.user"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 

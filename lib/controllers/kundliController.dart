@@ -101,13 +101,21 @@ class KundliController extends GetxController with GetSingleTickerProviderStateM
 
   shareKundli(String pdfLink) async {
     try {
-      await Share.share(
-        '${global.getSystemFlagValueForLogin(global.systemFlagNameList.appName)}',
-        subject: "Hey! I am using ${global.getSystemFlagValue(global.systemFlagNameList.appName)} to get predictions related to marriage/career.Check my Kundali with .You should also try and see your Kundali ! $pdfLink",
-      ).then((value) {}).catchError((e) {
-        print("ajsndkjns");
-        print(e);
-      });
+      await SharePlus.instance
+          .share(
+            ShareParams(
+              text: "${global.getSystemFlagValueForLogin(global.systemFlagNameList.appName)}",
+              subject: "Hey! I am using ${global.getSystemFlagValue(global.systemFlagNameList.appName)} to get predictions related to marriage/career.Check my Kundali with .You should also try and see your Kundali ! $pdfLink",
+              title: null,
+              files: null,
+              sharePositionOrigin: null,
+            ),
+          )
+          .then((value) {})
+          .catchError((e) {
+            print("ajsndkjns");
+            print(e);
+          });
     } catch (e) {
       print('Excpetion in share kundli $e');
     }

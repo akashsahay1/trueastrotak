@@ -104,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   padding: const EdgeInsets.only(left: 2),
                                   child: SizedBox(
                                     child: Theme(
-                                      data: ThemeData(dialogTheme: DialogTheme(contentTextStyle: const TextStyle(color: Colors.white), backgroundColor: Colors.grey[800], surfaceTintColor: Colors.grey[800])),
+                                      data: ThemeData(dialogTheme: DialogThemeData(contentTextStyle: const TextStyle(color: Colors.white), backgroundColor: Colors.grey[800], surfaceTintColor: Colors.grey[800])),
                                       //MOBILE
                                       child: SizedBox(
                                         child: InternationalPhoneNumberInput(

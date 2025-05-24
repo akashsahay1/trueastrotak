@@ -95,7 +95,9 @@ class LiveController extends GetxController {
 
   Future<void> createLiveAstrologerShareLink(String astrologerName, int astrologerId, String token, String channelName, double charge, double videoCallCharge) async {
     try {
-      await Share.share('Watch $astrologerName live on True Astrotalk app now - ', subject: 'Watch $astrologerName live on True Astrotalk app now -  ${appShareLinkForLiveSreaming} Watch $astrologerName live on True Astrotalk app now - ');
+      await SharePlus.instance.share(
+        ShareParams(text: "Watch $astrologerName live on True Astrotalk app now -", subject: "Watch $astrologerName live on True Astrotalk app now -  ${appShareLinkForLiveSreaming} Watch $astrologerName live on True Astrotalk app now - ", title: null, files: null, sharePositionOrigin: null),
+      );
     } catch (e) {
       debugPrint("Exception - global.dart - referAndEarn():" + e.toString());
     }

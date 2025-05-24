@@ -137,12 +137,20 @@ class ChatController extends GetxController with GetSingleTickerProviderStateMix
   bool isMeForShare = false;
   shareChat(String chatId, String astrologer) async {
     try {
-      await Share.share(
-        '${global.getSystemFlagValueForLogin(global.systemFlagNameList.appName)}',
-        subject: "Hey! I am using ${global.getSystemFlagValue(global.systemFlagNameList.appName)} to get predictions related to marriage/career.Check my chat with $astrologer.You should also try and see your future first chat is Free!",
-      ).then((value) {}).catchError((e) {
-        print(e);
-      });
+      await SharePlus.instance
+          .share(
+            ShareParams(
+              text: "${global.getSystemFlagValueForLogin(global.systemFlagNameList.appName)}",
+              subject: "Hey! I am using ${global.getSystemFlagValue(global.systemFlagNameList.appName)} to get predictions related to marriage/career.Check my chat with $astrologer.You should also try and see your future first chat is Free!",
+              title: null,
+              files: null,
+              sharePositionOrigin: null,
+            ),
+          )
+          .then((value) {})
+          .catchError((e) {
+            print(e);
+          });
     } catch (e) {
       log('Exception in shareChat $e');
     }
