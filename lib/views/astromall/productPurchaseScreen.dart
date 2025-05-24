@@ -1,13 +1,13 @@
-import 'package:trueastrotak/controllers/astromallController.dart';
+import 'package:trueastrotalk/controllers/astromallController.dart';
 
-import 'package:trueastrotak/controllers/splashController.dart';
-import 'package:trueastrotak/controllers/walletController.dart';
-import 'package:trueastrotak/widget/commonAppbar.dart';
+import 'package:trueastrotalk/controllers/splashController.dart';
+import 'package:trueastrotalk/controllers/walletController.dart';
+import 'package:trueastrotalk/widget/commonAppbar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 // ignore: must_be_immutable
 class OrderPurchaseScreen extends StatelessWidget {

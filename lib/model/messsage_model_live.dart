@@ -1,4 +1,4 @@
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class MessageModelLive {
   int? id;

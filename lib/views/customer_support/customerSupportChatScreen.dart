@@ -1,8 +1,8 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:trueastrotak/views/customer_support/chatWithAstrologerAssistant.dart';
-import 'package:trueastrotak/views/customer_support/chatWithCustomerSupport.dart';
-import 'package:trueastrotak/widget/commonAppbar.dart';
+import 'package:trueastrotalk/views/customer_support/chatWithAstrologerAssistant.dart';
+import 'package:trueastrotalk/views/customer_support/chatWithCustomerSupport.dart';
+import 'package:trueastrotalk/widget/commonAppbar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

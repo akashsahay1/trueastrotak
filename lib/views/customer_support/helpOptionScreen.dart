@@ -1,6 +1,6 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:trueastrotak/views/customer_support/helpDetailsScreen.dart';
+import 'package:trueastrotalk/views/customer_support/helpDetailsScreen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import '../../controllers/customer_support_controller.dart';
 import '../../widget/commonAppbar.dart';
 import '../../widget/commonListTileWidget.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class HelpOptionScreen extends StatelessWidget {
   final String title;

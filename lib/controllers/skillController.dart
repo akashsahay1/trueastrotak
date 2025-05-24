@@ -1,11 +1,11 @@
 import 'dart:developer';
 
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/model/skillModel.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/model/skillModel.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class SkillController extends GetxController {
   APIHelper apiHelper = APIHelper();

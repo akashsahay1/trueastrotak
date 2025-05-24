@@ -1,17 +1,17 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/controllers/callController.dart';
-import 'package:trueastrotak/controllers/homeController.dart';
-import 'package:trueastrotak/controllers/reviewController.dart';
-import 'package:trueastrotak/model/current_user_model.dart';
-import 'package:trueastrotak/model/systemFlagModel.dart';
-import 'package:trueastrotak/utils/global.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
-import 'package:trueastrotak/views/loginScreen.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/controllers/callController.dart';
+import 'package:trueastrotalk/controllers/homeController.dart';
+import 'package:trueastrotalk/controllers/reviewController.dart';
+import 'package:trueastrotalk/model/current_user_model.dart';
+import 'package:trueastrotalk/model/systemFlagModel.dart';
+import 'package:trueastrotalk/utils/global.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
+import 'package:trueastrotalk/views/loginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,36 +40,16 @@ class SplashController extends GetxController {
 
   _inIt() async {
     await getSystemFlag();
-    // FutureBuilder(
-    //   future: splashController.getSystemFlag(),
-    //   builder: (context, snapshot) {
-    //     if (snapshot.connectionState == ConnectionState.waiting) {
-    //       return const Center(child: CircularProgressIndicator());
-    //     } else if (snapshot.connectionState == ConnectionState.done) {
-    //       if (snapshot.hasError) {
-    //         debugPrint('getSystemFlag error ${snapshot.error}');
-    //       }
-    //       debugPrint('getSystemFlag');
-    //       return const SizedBox();
-    //     } else {
-    //       return const SizedBox();
-    //     }
-    //   },
-    // );
     appName = global.getSystemFlagValueForLogin(global.systemFlagNameList.appName);
     global.sp = await SharedPreferences.getInstance();
     currentLanguageCode = global.sp!.getString('currentLanguage') ?? 'en';
     global.sp!.setString('currentLanguage', currentLanguageCode);
-    print("currentLanguageinSplash");
-    print("${global.sp!.getString('currentLanguage')}");
     update();
     Timer(const Duration(seconds: 5), () async {
       try {
         bool isLogin = await global.isLogin();
         final bottomNavigationController = Get.find<BottomNavigationController>();
         final homeController = Get.find<HomeController>();
-
-        print("isLoginsplashscreen ${isLogin}");
         if (isLogin) {
           PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
             version = packageInfo.version;
@@ -85,7 +65,6 @@ class SplashController extends GetxController {
                   global.showOnlyLoaderDialog(Get.context);
                   await splashController.getCurrentUserData();
                   global.hideLoader();
-
                   await global.getCurrentUser();
                   _loadsaveChatData();
 

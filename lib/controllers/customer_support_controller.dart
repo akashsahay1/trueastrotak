@@ -1,13 +1,13 @@
-import 'package:trueastrotak/model/customer_support_model.dart';
-import 'package:trueastrotak/model/help_and_support_model.dart';
-import 'package:trueastrotak/model/help_support_question.dart';
-import 'package:trueastrotak/model/help_support_subcat_model.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/model/customer_support_model.dart';
+import 'package:trueastrotalk/model/help_and_support_model.dart';
+import 'package:trueastrotalk/model/help_support_question.dart';
+import 'package:trueastrotalk/model/help_support_subcat_model.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 import '../model/chat_message_model.dart';
 import '../model/customer_support_review_model.dart';

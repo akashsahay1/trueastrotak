@@ -1,8 +1,8 @@
-import 'package:trueastrotak/model/home_Model.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/model/home_Model.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class BlogController extends GetxController {
   APIHelper apiHelper = APIHelper();

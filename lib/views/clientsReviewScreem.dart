@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:trueastrotak/controllers/homeController.dart';
-import 'package:trueastrotak/utils/images.dart';
+import 'package:trueastrotalk/controllers/homeController.dart';
+import 'package:trueastrotalk/utils/images.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class ClientsReviewScreen extends StatelessWidget {
   const ClientsReviewScreen({Key? key}) : super(key: key);

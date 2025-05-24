@@ -1,4 +1,4 @@
-import 'package:trueastrotak/controllers/astromallController.dart';
+import 'package:trueastrotalk/controllers/astromallController.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,7 +9,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../widget/commonAppbar.dart';
 import '../../widget/customBottomButton.dart';
 import '../../widget/textFieldWidget.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class AddNewAddressScreen extends StatelessWidget {
   final int? id;

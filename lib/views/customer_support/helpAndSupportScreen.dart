@@ -1,11 +1,11 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:trueastrotak/controllers/customer_support_controller.dart';
-import 'package:trueastrotak/views/customer_support/helpOptionScreen.dart';
-import 'package:trueastrotak/widget/commonListTileWidget.dart';
+import 'package:trueastrotalk/controllers/customer_support_controller.dart';
+import 'package:trueastrotalk/views/customer_support/helpOptionScreen.dart';
+import 'package:trueastrotalk/widget/commonListTileWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 import '../../widget/commonAppbar.dart';
 

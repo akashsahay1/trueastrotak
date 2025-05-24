@@ -3,11 +3,11 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:trueastrotak/controllers/callController.dart';
-import 'package:trueastrotak/main.dart';
-import 'package:trueastrotak/utils/images.dart';
-import 'package:trueastrotak/views/bottomNavigationBarScreen.dart';
-import 'package:trueastrotak/views/chat/endDialog.dart';
+import 'package:trueastrotalk/controllers/callController.dart';
+import 'package:trueastrotalk/main.dart';
+import 'package:trueastrotalk/utils/images.dart';
+import 'package:trueastrotalk/views/bottomNavigationBarScreen.dart';
+import 'package:trueastrotalk/views/chat/endDialog.dart';
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -18,7 +18,7 @@ import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:get/get.dart';
 
 import 'package:permission_handler/permission_handler.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../controllers/bottomNavigationController.dart';

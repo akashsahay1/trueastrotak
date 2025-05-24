@@ -2,16 +2,16 @@
 
 import 'dart:io';
 
-import 'package:trueastrotak/controllers/astrologyBlogController.dart';
-import 'package:trueastrotak/controllers/homeController.dart';
-import 'package:trueastrotak/views/astroBlog/astrologyDetailScreen.dart';
-import 'package:trueastrotak/views/astroBlog/search_astrologyBlog_screen.dart';
+import 'package:trueastrotalk/controllers/astrologyBlogController.dart';
+import 'package:trueastrotalk/controllers/homeController.dart';
+import 'package:trueastrotalk/views/astroBlog/astrologyDetailScreen.dart';
+import 'package:trueastrotalk/views/astroBlog/search_astrologyBlog_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 import '../../utils/images.dart';
 

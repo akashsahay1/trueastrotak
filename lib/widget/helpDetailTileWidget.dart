@@ -1,10 +1,10 @@
-import 'package:trueastrotak/utils/images.dart';
-import 'package:trueastrotak/views/customer_support/createTicketScreen.dart';
+import 'package:trueastrotalk/utils/images.dart';
+import 'package:trueastrotalk/views/customer_support/createTicketScreen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class HelpDetailTileWidget extends StatelessWidget {
   final String text;

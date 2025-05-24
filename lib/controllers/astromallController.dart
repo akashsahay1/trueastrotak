@@ -1,11 +1,11 @@
-import 'package:trueastrotak/model/astromall_category_model.dart';
-import 'package:trueastrotak/model/astromall_product_model.dart';
-import 'package:trueastrotak/model/user_address_model.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/model/astromall_category_model.dart';
+import 'package:trueastrotalk/model/astromall_product_model.dart';
+import 'package:trueastrotalk/model/user_address_model.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class AstromallController extends GetxController with GetSingleTickerProviderStateMixin {
   List astroCategory = <AstromallCategoryModel>[];

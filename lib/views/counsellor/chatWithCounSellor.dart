@@ -1,14 +1,14 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/controllers/counsellorController.dart';
-import 'package:trueastrotak/views/callIntakeFormScreen.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/controllers/counsellorController.dart';
+import 'package:trueastrotalk/views/callIntakeFormScreen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 import '../../controllers/reviewController.dart';
 import '../../controllers/walletController.dart';

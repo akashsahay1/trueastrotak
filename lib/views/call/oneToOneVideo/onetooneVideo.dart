@@ -2,10 +2,10 @@
 
 import 'dart:async';
 import 'dart:developer';
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/controllers/callController.dart';
-import 'package:trueastrotak/controllers/history_controller.dart';
-import 'package:trueastrotak/views/chat/endDialog.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/controllers/callController.dart';
+import 'package:trueastrotalk/controllers/history_controller.dart';
+import 'package:trueastrotalk/views/chat/endDialog.dart';
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:draggable_widget/draggable_widget.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,7 @@ import 'package:flutter_countdown_timer/current_remaining_time.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../bottomNavigationBarScreen.dart';
 import 'AgoraEventHandler.dart';

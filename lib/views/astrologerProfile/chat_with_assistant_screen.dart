@@ -2,13 +2,13 @@
 
 import 'dart:io';
 
-import 'package:trueastrotak/controllers/astrologer_assistant_controller.dart';
-import 'package:trueastrotak/model/chat_message_model.dart';
+import 'package:trueastrotalk/controllers/astrologer_assistant_controller.dart';
+import 'package:trueastrotalk/model/chat_message_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ChatWithAstrologerAssistantScreen extends StatelessWidget {

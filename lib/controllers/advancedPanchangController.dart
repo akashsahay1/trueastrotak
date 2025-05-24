@@ -1,9 +1,9 @@
-import 'package:trueastrotak/controllers/astromallController.dart';
-import 'package:trueastrotak/model/advancedPanchangModel.dart';
-import 'package:trueastrotak/model/vedicApis/vedicPanchangModel.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/controllers/astromallController.dart';
+import 'package:trueastrotalk/model/advancedPanchangModel.dart';
+import 'package:trueastrotalk/model/vedicApis/vedicPanchangModel.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:intl/intl.dart';
 
 class PanchangController extends GetxController {

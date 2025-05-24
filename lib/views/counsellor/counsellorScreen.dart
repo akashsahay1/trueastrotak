@@ -1,13 +1,13 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:trueastrotak/controllers/counsellorController.dart';
-import 'package:trueastrotak/controllers/walletController.dart';
-import 'package:trueastrotak/views/counsellor/callWithCounsellor.dart';
-import 'package:trueastrotak/views/counsellor/chatWithCounSellor.dart';
+import 'package:trueastrotalk/controllers/counsellorController.dart';
+import 'package:trueastrotalk/controllers/walletController.dart';
+import 'package:trueastrotalk/views/counsellor/callWithCounsellor.dart';
+import 'package:trueastrotalk/views/counsellor/chatWithCounSellor.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 import '../../widget/customAppbarWidget.dart';
 import '../../widget/drawerWidget.dart';

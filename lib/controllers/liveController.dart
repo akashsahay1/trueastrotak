@@ -1,17 +1,17 @@
 import 'dart:async';
 import 'dart:developer';
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/controllers/callController.dart';
-import 'package:trueastrotak/controllers/splashController.dart';
-import 'package:trueastrotak/main.dart';
-import 'package:trueastrotak/model/messsage_model_live.dart';
-import 'package:trueastrotak/model/live_user_model.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/controllers/callController.dart';
+import 'package:trueastrotalk/controllers/splashController.dart';
+import 'package:trueastrotalk/main.dart';
+import 'package:trueastrotalk/model/messsage_model_live.dart';
+import 'package:trueastrotalk/model/live_user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:share_plus/share_plus.dart';
 
 import '../model/wait_list_model.dart';

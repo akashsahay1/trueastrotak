@@ -1,8 +1,8 @@
-import 'package:trueastrotak/model/languageModel.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/model/languageModel.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class LanguageController extends GetxController {
   APIHelper apiHelper = APIHelper();

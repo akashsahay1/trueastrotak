@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, must_be_immutable, import_of_legacy_library_into_null_safe
 
-import 'package:trueastrotak/controllers/kundliController.dart';
+import 'package:trueastrotalk/controllers/kundliController.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';

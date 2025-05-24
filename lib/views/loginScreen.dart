@@ -2,17 +2,17 @@
 
 import 'dart:developer';
 
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/controllers/homeController.dart';
-import 'package:trueastrotak/controllers/loginController.dart';
-import 'package:trueastrotak/controllers/search_controller.dart';
-import 'package:trueastrotak/utils/AppColors.dart';
-import 'package:trueastrotak/utils/images.dart';
-import 'package:trueastrotak/views/bottomNavigationBarScreen.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/controllers/homeController.dart';
+import 'package:trueastrotalk/controllers/loginController.dart';
+import 'package:trueastrotalk/controllers/search_controller.dart';
+import 'package:trueastrotalk/utils/AppColors.dart';
+import 'package:trueastrotalk/utils/images.dart';
+import 'package:trueastrotalk/views/bottomNavigationBarScreen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:url_launcher/url_launcher.dart';

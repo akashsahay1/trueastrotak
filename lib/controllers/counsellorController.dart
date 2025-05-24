@@ -1,8 +1,8 @@
-import 'package:trueastrotak/model/counsellor_model.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/model/counsellor_model.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class CounsellorController extends GetxController {
   bool isCall = false;

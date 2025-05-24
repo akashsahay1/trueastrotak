@@ -1,29 +1,29 @@
 // ignore_for_file: must_be_immutable, deprecated_member_use
 
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/controllers/callController.dart';
-import 'package:trueastrotak/controllers/chatController.dart';
-import 'package:trueastrotak/controllers/filtterTabController.dart';
-import 'package:trueastrotak/controllers/languageController.dart';
-import 'package:trueastrotak/controllers/reportController.dart';
-import 'package:trueastrotak/controllers/skillController.dart';
-import 'package:trueastrotak/controllers/walletController.dart';
-import 'package:trueastrotak/utils/AppColors.dart';
-import 'package:trueastrotak/utils/images.dart';
-import 'package:trueastrotak/views/addMoneyToWallet.dart';
-import 'package:trueastrotak/views/call/incoming_call_request.dart';
-import 'package:trueastrotak/views/callIntakeFormScreen.dart';
-import 'package:trueastrotak/views/paymentInformationScreen.dart';
-import 'package:trueastrotak/views/searchAstrologerScreen.dart';
-import 'package:trueastrotak/widget/customAppbarWidget.dart';
-import 'package:trueastrotak/widget/drawerWidget.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/controllers/callController.dart';
+import 'package:trueastrotalk/controllers/chatController.dart';
+import 'package:trueastrotalk/controllers/filtterTabController.dart';
+import 'package:trueastrotalk/controllers/languageController.dart';
+import 'package:trueastrotalk/controllers/reportController.dart';
+import 'package:trueastrotalk/controllers/skillController.dart';
+import 'package:trueastrotalk/controllers/walletController.dart';
+import 'package:trueastrotalk/utils/AppColors.dart';
+import 'package:trueastrotalk/utils/images.dart';
+import 'package:trueastrotalk/views/addMoneyToWallet.dart';
+import 'package:trueastrotalk/views/call/incoming_call_request.dart';
+import 'package:trueastrotalk/views/callIntakeFormScreen.dart';
+import 'package:trueastrotalk/views/paymentInformationScreen.dart';
+import 'package:trueastrotalk/views/searchAstrologerScreen.dart';
+import 'package:trueastrotalk/widget/customAppbarWidget.dart';
+import 'package:trueastrotalk/widget/drawerWidget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';

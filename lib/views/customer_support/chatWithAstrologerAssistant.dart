@@ -1,10 +1,10 @@
-import 'package:trueastrotak/controllers/astrologer_assistant_controller.dart';
-import 'package:trueastrotak/views/searchAstrologerScreen.dart';
+import 'package:trueastrotalk/controllers/astrologer_assistant_controller.dart';
+import 'package:trueastrotalk/views/searchAstrologerScreen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 import '../../utils/images.dart';
 import '../../widget/customBottomButton.dart';

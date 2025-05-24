@@ -1,9 +1,9 @@
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/model/blocked_astrologe_model.dart';
-import 'package:trueastrotak/model/notifications_model.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/model/blocked_astrologe_model.dart';
+import 'package:trueastrotalk/model/notifications_model.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class SettingsController extends GetxController {
   APIHelper apiHelper = APIHelper();

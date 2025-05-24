@@ -1,12 +1,12 @@
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/controllers/homeController.dart';
-import 'package:trueastrotak/controllers/reviewController.dart';
-import 'package:trueastrotak/views/astrologerProfile/astrologerProfile.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/controllers/homeController.dart';
+import 'package:trueastrotalk/controllers/reviewController.dart';
+import 'package:trueastrotalk/views/astrologerProfile/astrologerProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:story_view/story_view.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 // ignore: must_be_immutable
 class ViewStoriesScreen extends StatefulWidget {

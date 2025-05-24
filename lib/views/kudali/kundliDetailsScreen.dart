@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:trueastrotak/controllers/kundliController.dart';
-import 'package:trueastrotak/controllers/reviewController.dart';
-import 'package:trueastrotak/controllers/splashController.dart';
+import 'package:trueastrotalk/controllers/kundliController.dart';
+import 'package:trueastrotalk/controllers/reviewController.dart';
+import 'package:trueastrotalk/controllers/splashController.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import '../../utils/images.dart';
 
 // ignore: must_be_immutable

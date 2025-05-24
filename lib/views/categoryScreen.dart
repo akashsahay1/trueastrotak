@@ -1,16 +1,16 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:trueastrotak/controllers/astrologerCategoryController.dart';
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/controllers/chatController.dart';
-import 'package:trueastrotak/utils/fonts.dart';
-import 'package:trueastrotak/views/CustomText.dart';
-import 'package:trueastrotak/views/callScreen.dart';
-import 'package:trueastrotak/widget/commonAppbar.dart';
+import 'package:trueastrotalk/controllers/astrologerCategoryController.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/controllers/chatController.dart';
+import 'package:trueastrotalk/utils/fonts.dart';
+import 'package:trueastrotalk/views/CustomText.dart';
+import 'package:trueastrotalk/views/callScreen.dart';
+import 'package:trueastrotalk/widget/commonAppbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class CategoryScreen extends StatelessWidget {
   CategoryScreen({super.key});

@@ -1,14 +1,14 @@
-import 'package:trueastrotak/controllers/splashController.dart';
-import 'package:trueastrotak/controllers/walletController.dart';
-import 'package:trueastrotak/model/businessLayer/baseRoute.dart';
-import 'package:trueastrotak/utils/global.dart';
-import 'package:trueastrotak/views/paymentInformationScreen.dart';
+import 'package:trueastrotalk/controllers/splashController.dart';
+import 'package:trueastrotalk/controllers/walletController.dart';
+import 'package:trueastrotalk/model/businessLayer/baseRoute.dart';
+import 'package:trueastrotalk/utils/global.dart';
+import 'package:trueastrotalk/views/paymentInformationScreen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../widget/commonAppbar.dart';

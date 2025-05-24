@@ -3,11 +3,11 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:trueastrotak/controllers/history_controller.dart';
-import 'package:trueastrotak/views/addMoneyToWallet.dart';
-import 'package:trueastrotak/views/chat/endDialog.dart';
-import 'package:trueastrotak/views/chat/pdfviewerpage.dart';
-import 'package:trueastrotak/views/chat/zoomimagewidget.dart';
+import 'package:trueastrotalk/controllers/history_controller.dart';
+import 'package:trueastrotalk/views/addMoneyToWallet.dart';
+import 'package:trueastrotalk/views/chat/endDialog.dart';
+import 'package:trueastrotalk/views/chat/pdfviewerpage.dart';
+import 'package:trueastrotalk/views/chat/zoomimagewidget.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,7 +20,7 @@ import 'package:flutter_countdown_timer/index.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,9 +1,9 @@
-import 'package:trueastrotak/model/dailyHoroscopeModel.dart';
-import 'package:trueastrotak/model/vedicApis/vedicDailyHoroscopeModel.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/model/dailyHoroscopeModel.dart';
+import 'package:trueastrotalk/model/vedicApis/vedicDailyHoroscopeModel.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class DailyHoroscopeController extends GetxController {
   List borderColor = [Colors.red, Colors.orange, Colors.green, Colors.blue, Colors.purple];

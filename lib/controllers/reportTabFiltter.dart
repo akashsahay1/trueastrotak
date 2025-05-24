@@ -1,4 +1,4 @@
-import 'package:trueastrotak/model/filterModel.dart';
+import 'package:trueastrotalk/model/filterModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

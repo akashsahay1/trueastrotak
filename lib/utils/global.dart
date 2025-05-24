@@ -5,11 +5,11 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:trueastrotak/controllers/splashController.dart';
-import 'package:trueastrotak/model/current_user_model.dart';
-import 'package:trueastrotak/model/hororscopeSignModel.dart';
-import 'package:trueastrotak/model/systemFlagNameListModel.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/controllers/splashController.dart';
+import 'package:trueastrotalk/model/current_user_model.dart';
+import 'package:trueastrotalk/model/hororscopeSignModel.dart';
+import 'package:trueastrotalk/model/systemFlagNameListModel.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
@@ -22,7 +22,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 import '../controllers/loginController.dart';
 import '../controllers/networkController.dart';
@@ -123,7 +123,7 @@ Future<void> callOnFcmApiSendPushNotifications({
         },
       },
     };
-    final url = Uri.parse('https://fcm.googleapis.com/v1/projects/astroway-diploy/messages:send');
+    final url = Uri.parse('https://fcm.googleapis.com/v1/projects/trueastrotalk-1/messages:send');
     final response = await http.post(url, headers: headers, body: json.encode(data));
     log('noti response ${response.body}');
     if (response.statusCode == 200) {

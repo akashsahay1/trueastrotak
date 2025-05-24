@@ -2,12 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'package:trueastrotak/controllers/homeController.dart';
-import 'package:trueastrotak/controllers/splashController.dart';
-import 'package:trueastrotak/main.dart';
-import 'package:trueastrotak/model/login_model.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
-import 'package:trueastrotak/views/loginScreen.dart';
+import 'package:trueastrotalk/controllers/homeController.dart';
+import 'package:trueastrotalk/controllers/splashController.dart';
+import 'package:trueastrotalk/main.dart';
+import 'package:trueastrotalk/model/login_model.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
+import 'package:trueastrotalk/views/loginScreen.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -19,7 +19,7 @@ import '../model/device_info_login_model.dart';
 import '../utils/global.dart';
 import '../views/bottomNavigationBarScreen.dart';
 import '../views/verifyPhoneScreen.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:http/http.dart' as http;
 
 class LoginController extends GetxController {

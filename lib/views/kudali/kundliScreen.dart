@@ -1,15 +1,15 @@
 import 'dart:math';
 
-import 'package:trueastrotak/controllers/kundliController.dart';
-import 'package:trueastrotak/views/kudali/createNewKundli.dart';
-import 'package:trueastrotak/views/kudali/editKundliScreen.dart';
-import 'package:trueastrotak/views/kudali/kundliDetailsScreen.dart';
+import 'package:trueastrotalk/controllers/kundliController.dart';
+import 'package:trueastrotalk/views/kudali/createNewKundli.dart';
+import 'package:trueastrotalk/views/kudali/editKundliScreen.dart';
+import 'package:trueastrotalk/views/kudali/kundliDetailsScreen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 // ignore: must_be_immutable
 class KundaliScreen extends StatelessWidget {

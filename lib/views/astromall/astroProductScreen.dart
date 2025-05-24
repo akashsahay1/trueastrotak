@@ -1,11 +1,11 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:trueastrotak/views/astromall/productDetailScreen.dart';
-import 'package:trueastrotak/views/searchByNameScreen.dart';
+import 'package:trueastrotalk/views/astromall/productDetailScreen.dart';
+import 'package:trueastrotalk/views/searchByNameScreen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 import '../../controllers/astromallController.dart';
 import '../../widget/commonAppbar.dart';

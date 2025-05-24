@@ -1,20 +1,20 @@
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/controllers/splashController.dart';
-import 'package:trueastrotak/model/Allstories.dart';
-import 'package:trueastrotak/model/app_review_model.dart';
-import 'package:trueastrotak/model/home_Model.dart';
-import 'package:trueastrotak/model/viewStories.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/controllers/splashController.dart';
+import 'package:trueastrotalk/model/Allstories.dart';
+import 'package:trueastrotalk/model/app_review_model.dart';
+import 'package:trueastrotalk/model/home_Model.dart';
+import 'package:trueastrotalk/model/viewStories.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart' as material;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'package:trueastrotak/model/home_Model.dart' as home_model;
+import 'package:trueastrotalk/model/home_Model.dart' as home_model;
 
 import '../model/language.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class HomeController extends GetxController {
   List<Language> lan = [];

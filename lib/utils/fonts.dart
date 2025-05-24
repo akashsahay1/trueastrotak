@@ -1,4 +1,4 @@
-import 'package:trueastrotak/utils/screenSize.dart';
+import 'package:trueastrotalk/utils/screenSize.dart';
 import 'package:flutter/cupertino.dart';
 
 class FontSizes {

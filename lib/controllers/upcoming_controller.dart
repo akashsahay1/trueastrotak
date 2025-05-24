@@ -1,8 +1,8 @@
-import 'package:trueastrotak/model/astrologer_model.dart';
-import 'package:trueastrotak/model/availableTimes_model.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/model/astrologer_model.dart';
+import 'package:trueastrotalk/model/availableTimes_model.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:intl/intl.dart';
 
 class UpcomingController extends GetxController {

@@ -3,17 +3,17 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:trueastrotak/model/NorthKundaliMatchingModel.dart';
-import 'package:trueastrotak/model/kundliMatchingDetailsModel.dart';
-import 'package:trueastrotak/model/kundli_model.dart';
-import 'package:trueastrotak/model/southkundaliMatchingModel.dart';
-import 'package:trueastrotak/utils/global.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/model/NorthKundaliMatchingModel.dart';
+import 'package:trueastrotalk/model/kundliMatchingDetailsModel.dart';
+import 'package:trueastrotalk/model/kundli_model.dart';
+import 'package:trueastrotalk/model/southkundaliMatchingModel.dart';
+import 'package:trueastrotalk/utils/global.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:http/http.dart' as http;
 
 class KundliMatchingController extends GetxController with GetTickerProviderStateMixin {

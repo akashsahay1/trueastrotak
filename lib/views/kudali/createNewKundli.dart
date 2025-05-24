@@ -1,6 +1,6 @@
-import 'package:trueastrotak/controllers/kundliController.dart';
-import 'package:trueastrotak/widget/createKundliTitleWidget.dart';
-import 'package:trueastrotak/widget/kundliBrithdateWidget.dart';
+import 'package:trueastrotalk/controllers/kundliController.dart';
+import 'package:trueastrotalk/widget/createKundliTitleWidget.dart';
+import 'package:trueastrotalk/widget/kundliBrithdateWidget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

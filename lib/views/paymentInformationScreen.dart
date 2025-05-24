@@ -1,9 +1,9 @@
 import 'dart:developer';
 
-import 'package:trueastrotak/controllers/astromallController.dart';
+import 'package:trueastrotalk/controllers/astromallController.dart';
 
-import 'package:trueastrotak/controllers/splashController.dart';
-import 'package:trueastrotak/views/webpaymentScreen.dart';
+import 'package:trueastrotalk/controllers/splashController.dart';
+import 'package:trueastrotalk/views/webpaymentScreen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 
@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/walletController.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import '../utils/services/api_helper.dart';
 import '../widget/commonAppbar.dart';
 

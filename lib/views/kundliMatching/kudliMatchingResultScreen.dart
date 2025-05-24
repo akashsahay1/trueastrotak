@@ -2,21 +2,21 @@
 
 import 'dart:io';
 
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/controllers/kundliMatchingController.dart';
-import 'package:trueastrotak/controllers/liveController.dart';
-import 'package:trueastrotak/utils/images.dart';
-import 'package:trueastrotak/views/bottomNavigationBarScreen.dart';
-import 'package:trueastrotak/views/liveAstrologerList.dart';
-import 'package:trueastrotak/views/live_astrologer/live_astrologer_screen.dart';
-import 'package:trueastrotak/widget/contactAstrologerBottomButton.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/controllers/kundliMatchingController.dart';
+import 'package:trueastrotalk/controllers/liveController.dart';
+import 'package:trueastrotalk/utils/images.dart';
+import 'package:trueastrotalk/views/bottomNavigationBarScreen.dart';
+import 'package:trueastrotalk/views/liveAstrologerList.dart';
+import 'package:trueastrotalk/views/live_astrologer/live_astrologer_screen.dart';
+import 'package:trueastrotalk/widget/contactAstrologerBottomButton.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../model/NorthKundaliMatchingModel.dart';

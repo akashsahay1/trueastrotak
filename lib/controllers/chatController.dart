@@ -3,15 +3,15 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:trueastrotak/model/astrologerCategoryModel.dart';
-import 'package:trueastrotak/model/astrologer_model.dart';
-import 'package:trueastrotak/model/reviewModel.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/model/astrologerCategoryModel.dart';
+import 'package:trueastrotalk/model/astrologer_model.dart';
+import 'package:trueastrotalk/model/reviewModel.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

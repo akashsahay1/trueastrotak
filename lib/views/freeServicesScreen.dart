@@ -2,25 +2,25 @@
 
 import 'dart:io';
 
-import 'package:trueastrotak/controllers/astrologyBlogController.dart';
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/controllers/dailyHoroscopeController.dart';
-import 'package:trueastrotak/controllers/homeController.dart';
-import 'package:trueastrotak/controllers/kundliController.dart';
-import 'package:trueastrotak/controllers/kundliMatchingController.dart';
-import 'package:trueastrotak/controllers/liveController.dart';
-import 'package:trueastrotak/views/astroBlog/astrologyBlogListScreen.dart';
-import 'package:trueastrotak/views/astroBlog/astrologyDetailScreen.dart';
-import 'package:trueastrotak/views/astrologerVideo.dart';
-import 'package:trueastrotak/views/blog_screen.dart';
-import 'package:trueastrotak/views/daily_horoscope/dailyHoroScopeDetailScreen.dart';
-import 'package:trueastrotak/views/kudali/kundliScreen.dart';
-import 'package:trueastrotak/views/kundliMatching/kundliMatchingScreen.dart';
-import 'package:trueastrotak/views/liveAstrologerList.dart';
-import 'package:trueastrotak/views/live_astrologer/live_astrologer_screen.dart';
-import 'package:trueastrotak/views/panchangScreen.dart';
+import 'package:trueastrotalk/controllers/astrologyBlogController.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/controllers/dailyHoroscopeController.dart';
+import 'package:trueastrotalk/controllers/homeController.dart';
+import 'package:trueastrotalk/controllers/kundliController.dart';
+import 'package:trueastrotalk/controllers/kundliMatchingController.dart';
+import 'package:trueastrotalk/controllers/liveController.dart';
+import 'package:trueastrotalk/views/astroBlog/astrologyBlogListScreen.dart';
+import 'package:trueastrotalk/views/astroBlog/astrologyDetailScreen.dart';
+import 'package:trueastrotalk/views/astrologerVideo.dart';
+import 'package:trueastrotalk/views/blog_screen.dart';
+import 'package:trueastrotalk/views/daily_horoscope/dailyHoroScopeDetailScreen.dart';
+import 'package:trueastrotalk/views/kudali/kundliScreen.dart';
+import 'package:trueastrotalk/views/kundliMatching/kundliMatchingScreen.dart';
+import 'package:trueastrotalk/views/liveAstrologerList.dart';
+import 'package:trueastrotalk/views/live_astrologer/live_astrologer_screen.dart';
+import 'package:trueastrotalk/views/panchangScreen.dart';
 
-import 'package:trueastrotak/widget/contactAstrologerBottomButton.dart';
+import 'package:trueastrotalk/widget/contactAstrologerBottomButton.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
@@ -28,7 +28,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../utils/images.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 // ignore: must_be_immutable
 class FreeServiceScreen extends StatelessWidget {

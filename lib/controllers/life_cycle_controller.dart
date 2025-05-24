@@ -1,9 +1,9 @@
 // ignore_for_file: avoid_print, deprecated_member_use
 
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/controllers/customer_support_controller.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/controllers/customer_support_controller.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeCheckController extends FullLifeCycleController with FullLifeCycleMixin {

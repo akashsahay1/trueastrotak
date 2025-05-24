@@ -1,14 +1,14 @@
-import 'package:trueastrotak/model/astromallHistoryModel.dart';
-import 'package:trueastrotak/model/callHistoryModel.dart';
-import 'package:trueastrotak/model/chatHistoryModel.dart';
-import 'package:trueastrotak/model/paymentsLogsModel.dart';
-import 'package:trueastrotak/model/reportHistoryModel.dart';
-import 'package:trueastrotak/model/walletTransactionHistoryModel.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/model/astromallHistoryModel.dart';
+import 'package:trueastrotalk/model/callHistoryModel.dart';
+import 'package:trueastrotalk/model/chatHistoryModel.dart';
+import 'package:trueastrotalk/model/paymentsLogsModel.dart';
+import 'package:trueastrotalk/model/reportHistoryModel.dart';
+import 'package:trueastrotalk/model/walletTransactionHistoryModel.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 class HistoryController extends GetxController with GetSingleTickerProviderStateMixin {
   TabController? tabControllerHistory;

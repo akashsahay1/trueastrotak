@@ -1,9 +1,9 @@
 import 'dart:developer';
 
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/model/astrologer_model.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/model/astrologer_model.dart';
+import 'package:trueastrotalk/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';

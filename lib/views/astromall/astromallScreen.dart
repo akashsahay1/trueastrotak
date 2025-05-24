@@ -1,15 +1,15 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:trueastrotak/controllers/astromallController.dart';
-import 'package:trueastrotak/utils/images.dart';
-import 'package:trueastrotak/views/astromall/astroProductScreen.dart';
-import 'package:trueastrotak/views/searchAstrologerScreen.dart';
+import 'package:trueastrotalk/controllers/astromallController.dart';
+import 'package:trueastrotalk/utils/images.dart';
+import 'package:trueastrotalk/views/astromall/astroProductScreen.dart';
+import 'package:trueastrotalk/views/searchAstrologerScreen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 import '../../widget/commonAppbar.dart';
 

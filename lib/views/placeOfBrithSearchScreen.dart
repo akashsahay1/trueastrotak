@@ -1,23 +1,23 @@
 import 'dart:convert';
 
-import 'package:trueastrotak/controllers/IntakeController.dart';
-import 'package:trueastrotak/controllers/callController.dart';
+import 'package:trueastrotalk/controllers/IntakeController.dart';
+import 'package:trueastrotalk/controllers/callController.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:trueastrotak/controllers/kundliController.dart';
-import 'package:trueastrotak/controllers/kundliMatchingController.dart';
-import 'package:trueastrotak/controllers/reportController.dart';
-import 'package:trueastrotak/controllers/search_controller.dart';
-import 'package:trueastrotak/controllers/search_place_controller.dart';
-import 'package:trueastrotak/controllers/userProfileController.dart';
+import 'package:trueastrotalk/controllers/kundliController.dart';
+import 'package:trueastrotalk/controllers/kundliMatchingController.dart';
+import 'package:trueastrotalk/controllers/reportController.dart';
+import 'package:trueastrotalk/controllers/search_controller.dart';
+import 'package:trueastrotalk/controllers/search_place_controller.dart';
+import 'package:trueastrotalk/controllers/userProfileController.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 
 import '../widget/commonAppbar.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 // ignore: must_be_immutable
 class PlaceOfBirthSearchScreen extends StatelessWidget {

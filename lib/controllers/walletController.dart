@@ -1,6 +1,6 @@
-import 'package:trueastrotak/model/amount_model.dart';
+import 'package:trueastrotalk/model/amount_model.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 import '../utils/services/api_helper.dart';
 

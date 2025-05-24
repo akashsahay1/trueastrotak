@@ -1,14 +1,14 @@
 // import 'dart:io';
 //
-// import 'package:trueastrotak/controllers/IntakeController.dart';
-// import 'package:trueastrotak/controllers/loginController.dart';
-// import 'package:trueastrotak/widget/textFieldWidget.dart';
+// import 'package:trueastrotalk/controllers/IntakeController.dart';
+// import 'package:trueastrotalk/controllers/loginController.dart';
+// import 'package:trueastrotalk/widget/textFieldWidget.dart';
 // import 'package:easy_localization/easy_localization.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:flutter/foundation.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
-// import 'package:trueastrotak/utils/global.dart' as global;
+// import 'package:trueastrotalk/utils/global.dart' as global;
 //
 // class IntakeVerifyOTPScreen extends StatelessWidget {
 //   final String phoneNumber;

@@ -1,4 +1,4 @@
-import 'package:trueastrotak/utils/images.dart';
+import 'package:trueastrotalk/utils/images.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';

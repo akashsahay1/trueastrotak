@@ -1,4 +1,4 @@
-import 'package:trueastrotak/model/availableTimes_model.dart';
+import 'package:trueastrotalk/model/availableTimes_model.dart';
 
 import 'availability_model.dart';
 

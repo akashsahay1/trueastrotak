@@ -2,8 +2,8 @@
 
 import 'dart:convert';
 import 'dart:developer';
-import 'package:trueastrotak/model/card_model.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/model/card_model.dart';
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:http/http.dart' as http;
 
 class StripeService {

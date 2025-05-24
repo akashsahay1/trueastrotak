@@ -1,6 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:trueastrotak/controllers/counsellorController.dart';
+import 'package:trueastrotalk/controllers/counsellorController.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +12,7 @@ import '../../controllers/bottomNavigationController.dart';
 import '../../controllers/reviewController.dart';
 import '../../controllers/walletController.dart';
 import '../../utils/images.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 
 import '../astrologerProfile/astrologerProfile.dart';
 import '../callIntakeFormScreen.dart';

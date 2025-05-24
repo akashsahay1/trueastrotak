@@ -1,4 +1,4 @@
-import 'package:trueastrotak/model/systemFlagModel.dart';
+import 'package:trueastrotalk/model/systemFlagModel.dart';
 
 class CurrentUserModel {
   CurrentUserModel({

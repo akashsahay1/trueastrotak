@@ -3,17 +3,17 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:trueastrotak/controllers/chatController.dart';
-import 'package:trueastrotak/controllers/history_controller.dart';
-import 'package:trueastrotak/controllers/splashController.dart';
-import 'package:trueastrotak/views/call/player.dart';
+import 'package:trueastrotalk/controllers/chatController.dart';
+import 'package:trueastrotalk/controllers/history_controller.dart';
+import 'package:trueastrotalk/controllers/splashController.dart';
+import 'package:trueastrotalk/views/call/player.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../controllers/bottomNavigationController.dart';

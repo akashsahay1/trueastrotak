@@ -2,9 +2,9 @@
 
 import 'dart:io';
 
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/theme/nativeTheme.dart';
-import 'package:trueastrotak/views/bottomNavigationBarScreen.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/theme/nativeTheme.dart';
+import 'package:trueastrotalk/views/bottomNavigationBarScreen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "trueastrotak" "\0"
+            VALUE "FileDescription", "trueastrotalk" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "trueastrotak" "\0"
+            VALUE "InternalName", "trueastrotalk" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2025 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "trueastrotak.exe" "\0"
-            VALUE "ProductName", "trueastrotak" "\0"
+            VALUE "OriginalFilename", "trueastrotalk.exe" "\0"
+            VALUE "ProductName", "trueastrotalk" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

@@ -1,14 +1,14 @@
 // ignore_for_file: deprecated_member_use, must_be_immutable
 
 import 'dart:io';
-import 'package:trueastrotak/controllers/loginController.dart';
-import 'package:trueastrotak/views/loginScreen.dart';
+import 'package:trueastrotalk/controllers/loginController.dart';
+import 'package:trueastrotalk/views/loginScreen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

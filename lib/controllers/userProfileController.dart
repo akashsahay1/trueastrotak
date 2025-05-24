@@ -2,15 +2,15 @@
 
 import 'dart:io';
 
-import 'package:trueastrotak/controllers/splashController.dart';
+import 'package:trueastrotalk/controllers/splashController.dart';
 
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 

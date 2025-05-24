@@ -1,18 +1,18 @@
 import 'dart:io';
 
-import 'package:trueastrotak/controllers/bottomNavigationController.dart';
-import 'package:trueastrotak/controllers/languageController.dart';
-import 'package:trueastrotak/controllers/reportController.dart';
-import 'package:trueastrotak/controllers/reportTabFiltter.dart';
-import 'package:trueastrotak/controllers/reviewController.dart';
-import 'package:trueastrotak/controllers/skillController.dart';
+import 'package:trueastrotalk/controllers/bottomNavigationController.dart';
+import 'package:trueastrotalk/controllers/languageController.dart';
+import 'package:trueastrotalk/controllers/reportController.dart';
+import 'package:trueastrotalk/controllers/reportTabFiltter.dart';
+import 'package:trueastrotalk/controllers/reviewController.dart';
+import 'package:trueastrotalk/controllers/skillController.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:share_plus/share_plus.dart';
 
 import '../../controllers/upcoming_controller.dart';

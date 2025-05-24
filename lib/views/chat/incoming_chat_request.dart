@@ -1,13 +1,13 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:trueastrotak/controllers/chatController.dart';
-import 'package:trueastrotak/utils/images.dart';
-import 'package:trueastrotak/views/chat/chat_screen.dart';
+import 'package:trueastrotalk/controllers/chatController.dart';
+import 'package:trueastrotalk/utils/images.dart';
+import 'package:trueastrotalk/views/chat/chat_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../controllers/bottomNavigationController.dart';

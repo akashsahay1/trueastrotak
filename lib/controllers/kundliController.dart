@@ -2,19 +2,19 @@
 
 import 'dart:convert';
 
-import 'package:trueastrotak/controllers/dropDownController.dart';
-import 'package:trueastrotak/controllers/kundliMatchingController.dart';
-import 'package:trueastrotak/model/getPdfKundali_model.dart';
-import 'package:trueastrotak/model/getPdfPrice_model.dart';
-import 'package:trueastrotak/model/kundli.dart';
-import 'package:trueastrotak/model/kundliBasicDetailMode.dart';
-import 'package:trueastrotak/model/kundli_model.dart';
-import 'package:trueastrotak/utils/images.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
+import 'package:trueastrotalk/controllers/dropDownController.dart';
+import 'package:trueastrotalk/controllers/kundliMatchingController.dart';
+import 'package:trueastrotalk/model/getPdfKundali_model.dart';
+import 'package:trueastrotalk/model/getPdfPrice_model.dart';
+import 'package:trueastrotalk/model/kundli.dart';
+import 'package:trueastrotalk/model/kundliBasicDetailMode.dart';
+import 'package:trueastrotalk/model/kundli_model.dart';
+import 'package:trueastrotalk/utils/images.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import 'package:intl/intl.dart';
 import 'package:share_plus/share_plus.dart';
 

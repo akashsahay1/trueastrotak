@@ -1,9 +1,9 @@
 import 'dart:developer';
 
-import 'package:trueastrotak/model/geoCodingModel.dart';
+import 'package:trueastrotalk/model/geoCodingModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
+import 'package:trueastrotalk/utils/global.dart' as global;
 import '../model/astrologer_model.dart';
 import '../model/astromall_product_model.dart';
 import '../utils/services/api_helper.dart';

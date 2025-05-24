@@ -1,13 +1,13 @@
 //flutter
 
 import 'dart:developer';
-import 'package:trueastrotak/controllers/liveController.dart';
-import 'package:trueastrotak/controllers/splashController.dart';
-import 'package:trueastrotak/model/astrologer_model.dart';
-import 'package:trueastrotak/model/kundli_model.dart';
-import 'package:trueastrotak/model/live_asrtrologer_model.dart';
-import 'package:trueastrotak/utils/services/api_helper.dart';
-import 'package:trueastrotak/views/chatScreen.dart';
+import 'package:trueastrotalk/controllers/liveController.dart';
+import 'package:trueastrotalk/controllers/splashController.dart';
+import 'package:trueastrotalk/model/astrologer_model.dart';
+import 'package:trueastrotalk/model/kundli_model.dart';
+import 'package:trueastrotalk/model/live_asrtrologer_model.dart';
+import 'package:trueastrotalk/utils/services/api_helper.dart';
+import 'package:trueastrotalk/views/chatScreen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';

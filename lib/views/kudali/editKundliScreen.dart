@@ -1,7 +1,7 @@
-import 'package:trueastrotak/controllers/kundliController.dart';
-import 'package:trueastrotak/model/kundli_model.dart';
-import 'package:trueastrotak/utils/global.dart' as global;
-import 'package:trueastrotak/views/placeOfBrithSearchScreen.dart';
+import 'package:trueastrotalk/controllers/kundliController.dart';
+import 'package:trueastrotalk/model/kundli_model.dart';
+import 'package:trueastrotalk/utils/global.dart' as global;
+import 'package:trueastrotalk/views/placeOfBrithSearchScreen.dart';
 import 'package:date_format/date_format.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
