@@ -87,7 +87,7 @@ class LoginController extends GetxController {
         await loginAndSignupUser(null, dataResponse['response']['identities'][0]['identityValue'].toString());
       } else {
         final response = await http.post(Uri.parse('$baseUrl/getOtlResponse'), body: json.encode({"token": dataResponse['response']['token']}), headers: await global.getApiHeaders(false));
-
+        print("Response from getOtlResponse: ${response.body}");
         Map data = json.decode(response.body);
         if (response.statusCode == 200) {
           await loginAndSignupUser(int.parse(data['authentication_details']['phone']['phone_number'].toString()), "");
@@ -155,6 +155,7 @@ class LoginController extends GetxController {
 
   loginAndSignupUser(int? phoneNumber, String email) async {
     try {
+      print("Trying login Akash with gmail");
       await global.getDeviceData();
       LoginModel loginModel = LoginModel();
       email.toString() != "" ? loginModel.contactNo = null : loginModel.contactNo = phoneNumber.toString();
@@ -171,6 +172,8 @@ class LoginController extends GetxController {
       loginModel.deviceInfo?.appVersion = global.appVersion;
 
       await apiHelper.loginSignUp(loginModel).then((result) async {
+        print("Checkin results of login Akash with gmail");
+        print(result.status);
         if (result.status == "200") {
           var recordId = result.recordList["recordList"];
           var token = result.recordList["token"];

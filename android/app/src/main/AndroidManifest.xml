@@ -2,7 +2,11 @@
     <application
         android:label="True Astrotalk"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/launcher_icon"
+				android:networkSecurityConfig="@xml/otpless_network_security_config"
+				android:launchMode="singleTop"
+				android:exported="true">
+				
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -20,24 +24,19 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSEABLE"/>
-								<data 
-									android:scheme="https" 
-									android:host="com.trueastrotalk.user"
-								/>
-								<data 
+						<intent-filter>
+							<action android:name="android.intent.action.VIEW" />
+							<category android:name="android.intent.category.DEFAULT" />
+							<category android:name="android.intent.category.BROWSABLE" />
+							<data
 									android:host="otpless"
-									android:scheme="otpless.v2ixf52onf0oep8ey64m"
-								/>
-            </intent-filter>
-
+									android:scheme= "otpless.v2ixf52onf0oep8ey64m"/>
+						</intent-filter>
         </activity>
         <meta-data
             android:name="flutterEmbedding"
-            android:value="2" />
+            android:value="2" /> 
+				
     </application>
     <queries>
         <intent>
