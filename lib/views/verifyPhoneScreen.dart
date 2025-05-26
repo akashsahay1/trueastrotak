@@ -100,7 +100,7 @@ class VerifyPhoneScreen extends StatelessWidget {
                             } else {
                               global.showOnlyLoaderDialog(context);
                               print("submit otp");
-                              loginController.otplessFlutterPlugin.startHeadless(loginController.onHeadlessResultVerify, arg);
+                              loginController.otplessFlutterPlugin.start(loginController.onHeadlessResultVerify, arg);
                             }
                           } catch (e) {
                             global.hideLoader();

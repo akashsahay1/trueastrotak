@@ -1242,15 +1242,13 @@ PODS:
   - AgoraRtm (2.2.1)
   - audioplayers_darwin (0.0.1):
     - Flutter
-  - auto_orientation (0.0.1):
-    - Flutter
   - BoringSSL-GRPC (0.0.37):
     - BoringSSL-GRPC/Implementation (= 0.0.37)
     - BoringSSL-GRPC/Interface (= 0.0.37)
   - BoringSSL-GRPC/Implementation (0.0.37):
     - BoringSSL-GRPC/Interface (= 0.0.37)
   - BoringSSL-GRPC/Interface (0.0.37)
-  - cloud_firestore (5.6.7):
+  - cloud_firestore (5.6.8):
     - Firebase/Firestore (= 11.10.0)
     - firebase_core
     - Flutter
@@ -1307,18 +1305,18 @@ PODS:
   - Firebase/Storage (11.10.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 11.10.0)
-  - firebase_auth (5.5.3):
+  - firebase_auth (5.5.4):
     - Firebase/Auth (= 11.10.0)
     - firebase_core
     - Flutter
-  - firebase_core (3.13.0):
+  - firebase_core (3.13.1):
     - Firebase/CoreOnly (= 11.10.0)
     - Flutter
-  - firebase_messaging (15.2.5):
+  - firebase_messaging (15.2.6):
     - Firebase/Messaging (= 11.10.0)
     - firebase_core
     - Flutter
-  - firebase_storage (12.4.5):
+  - firebase_storage (12.4.6):
     - Firebase/Storage (= 11.10.0)
     - firebase_core
     - Flutter
@@ -1398,8 +1396,6 @@ PODS:
     - Flutter
     - OrderedSet (~> 6.0.3)
   - flutter_local_notifications (0.0.1):
-    - Flutter
-  - flutter_screen_wake (0.0.1):
     - Flutter
   - fluttertoast (0.0.2):
     - Flutter
@@ -1545,10 +1541,10 @@ PODS:
   - open_file_ios (0.0.1):
     - Flutter
   - OrderedSet (6.0.3)
-  - otpless_flutter (0.0.4):
+  - otpless_headless_flutter (0.0.1):
     - Flutter
-    - OtplessSDK/Core (= 2.2.8)
-  - OtplessSDK/Core (2.2.8)
+    - OtplessBM/Core (= 1.1.1)
+  - OtplessBM/Core (1.1.1)
   - package_info_plus (0.4.5):
     - Flutter
   - path_provider_foundation (0.0.1):
@@ -1593,7 +1589,6 @@ DEPENDENCIES:
   - agora_rtc_engine (from `.symlinks/plugins/agora_rtc_engine/ios`)
   - agora_rtm (from `.symlinks/plugins/agora_rtm/ios`)
   - audioplayers_darwin (from `.symlinks/plugins/audioplayers_darwin/ios`)
-  - auto_orientation (from `.symlinks/plugins/auto_orientation/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
@@ -1607,7 +1602,6 @@ DEPENDENCIES:
   - flutter_google_places_sdk_ios (from `.symlinks/plugins/flutter_google_places_sdk_ios/ios`)
   - flutter_inappwebview_ios (from `.symlinks/plugins/flutter_inappwebview_ios/ios`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
-  - flutter_screen_wake (from `.symlinks/plugins/flutter_screen_wake/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - geocoding_ios (from `.symlinks/plugins/geocoding_ios/ios`)
   - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
@@ -1615,7 +1609,7 @@ DEPENDENCIES:
   - iris_method_channel (from `.symlinks/plugins/iris_method_channel/ios`)
   - libphonenumber_plugin (from `.symlinks/plugins/libphonenumber_plugin/ios`)
   - open_file_ios (from `.symlinks/plugins/open_file_ios/ios`)
-  - otpless_flutter (from `.symlinks/plugins/otpless_flutter/ios`)
+  - otpless_headless_flutter (from `.symlinks/plugins/otpless_headless_flutter/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
@@ -1663,7 +1657,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - OrderedSet
-    - OtplessSDK
+    - OtplessBM
     - PhoneNumberKit
     - PromisesObjC
     - RecaptchaInterop
@@ -1678,8 +1672,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/agora_rtm/ios"
   audioplayers_darwin:
     :path: ".symlinks/plugins/audioplayers_darwin/ios"
-  auto_orientation:
-    :path: ".symlinks/plugins/auto_orientation/ios"
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
   connectivity_plus:
@@ -1706,8 +1698,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_inappwebview_ios/ios"
   flutter_local_notifications:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
-  flutter_screen_wake:
-    :path: ".symlinks/plugins/flutter_screen_wake/ios"
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
   geocoding_ios:
@@ -1722,8 +1712,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/libphonenumber_plugin/ios"
   open_file_ios:
     :path: ".symlinks/plugins/open_file_ios/ios"
-  otpless_flutter:
-    :path: ".symlinks/plugins/otpless_flutter/ios"
+  otpless_headless_flutter:
+    :path: ".symlinks/plugins/otpless_headless_flutter/ios"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_foundation:
@@ -1757,9 +1747,8 @@ SPEC CHECKSUMS:
   AgoraRtcEngine_iOS: 97e2398a2addda9057815a2a583a658e36796ff6
   AgoraRtm: 0c0ea266de02ad6e4e43b1d33b7bb093bc347555
   audioplayers_darwin: 877d9a4d06331c5c374595e46e16453ac7eafa40
-  auto_orientation: 102ed811a5938d52c86520ddd7ecd3a126b5d39d
   BoringSSL-GRPC: dded2a44897e45f28f08ae87a55ee4bcd19bc508
-  cloud_firestore: d959b9b44fb0619e8c88e1b7436d3b1d36b4984e
+  cloud_firestore: 418c4911a2e4f1c38ac6dbb838ef19cdc32a515f
   connectivity_plus: 2a701ffec2c0ae28a48cf7540e279787e77c447d
   CryptoSwift: e64e11850ede528a02a0f3e768cec8e9d92ecb90
   device_info_plus: bf2e3232933866d73fe290f2942f2156cdd10342
@@ -1767,10 +1756,10 @@ SPEC CHECKSUMS:
   DKPhotoGallery: b3834fecb755ee09a593d7c9e389d8b5d6deed60
   file_picker: b159e0c068aef54932bb15dc9fd1571818edaf49
   Firebase: 1fe1c0a7d9aaea32efe01fbea5f0ebd8d70e53a2
-  firebase_auth: 3f532201cbdc7cd6dfc3bfa89affc0c294111e20
-  firebase_core: 432718558359a8c08762151b5f49bb0f093eb6e0
-  firebase_messaging: 3b99522baf7480dfb4b7683d2b34e842d577c362
-  firebase_storage: 11a326ee2116e122192f7b960db6f17ea8c18681
+  firebase_auth: 519455ee22dea9cb8b4e05d7821f93f77db88882
+  firebase_core: 3c2f323cae65c97a636a05a23b17730ef93df2cf
+  firebase_messaging: 456e01ff29a451c90097d0b45925551d5be0c143
+  firebase_storage: a53140c25885d8de77fecf98cbaa0d9fff501598
   FirebaseAppCheckInterop: 73b173e5ec45192e2d522ad43f526a82ad10b852
   FirebaseAuth: c4146bdfdc87329f9962babd24dae89373f49a32
   FirebaseAuthInterop: b583210c039a60ed3f1e48865e1f3da44a796595
@@ -1788,7 +1777,6 @@ SPEC CHECKSUMS:
   flutter_google_places_sdk_ios: 76e1260ead0522ef09c206563a7288aa3c77202e
   flutter_inappwebview_ios: 6f63631e2c62a7c350263b13fa5427aedefe81d4
   flutter_local_notifications: ff50f8405aaa0ccdc7dcfb9022ca192e8ad9688f
-  flutter_screen_wake: 4d3c2b43943ea81bd5e591fd4e639ea537f4ca5e
   fluttertoast: 21eecd6935e7064cc1fcb733a4c5a428f3f24f0f
   geocoding_ios: d7460f56e80e118d57678efe5c2cdc888739ff18
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
@@ -1805,8 +1793,8 @@ SPEC CHECKSUMS:
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   open_file_ios: 461db5853723763573e140de3193656f91990d9e
   OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
-  otpless_flutter: 558d03da0f3bc5e765278ed8b7207fcbb82f36f6
-  OtplessSDK: 4012206d070936bf4ae917025511e70eea5234a5
+  otpless_headless_flutter: 2d98dcfd5e856c41e68ea400f302504af6017baf
+  OtplessBM: a3fd650326c6390afff30982cc9d9df67a800bfc
   package_info_plus: c0502532a26c7662a62a356cebe2692ec5fe4ec4
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2

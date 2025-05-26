@@ -1,5 +1,3 @@
-//flutter
-
 import 'dart:developer';
 import 'package:trueastrotalk/controllers/liveController.dart';
 import 'package:trueastrotalk/controllers/splashController.dart';

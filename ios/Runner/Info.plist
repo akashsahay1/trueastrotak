@@ -47,16 +47,24 @@
 	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.trueastrotalk.user</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>trueastrotalk-1</string>
-			</array>
-		</dict>
+			<dict>
+					<key>CFBundleURLSchemes</key>
+					<array>
+							<string>otpless.v2ixf52onf0oep8ey64m</string>
+					</array>
+					<key>CFBundleTypeRole</key>
+					<string>Editor</string>
+					<key>CFBundleURLName</key>
+					<string>otpless</string>
+			</dict>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+			<string>whatsapp</string>
+			<string>otpless</string>
+			<string>gootpless</string>
+			<string>com.otpless.ios.app.otpless</string>
+			<string>googlegmail</string>
 	</array>
 </dict>
 </plist>

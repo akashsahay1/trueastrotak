@@ -204,9 +204,7 @@ class APIHelper {
 
   Future<dynamic> getHomeOrder() async {
     try {
-      print("$baseUrl/getCustomerHome");
       final response = await http.post(Uri.parse("$baseUrl/getCustomerHome"), headers: await global.getApiHeaders(true));
-      log('getCustomerHome: ${response.body}');
       dynamic recordList;
       if (response.statusCode == 200) {
         recordList = List<TopOrder>.from(json.decode(response.body)["topOrders"].map((x) => TopOrder.fromJson(x)));

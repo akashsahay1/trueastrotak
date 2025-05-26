@@ -8,13 +8,10 @@ import 'package:trueastrotalk/main.dart';
 import 'package:trueastrotalk/model/login_model.dart';
 import 'package:trueastrotalk/utils/services/api_helper.dart';
 import 'package:trueastrotalk/views/loginScreen.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import 'package:get/get.dart';
-import 'package:otpless_flutter/otpless_flutter.dart';
-
+import 'package:otpless_headless_flutter/otpless_flutter.dart';
 import '../model/device_info_login_model.dart';
 import '../utils/global.dart';
 import '../views/bottomNavigationBarScreen.dart';
@@ -37,6 +34,15 @@ class LoginController extends GetxController {
   APIHelper apiHelper = APIHelper();
   String selectedCountryCode = "+91";
   var flag = '🇮🇳';
+
+  final otplessFlutterPlugin = Otpless();
+  var loaderVisibility = true;
+  final TextEditingController urlTextContoller = TextEditingController();
+  Map dataResponse = {};
+  String phoneOrEmail = '';
+  String otp = '';
+  bool isInitIos = false;
+  static const String appId = "V2IXF52ONF0OEP8EY64M";
 
   @override
   void onInit() {
@@ -63,25 +69,120 @@ class LoginController extends GetxController {
 
   Future<void> startHeadlessWithWhatsapp(String type, {bool? resendOtp = false}) async {
     if (Platform.isAndroid) {
-      otplessFlutterPlugin.initHeadless(appId);
-      otplessFlutterPlugin.setHeadlessCallback(onHeadlessResult);
+      otplessFlutterPlugin.initialize(appId, timeout: 23);
+      otplessFlutterPlugin.setResponseCallback(onHeadlessResult);
       debugPrint("init headless sdk is called for android");
     }
     if (Platform.isIOS && !isInitIos) {
-      otplessFlutterPlugin.initHeadless(appId);
-      otplessFlutterPlugin.setHeadlessCallback(onHeadlessResult);
+      otplessFlutterPlugin.initialize(appId, timeout: 23);
+      otplessFlutterPlugin.setResponseCallback(onHeadlessResult);
       isInitIos = true;
       debugPrint("init headless sdk is called for ios");
     }
     Map<String, dynamic> arg = type == "phone" ? {'phone': '${phoneController.text}', 'countryCode': selectedCountryCode} : {'channelType': "$type"};
+
+    print(arg);
     print("resend otp:- ${resendOtp}");
-    type == "phone" ? otplessFlutterPlugin.startHeadless(resendOtp == true ? onResendotp : onHeadlessResultPhone, arg) : otplessFlutterPlugin.startHeadless(onHeadlessResult, arg);
+    type == "phone" ? otplessFlutterPlugin.start(resendOtp == true ? onResendotp : onHeadlessResultPhone, arg) : otplessFlutterPlugin.start(onHeadlessResult, arg);
   }
 
   void onHeadlessResult(dynamic result) async {
     print("email data");
-    print("${dataResponse['response']}");
     dataResponse = result;
+    print("${dataResponse}");
+    final responseType = result['responseType'];
+    print("${responseType}");
+    otplessFlutterPlugin.commitResponse(result);
+
+    final responseTyp = result['responseType'];
+
+    switch (responseTyp) {
+      case "SDK_READY":
+        debugPrint("SDK is ready");
+
+        break;
+
+      case "FAILED":
+        debugPrint("SDK initialization failed");
+        // Handle SDK initialization failure
+        break;
+
+      case "INITIATE":
+        if (result["statusCode"] == 200) {
+          debugPrint("Headless authentication initiated");
+          final authType = result["response"]["authType"];
+          if (authType == "OTP") {
+            // Take user to OTP verification screen
+          } else if (authType == "SILENT_AUTH") {
+            // Handle Silent Authentication initiation by showing
+            // loading status for SNA flow.
+          }
+        } else {
+          debugPrint("Failed to initiate authentication: ${result["statusCode"]}");
+          // Handle failure to initiate authentication
+          if (result["statusCode"] == 9106) {
+            // Silent Authentication failed and all fallback methods have been exhausted.
+            // Handle the scenario to gracefully exit the authentication flow
+          } else {
+            // Handle other error codes
+          }
+        }
+        break;
+
+      case "OTP_AUTO_READ":
+        // OTP_AUTO_READ is triggered only in ANDROID devices for WhatsApp and SMS.
+        final otp = result["response"]["otp"];
+        debugPrint("OTP Received: $otp");
+        break;
+
+      case "VERIFY":
+        final authType = result["response"]["authType"];
+        if (authType == "SILENT_AUTH") {
+          if (result["statusCode"] == 9106) {
+            // Silent Authentication and all fallback authentication methods in SmartAuth have failed.
+            //  The transaction cannot proceed further.
+            // Handle the scenario to gracefully exit the authentication flow
+          } else {
+            // Silent Authentication failed.
+            // If SmartAuth is enabled, the INITIATE response
+            // will include the next available authentication method configured in the dashboard.
+          }
+        } else {
+          // This is the response for OTP or Magic Link verification.
+          // The response will contain the authentication details.
+          // You can use this to log in or sign up the user.
+          debugPrint("Verification successful: ${result["response"]}");
+        }
+        break;
+
+      case "DELIVERY_STATUS":
+        break;
+
+      case "ONETAP":
+        final token = result["response"]["token"];
+        if (token != null) {
+          debugPrint("OneTap Data: $token");
+          // Process token and proceed
+        }
+        break;
+
+      case "FALLBACK_TRIGGERED":
+        // A fallback occurs when an OTP delivery attempt on one channel fails,
+        // and the system automatically retries via the subsequent channel selected on Otpless Dashboard.
+        // For example, if a merchant opts for SmartAuth with primary channal as WhatsApp and secondary channel as SMS,
+        // in that case, if OTP delivery on WhatsApp fails, the system will automatically retry via SMS.
+        // The response will contain the deliveryChannel to which the OTP has been sent.
+        final newDeliveryChannel = result["response"]["deliveryChannel"];
+        if (newDeliveryChannel != null) {
+          // This is the deliveryChannel to which the OTP has been sent
+        }
+        break;
+
+      default:
+        debugPrint("Unknown response type: $responseType");
+        break;
+    }
+
     if (dataResponse['response']['status'].toString() == "SUCCESS") {
       if (dataResponse['response']['identities'][0]['identityType'].toString() == "EMAIL") {
         await loginAndSignupUser(null, dataResponse['response']['identities'][0]['identityValue'].toString());
@@ -94,7 +195,7 @@ class LoginController extends GetxController {
         }
       }
     } else {
-      // hideLoader();
+      //hideLoader();
     }
     // whatsapplogindetailsModelFromJson(dataResponse);
   }
@@ -117,15 +218,6 @@ class LoginController extends GetxController {
     }
     // whatsapplogindetailsModelFromJson(dataResponse);
   }
-
-  final otplessFlutterPlugin = Otpless();
-  var loaderVisibility = true;
-  final TextEditingController urlTextContoller = TextEditingController();
-  Map dataResponse = {};
-  String phoneOrEmail = '';
-  String otp = '';
-  bool isInitIos = false;
-  static const String appId = "V2IXF52ONF0OEP8EY64M";
 
   timer() {
     maxSecond = 60;
