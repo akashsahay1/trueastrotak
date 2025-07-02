@@ -50,21 +50,28 @@
 			<dict>
 					<key>CFBundleURLSchemes</key>
 					<array>
-							<string>otpless.v2ixf52onf0oep8ey64m</string>
+							<string>com.googleusercontent.apps.540290890159-j79kn5maidmumto6pjhgq38mpp04q8tf</string>
 					</array>
 					<key>CFBundleTypeRole</key>
 					<string>Editor</string>
 					<key>CFBundleURLName</key>
-					<string>otpless</string>
+					<string>google-signin</string>
+			</dict>
+			<dict>
+					<key>CFBundleURLSchemes</key>
+					<array>
+							<string>com.trueastrotalk.user</string>
+					</array>
+					<key>CFBundleTypeRole</key>
+					<string>Editor</string>
+					<key>CFBundleURLName</key>
+					<string>app-scheme</string>
 			</dict>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-			<string>whatsapp</string>
-			<string>otpless</string>
-			<string>gootpless</string>
-			<string>com.otpless.ios.app.otpless</string>
 			<string>googlegmail</string>
+			<string>googlemail</string>
 	</array>
 </dict>
 </plist>

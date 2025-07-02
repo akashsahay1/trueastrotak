@@ -42,7 +42,8 @@ class NetworkController extends GetxController {
         break;
       case ConnectivityResult.none:
         connectionStatus.value = 0;
-        Get.snackbar('Netowrk Error', 'No internet connectio over there', snackPosition: SnackPosition.BOTTOM);
+        // Disable snackbar during initialization to prevent crashes
+        print('No internet connection detected');
         break;
       default:
     }

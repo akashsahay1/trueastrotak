@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart' as material;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_player/video_player.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import 'package:trueastrotalk/model/home_Model.dart' as home_model;
 
 import '../model/language.dart';
@@ -40,15 +40,29 @@ class HomeController extends GetxController {
   @override
   void onInit() async {
     _init();
-    videoPlayerController = VideoPlayerController.networkUrl(Uri.parse('${global.imgBaseurl}${global.getSystemFlagValueForLogin(global.systemFlagNameList.behindScenes)}'))
-      ..initialize().then((_) {
-        videoPlayerController!.pause();
-        videoPlayerController!.setLooping(true);
-
-        update();
-      });
-
+    _initializeVideoPlayer();
     super.onInit();
+  }
+
+  void _initializeVideoPlayer() {
+    try {
+      final behindScenesUrl = global.getSystemFlagValueForLogin(global.systemFlagNameList.behindScenes);
+      if (behindScenesUrl.isNotEmpty) {
+        final videoUrl = '${global.imgBaseurl}$behindScenesUrl';
+        videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(videoUrl))
+          ..initialize().then((_) {
+            videoPlayerController!.pause();
+            videoPlayerController!.setLooping(true);
+            update();
+          }).catchError((error) {
+            debugPrint('Error initializing video player: $error');
+          });
+      } else {
+        debugPrint('Behind scenes video URL not available');
+      }
+    } catch (e) {
+      debugPrint('Exception in _initializeVideoPlayer: $e');
+    }
   }
 
   _init() async {
@@ -183,8 +197,15 @@ class HomeController extends GetxController {
 
   Future youtubPlay(String url) async {
     String? videoId;
-    videoId = YoutubePlayer.convertUrlToId(url);
-    youtubePlayerController = YoutubePlayerController(initialVideoId: '$videoId', flags: YoutubePlayerFlags(autoPlay: true, showLiveFullscreenButton: true));
+    videoId = YoutubePlayerController.convertUrlToId(url);
+    youtubePlayerController = YoutubePlayerController.fromVideoId(
+      videoId: videoId!,
+      autoPlay: true,
+      params: const YoutubePlayerParams(
+        showControls: true,
+        showFullscreenButton: true,
+      ),
+    );
     update();
   }
 
@@ -246,20 +267,29 @@ class HomeController extends GetxController {
       await global.checkBody().then((result) async {
         if (result) {
           await apiHelper.getHomeBanner().then((result) {
-            if (result.status == "200") {
-              bannerList = result.recordList;
+            if (result != null && result.status == "200") {
+              bannerList = result.recordList ?? [];
               isbannerloading = false;
               update();
             } else {
+              debugPrint('Failed to get banner: ${result?.status ?? "null response"}');
+              bannerList.clear();
               isbannerloading = false;
               update();
-              global.showToast(message: 'Failed to get banner', textColor: global.textColor, bgColor: global.toastBackGoundColor);
             }
+          }).catchError((error) {
+            debugPrint('API error in getHomeBanner: $error');
+            bannerList.clear();
+            isbannerloading = false;
+            update();
           });
         }
       });
     } catch (e) {
-      print("Exception in getBanner:-" + e.toString());
+      bannerList.clear();
+      isbannerloading = false;
+      update();
+      debugPrint("Exception in getBanner: $e");
     }
   }
 
@@ -268,17 +298,25 @@ class HomeController extends GetxController {
       await global.checkBody().then((result) async {
         if (result) {
           await apiHelper.getHomeBlog().then((result) {
-            if (result.status == "200") {
-              blogList = result.recordList;
+            if (result != null && result.status == "200") {
+              blogList = result.recordList ?? [];
               update();
             } else {
-              global.showToast(message: 'Failed to get Blogs', textColor: global.textColor, bgColor: global.toastBackGoundColor);
+              debugPrint('Failed to get Blogs: ${result?.status ?? "null response"}');
+              blogList.clear();
+              update();
             }
+          }).catchError((error) {
+            debugPrint('API error in getHomeBlog: $error');
+            blogList.clear();
+            update();
           });
         }
       });
     } catch (e) {
-      print("Exception in getBlog:-" + e.toString());
+      blogList.clear();
+      update();
+      debugPrint("Exception in getBlog: $e");
     }
   }
 
@@ -287,17 +325,25 @@ class HomeController extends GetxController {
       await global.checkBody().then((result) async {
         if (result) {
           await apiHelper.getAstroNews().then((result) {
-            if (result.status == "200") {
-              astroNews = result.recordList;
+            if (result != null && result.status == "200") {
+              astroNews = result.recordList ?? [];
               update();
             } else {
-              global.showToast(message: 'Failed to get astro news', textColor: global.textColor, bgColor: global.toastBackGoundColor);
+              debugPrint('Failed to get astro news: ${result?.status ?? "null response"}');
+              astroNews.clear();
+              update();
             }
+          }).catchError((error) {
+            debugPrint('API error in getAstroNews: $error');
+            astroNews.clear();
+            update();
           });
         }
       });
     } catch (e) {
-      print("Exception in  getAstroNews:-" + e.toString());
+      astroNews.clear();
+      update();
+      debugPrint("Exception in getAstroNews: $e");
     }
   }
 
@@ -306,23 +352,25 @@ class HomeController extends GetxController {
       await global.checkBody().then((result) async {
         if (result) {
           await apiHelper.getHomeOrder().then((result) {
-            if (result.status == "200") {
-              myOrders = result.recordList;
+            if (result != null && result.status == "200") {
+              myOrders = result.recordList ?? [];
               update();
             } else {
-              // global.showToast(
-              //   message: 'Failed to get my orders',
-              //   textColor: global.textColor,
-              //   bgColor: global.toastBackGoundColor,
-              // );
+              debugPrint('Failed to get my orders: ${result?.status ?? "null response"}');
+              myOrders.clear();
+              update();
             }
+          }).catchError((error) {
+            debugPrint('API error in getHomeOrder: $error');
+            myOrders.clear();
+            update();
           });
         }
       });
     } catch (e) {
       myOrders.clear();
       update();
-      print("Exception in getMyOrder:-" + e.toString());
+      debugPrint("Exception in getMyOrder: $e");
     }
   }
 
@@ -331,17 +379,25 @@ class HomeController extends GetxController {
       await global.checkBody().then((result) async {
         if (result) {
           await apiHelper.getAstroVideos().then((result) {
-            if (result.status == "200") {
-              astrologyVideo = result.recordList;
+            if (result != null && result.status == "200") {
+              astrologyVideo = result.recordList ?? [];
               update();
             } else {
-              global.showToast(message: 'Failed to get Astrology video', textColor: global.textColor, bgColor: global.toastBackGoundColor);
+              debugPrint('Failed to get astrology videos: ${result?.status ?? "null response"}');
+              astrologyVideo.clear();
+              update();
             }
+          }).catchError((error) {
+            debugPrint('API error in getAstroVideos: $error');
+            astrologyVideo.clear();
+            update();
           });
         }
       });
     } catch (e) {
-      print("Exception in  getAstrologyVideos:-" + e.toString());
+      astrologyVideo.clear();
+      update();
+      debugPrint("Exception in getAstrologyVideos: $e");
     }
   }
 
@@ -433,21 +489,25 @@ class HomeController extends GetxController {
       await global.checkBody().then((result) async {
         if (result) {
           await apiHelper.getAllStory().then((result) {
-            if (result.status == "200") {
-              allStories = result.recordList;
+            if (result != null && result.status == "200") {
+              allStories = result.recordList ?? [];
               update();
             } else {
-              // global.showToast(
-              //   message: 'Failed to get client testimonals',
-              //   textColor: global.textColor,
-              //   bgColor: global.toastBackGoundColor,
-              // );
+              debugPrint('Failed to get all stories: ${result?.status ?? "null response"}');
+              allStories.clear();
+              update();
             }
+          }).catchError((error) {
+            debugPrint('API error in getAllStory: $error');
+            allStories.clear();
+            update();
           });
         }
       });
     } catch (e) {
-      print("Exception in  getClientsTestimonals:-" + e.toString());
+      allStories.clear();
+      update();
+      debugPrint("Exception in getAllStories: $e");
     }
   }
 

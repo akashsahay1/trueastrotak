@@ -23,30 +23,69 @@ class CommonAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    
     return AppBar(
       actions: actions,
-      backgroundColor: Get.theme.appBarTheme.systemOverlayStyle!.statusBarColor,
-      title:
-          isProfilePic
-              ? Row(
-                children: [
-                  profileImg == ""
-                      ? CircleAvatar(backgroundImage: AssetImage(Images.deafultUser))
-                      : CachedNetworkImage(
+      backgroundColor: theme.appBarTheme.backgroundColor,
+      foregroundColor: theme.appBarTheme.foregroundColor,
+      elevation: theme.appBarTheme.elevation,
+      centerTitle: theme.appBarTheme.centerTitle,
+      title: isProfilePic
+          ? Row(
+              children: [
+                profileImg == ""
+                    ? CircleAvatar(backgroundImage: AssetImage(Images.deafultUser))
+                    : CachedNetworkImage(
                         imageUrl: "${global.imgBaseurl}$profileImg",
                         imageBuilder: (context, imageProvider) {
-                          return CircleAvatar(backgroundColor: Get.theme.primaryColor, backgroundImage: imageProvider);
+                          return CircleAvatar(
+                            backgroundColor: colorScheme.primary,
+                            backgroundImage: imageProvider,
+                          );
                         },
-                        placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                        placeholder: (context, url) => Center(
+                          child: CircularProgressIndicator(
+                            color: colorScheme.primary,
+                            strokeWidth: 2,
+                          ),
+                        ),
                         errorWidget: (context, url, error) {
-                          return CircleAvatar(backgroundColor: Get.theme.primaryColor, child: Image.asset(Images.deafultUser, fit: BoxFit.fill, height: 40));
+                          return CircleAvatar(
+                            backgroundColor: colorScheme.primary,
+                            child: Image.asset(
+                              Images.deafultUser,
+                              fit: BoxFit.fill,
+                              height: 40,
+                            ),
+                          );
                         },
                       ),
-                  const SizedBox(width: 10),
-                  Text(title, style: Get.theme.primaryTextTheme.titleLarge!.copyWith(fontSize: 18, fontWeight: FontWeight.normal, color: Colors.white)).tr(),
-                ],
-              )
-              : Text(title, style: Get.theme.primaryTextTheme.titleLarge!.copyWith(fontSize: 18, fontWeight: FontWeight.normal, color: Colors.white)).tr(),
+                const SizedBox(width: 10),
+                Flexible(
+                  child: Text(
+                    title,
+                    style: theme.appBarTheme.titleTextStyle ??
+                        theme.textTheme.titleLarge?.copyWith(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: theme.appBarTheme.foregroundColor,
+                        ),
+                    overflow: TextOverflow.ellipsis,
+                  ).tr(),
+                ),
+              ],
+            )
+          : Text(
+              title,
+              style: theme.appBarTheme.titleTextStyle ??
+                  theme.textTheme.titleLarge?.copyWith(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: theme.appBarTheme.foregroundColor,
+                  ),
+            ).tr(),
       leading: IconButton(
         onPressed: () {
           if (flagId == 1) {
@@ -59,12 +98,13 @@ class CommonAppBar extends StatelessWidget {
         },
         icon: Icon(
           kIsWeb
-              ? Icons.arrow_back
+              ? Icons.arrow_back_rounded
               : Platform.isIOS
-              ? Icons.arrow_back_ios
-              : Icons.arrow_back,
-          color: Colors.white, //Get.theme.iconTheme.color,
+                  ? Icons.arrow_back_ios_rounded
+                  : Icons.arrow_back_rounded,
+          color: theme.appBarTheme.foregroundColor,
         ),
+        tooltip: 'Back',
       ),
     );
   }

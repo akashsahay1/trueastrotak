@@ -48,28 +48,24 @@ class HomeCheckController extends FullLifeCycleController with FullLifeCycleMixi
 
   @override
   Future<bool> didPushRoute(String route) {
-    print('HomeController - the route $route will be open');
     return super.didPushRoute(route);
   }
 
   // Optional
   @override
   Future<bool> didPopRoute() {
-    print('HomeController - the current route will be closed');
     return super.didPopRoute();
   }
 
   // Optional
   @override
   void didChangeMetrics() {
-    print('HomeController - the window size did change');
     super.didChangeMetrics();
   }
 
   // Optional
   @override
   void didChangePlatformBrightness() {
-    print('HomeController - platform change ThemeMode');
     super.didChangePlatformBrightness();
   }
 

@@ -97,37 +97,37 @@ class _HomeScreenState extends State<HomeScreen> {
         return isExit;
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         key: drawerKey,
         drawer: DrawerWidget(),
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Get.theme.primaryColor,
-          title: Text('${global.getSystemFlagValueForLogin(global.systemFlagNameList.appName)}', style: Get.theme.primaryTextTheme.titleLarge!.copyWith(fontSize: MediaQuery.of(context).size.width * 0.043, fontWeight: FontWeight.normal, color: Colors.white)),
-          iconTheme: IconThemeData(color: Colors.white),
-          leading: InkWell(
-            onTap: () {
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          title: Text('${global.getSystemFlagValueForLogin(global.systemFlagNameList.appName)}', style: Theme.of(context).appBarTheme.titleTextStyle, overflow: TextOverflow.ellipsis),
+          leading: IconButton(
+            onPressed: () {
               drawerKey.currentState!.isDrawerOpen ? drawerKey.currentState!.closeDrawer() : drawerKey.currentState!.openDrawer();
             },
-            child: Icon(Icons.menu, color: Colors.white),
+            icon: const Icon(Icons.menu),
+            tooltip: 'Menu',
           ),
           actions: [
             GetBuilder<SettingsController>(
               builder: (settingsController) {
-                return InkWell(
-                  onTap: () async {
+                return IconButton(
+                  onPressed: () async {
                     global.showOnlyLoaderDialog(context);
                     await settingsController.getNotification();
                     global.hideLoader();
                     Get.to(() => const NotificationScreen());
                   },
-                  child: Icon(Icons.notifications_none, size: 30),
+                  icon: const Icon(Icons.notifications_outlined),
+                  tooltip: 'Notifications',
                 );
               },
             ),
-            const SizedBox(width: 5),
-            InkWell(
-              onTap: () async {
+            FilledButton.tonal(
+              onPressed: () async {
                 bool isLogin = await global.isLogin();
                 global.showOnlyLoaderDialog(context);
                 await walletController.getAmount();
@@ -136,23 +136,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   Get.to(() => AddmoneyToWallet());
                 }
               },
-              child: Container(
-                decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(10), border: Border.all(color: Get.theme.primaryColor)),
-                margin: EdgeInsets.symmetric(horizontal: 1.w),
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(2.w, 1.w, 2.w, 1.w),
-                  child: Row(
-                    children: [
-                      Text('${global.getSystemFlagValueForLogin(global.systemFlagNameList.currency)} ', style: TextStyle(fontSize: 16.sp, color: Colors.white, fontWeight: FontWeight.w600)),
-                      Text(splashController.currentUser == null ? "00" : "${splashController.currentUser!.walletAmount ?? "00"}", style: TextStyle(fontSize: 16.sp, color: Colors.white, fontWeight: FontWeight.w600)),
-                    ],
-                  ),
-                ),
+              style: FilledButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8), minimumSize: Size.zero, tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.account_balance_wallet_outlined, size: 16),
+                  const SizedBox(width: 4),
+                  Text('${global.getSystemFlagValueForLogin(global.systemFlagNameList.currency)} ${splashController.currentUser?.walletAmount ?? "0"}', style: Theme.of(context).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.w600)),
+                ],
               ),
             ),
-            const SizedBox(width: 1),
-            InkWell(
-              onTap: () async {
+            IconButton(
+              onPressed: () async {
                 homeController.lan = [];
                 await Future.wait([homeController.getLanguages(), homeController.updateLanIndex()]);
                 //LANGUAGE DIALOG
@@ -165,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         return GetBuilder<HomeController>(
                           builder: (h) {
                             return AlertDialog(
-                              backgroundColor: Colors.white,
+                              backgroundColor: Theme.of(context).colorScheme.surface,
                               contentPadding: EdgeInsets.zero,
                               content: GetBuilder<HomeController>(
                                 builder: (h) {
@@ -298,7 +293,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                 });
               },
-              child: Padding(padding: const EdgeInsets.symmetric(horizontal: 15), child: Image.asset(Images.translation, height: 22, width: 22, fit: BoxFit.fill, color: Colors.white)),
+              icon: Image.asset(Images.translation, height: 20, width: 20, color: Theme.of(context).colorScheme.onPrimary),
+              tooltip: 'Language',
             ),
           ],
         ),
@@ -326,259 +322,121 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                          child: GestureDetector(
+                          padding: const EdgeInsets.all(16.0),
+                          child: SearchBar(
+                            hintText: tr('Search astrologers, Products and Services...'),
+                            hintStyle: WidgetStateProperty.all(Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant)),
+                            leading: const Icon(Icons.search),
+                            shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(28))),
+                            elevation: WidgetStateProperty.all(0),
+                            backgroundColor: WidgetStateProperty.all(Theme.of(context).colorScheme.surfaceContainerHighest),
                             onTap: () {
                               Get.to(() => SearchAstrologerScreen());
                             },
-                            child: SizedBox(
-                              height: 8.h,
-                              child: Container(
-                                padding: EdgeInsets.symmetric(vertical: FontSizes(context).height02()),
-                                margin: EdgeInsets.symmetric(horizontal: FontSizes(context).width2(), vertical: FontSizes(context).height1()),
-                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(FontSizes(context).width4()), border: Border.all(color: colorGrey)),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                                  child: Row(
-                                    children: [
-                                      Icon(Icons.search, size: 16.sp, color: Color(0xff555555)),
-                                      SizedBox(width: 2.w),
-                                      Text('Search astrologers,Products and Services...', style: Get.theme.primaryTextTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w400, fontSize: 11, color: Colors.black38)).tr(),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
                           ),
                         ),
 
-                        ///freeservice
-                        Card(
-                          elevation: 0,
-                          margin: EdgeInsets.all(0),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 4.w),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () async {
-                                          Get.find<DailyHoroscopeController>().selectZodic(0);
-                                          await Get.find<DailyHoroscopeController>().getHoroscopeList(horoscopeId: Get.find<DailyHoroscopeController>().signId);
-                                          Get.to(() => DailyHoroscopeScreen());
-                                        },
-                                        child: Container(
-                                          height: 11.h,
-                                          width: 11.h,
-                                          decoration: BoxDecoration(border: Border.all(width: 0.3, color: Get.theme.primaryColor), color: Color(0xFFfff7df), borderRadius: BorderRadius.circular(2.w)),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Center(
-                                                child: SizedBox(
-                                                  height: 5.h,
-                                                  width: 5.h,
-                                                  child: ClipRRect(
-                                                    clipBehavior: Clip.none,
-                                                    child: CachedNetworkImage(
-                                                      imageUrl: '${global.imgBaseurl}${global.getSystemFlagValueForLogin(global.systemFlagNameList.dailyHoroscope)}',
-                                                      placeholder: (context, url) => Center(child: SizedBox(height: 6.h, child: Skeletonizer(enabled: true, containersColor: Colors.grey.shade400, child: Container(height: 6.h)))),
-                                                      errorWidget: (context, url, error) => Icon(Icons.no_accounts, size: 20),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(height: 1.w),
-                                              Text('Daily\nHoroscope', textAlign: TextAlign.center, style: Get.theme.textTheme.titleSmall!.copyWith(height: 1, fontSize: 15.sp, fontWeight: FontWeight.w400, letterSpacing: 0)).tr(),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(width: 5),
-                                  Column(
-                                    children: [
-                                      GetBuilder<KundliController>(
-                                        builder: (kundliController) {
-                                          return GestureDetector(
-                                            onTap: () async {
-                                              bool isLogin = await global.isLogin();
-                                              if (isLogin) {
-                                                global.showOnlyLoaderDialog(Get.context);
-                                                await kundliController.getKundliList();
-                                                global.hideLoader();
-                                                Get.to(() => KundaliScreen());
-                                              }
-                                            },
-                                            child: Container(
-                                              height: 11.h,
-                                              width: 11.h,
-                                              decoration: BoxDecoration(border: Border.all(width: 0.3, color: Get.theme.primaryColor), color: Color(0xFFffe8e5), borderRadius: BorderRadius.circular(2.w)),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  CachedNetworkImage(
-                                                    height: 5.h,
-                                                    width: 5.h,
-                                                    imageUrl: '${global.imgBaseurl}${global.getSystemFlagValueForLogin(global.systemFlagNameList.freeKundli)}',
-                                                    placeholder: (context, url) => SizedBox(height: 6.h, child: Skeletonizer(enabled: true, containersColor: Colors.grey.shade400, child: Container(height: 6.h))),
-                                                    errorWidget: (context, url, error) => Icon(Icons.no_accounts, size: 20),
-                                                  ),
-                                                  SizedBox(height: 1.w),
-                                                  Text('Free\nKundali', textAlign: TextAlign.center, style: Get.theme.textTheme.titleSmall!.copyWith(height: 1, fontSize: 15.sp, fontWeight: FontWeight.w400, letterSpacing: 0)).tr(),
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(width: 5),
-                                  Column(
-                                    children: [
-                                      GetBuilder<KundliController>(
-                                        builder: (kundliController) {
-                                          return GestureDetector(
-                                            onTap: () async {
+                        // Services Section
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(tr('Quick Services'), style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface)),
+                              const SizedBox(height: 16),
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    _buildServiceCard(
+                                      context: context,
+                                      title: tr('Daily\nHoroscope'),
+                                      imageUrl: '${global.imgBaseurl}${global.getSystemFlagValueForLogin(global.systemFlagNameList.dailyHoroscope)}',
+                                      onTap: () async {
+                                        Get.find<DailyHoroscopeController>().selectZodic(0);
+                                        await Get.find<DailyHoroscopeController>().getHoroscopeList(horoscopeId: Get.find<DailyHoroscopeController>().signId);
+                                        Get.to(() => DailyHoroscopeScreen());
+                                      },
+                                    ),
+                                    const SizedBox(width: 12),
+                                    GetBuilder<KundliController>(
+                                      builder: (kundliController) {
+                                        return _buildServiceCard(
+                                          context: context,
+                                          title: tr('Free\nKundali'),
+                                          imageUrl: '${global.imgBaseurl}${global.getSystemFlagValueForLogin(global.systemFlagNameList.freeKundli)}',
+                                          onTap: () async {
+                                            bool isLogin = await global.isLogin();
+                                            if (isLogin) {
                                               global.showOnlyLoaderDialog(Get.context);
                                               await kundliController.getKundliList();
                                               global.hideLoader();
-                                              Get.to(() => KundliMatchingScreen());
-                                            },
-                                            child: Container(
-                                              height: 11.h,
-                                              width: 11.h,
-                                              decoration: BoxDecoration(border: Border.all(width: 0.3, color: Get.theme.primaryColor), color: Color(0xFFe7ffdf), borderRadius: BorderRadius.circular(2.w)),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  CachedNetworkImage(
-                                                    height: 5.h,
-                                                    width: 5.h,
-                                                    imageUrl: '${global.imgBaseurl}${global.getSystemFlagValueForLogin(global.systemFlagNameList.kundliMatching)}',
-                                                    placeholder: (context, url) => SizedBox(height: 6.h, child: Skeletonizer(enabled: true, containersColor: Colors.grey.shade400, child: Container(height: 6.h))),
-                                                    errorWidget: (context, url, error) => Icon(Icons.no_accounts, size: 20),
-                                                  ),
-                                                  SizedBox(height: 1.w),
-                                                  Text('Kundali\nMatching', textAlign: TextAlign.center, style: Get.theme.textTheme.titleSmall!.copyWith(height: 1, fontSize: 15.sp, fontWeight: FontWeight.w400, letterSpacing: 0)).tr(),
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(width: 5),
-                                  Column(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () async {
-                                          astromallController.astroCategory.clear();
-                                          astromallController.isAllDataLoaded = false;
-                                          astromallController.update();
-                                          global.showOnlyLoaderDialog(context);
-                                          await astromallController.getAstromallCategory(false);
-                                          global.hideLoader();
-                                          Get.to(() => AstromallScreen());
-                                        },
-                                        child: Container(
-                                          height: 11.h,
-                                          width: 11.h,
-                                          decoration: BoxDecoration(border: Border.all(width: 0.3, color: Get.theme.primaryColor), color: Color(0xFFfff7df), borderRadius: BorderRadius.circular(2.w)),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              CachedNetworkImage(
-                                                height: 5.h,
-                                                width: 5.h,
-                                                imageUrl: '${global.imgBaseurl}${global.getSystemFlagValueForLogin(global.systemFlagNameList.astromall)}',
-                                                placeholder: (context, url) => SizedBox(height: 6.h, child: Skeletonizer(enabled: true, containersColor: Colors.grey.shade400, child: Container(height: 6.h))),
-                                                errorWidget: (context, url, error) => Icon(Icons.no_accounts, size: 20),
-                                              ),
-                                              SizedBox(height: 1.w),
-                                              Text('Shopping', textAlign: TextAlign.center, style: Get.theme.textTheme.titleSmall!.copyWith(height: 1, fontSize: 15.sp, fontWeight: FontWeight.w400, letterSpacing: 0)).tr(),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(width: 5),
-                                  Column(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () async {
-                                          Get.to(() => CategoryScreen());
-                                        },
-                                        child: Container(
-                                          height: 11.h,
-                                          width: 11.h,
-                                          decoration: BoxDecoration(border: Border.all(width: 0.3, color: Get.theme.primaryColor), color: Color(0xffe0f2f1), borderRadius: BorderRadius.circular(2.w)),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              CachedNetworkImage(
-                                                height: 5.h,
-                                                width: 5.h,
-                                                imageUrl: '${global.imgBaseurl}${global.getSystemFlagValueForLogin(global.systemFlagNameList.categories)}',
-                                                placeholder: (context, url) => SizedBox(height: 6.h, child: Skeletonizer(enabled: true, containersColor: Colors.grey.shade400, child: Container(height: 6.h))),
-                                                errorWidget: (context, url, error) => Icon(Icons.no_accounts, size: 20),
-                                              ),
-                                              SizedBox(height: 1.w),
-                                              Text('Categories', textAlign: TextAlign.center, style: Get.theme.textTheme.titleSmall!.copyWith(height: 1, fontSize: 15.sp, fontWeight: FontWeight.w400, letterSpacing: 0)).tr(),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(width: 5),
-                                  Column(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () async {
-                                          global.showOnlyLoaderDialog(context);
-                                          blogController.astrologyBlogs = [];
-                                          blogController.astrologyBlogs.clear();
-                                          blogController.isAllDataLoaded = false;
-                                          blogController.update();
-                                          await blogController.getAstrologyBlog("", false);
-                                          global.hideLoader();
-                                          Get.to(() => AstrologyBlogScreen());
-                                        },
-                                        child: Container(
-                                          height: 11.h,
-                                          width: 11.h,
-                                          decoration: BoxDecoration(border: Border.all(width: 0.3, color: Get.theme.primaryColor), color: Color(0xfff8bbd0), borderRadius: BorderRadius.circular(2.w)),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              CachedNetworkImage(
-                                                height: 5.h,
-                                                width: 5.h,
-                                                imageUrl: '${global.imgBaseurl}${global.getSystemFlagValueForLogin(global.systemFlagNameList.bloc)}',
-                                                placeholder: (context, url) => SizedBox(height: 6.h, child: Skeletonizer(enabled: true, containersColor: Colors.grey.shade400, child: Container(height: 6.h))),
-                                                errorWidget: (context, url, error) => Icon(Icons.no_accounts, size: 20),
-                                              ),
-                                              SizedBox(height: 1.w),
-                                              Text('Blog', textAlign: TextAlign.center, style: Get.theme.textTheme.titleSmall!.copyWith(height: 1, fontSize: 15.sp, fontWeight: FontWeight.w400, letterSpacing: 0)).tr(),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                              Get.to(() => KundaliScreen());
+                                            }
+                                          },
+                                        );
+                                      },
+                                    ),
+                                    const SizedBox(width: 12),
+                                    GetBuilder<KundliController>(
+                                      builder: (kundliController) {
+                                        return _buildServiceCard(
+                                          context: context,
+                                          title: tr('Kundali\nMatching'),
+                                          imageUrl: '${global.imgBaseurl}${global.getSystemFlagValueForLogin(global.systemFlagNameList.kundliMatching)}',
+                                          onTap: () async {
+                                            global.showOnlyLoaderDialog(Get.context);
+                                            await kundliController.getKundliList();
+                                            global.hideLoader();
+                                            Get.to(() => KundliMatchingScreen());
+                                          },
+                                        );
+                                      },
+                                    ),
+                                    const SizedBox(width: 12),
+                                    _buildServiceCard(
+                                      context: context,
+                                      title: tr('Shopping'),
+                                      imageUrl: '${global.imgBaseurl}${global.getSystemFlagValueForLogin(global.systemFlagNameList.astromall)}',
+                                      onTap: () async {
+                                        astromallController.astroCategory.clear();
+                                        astromallController.isAllDataLoaded = false;
+                                        astromallController.update();
+                                        global.showOnlyLoaderDialog(context);
+                                        await astromallController.getAstromallCategory(false);
+                                        global.hideLoader();
+                                        Get.to(() => AstromallScreen());
+                                      },
+                                    ),
+                                    const SizedBox(width: 12),
+                                    _buildServiceCard(
+                                      context: context,
+                                      title: tr('Categories'),
+                                      imageUrl: '${global.imgBaseurl}${global.getSystemFlagValueForLogin(global.systemFlagNameList.categories)}',
+                                      onTap: () async {
+                                        Get.to(() => CategoryScreen());
+                                      },
+                                    ),
+                                    const SizedBox(width: 12),
+                                    _buildServiceCard(
+                                      context: context,
+                                      title: tr('Blog'),
+                                      imageUrl: '${global.imgBaseurl}${global.getSystemFlagValueForLogin(global.systemFlagNameList.bloc)}',
+                                      onTap: () async {
+                                        global.showOnlyLoaderDialog(context);
+                                        blogController.astrologyBlogs = [];
+                                        blogController.astrologyBlogs.clear();
+                                        blogController.isAllDataLoaded = false;
+                                        blogController.update();
+                                        await blogController.getAstrologyBlog("", false);
+                                        global.hideLoader();
+                                        Get.to(() => AstrologyBlogScreen());
+                                      },
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                         ),
 
@@ -587,7 +445,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           builder: (homeController) {
                             return Column(
                               children: [
-                                homeController.allStories.length == 0 ? SizedBox() : Padding(padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10), child: Row(children: [Text('Astro Stories', style: Get.theme.primaryTextTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)).tr()])),
+                                homeController.allStories.length == 0
+                                    ? SizedBox()
+                                    : Padding(padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10), child: Row(children: [Text('Astro Stories', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface)).tr()])),
                                 homeController.allStories.length == 0
                                     ? SizedBox()
                                     : Container(
@@ -703,7 +563,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                         imageUrl: kIsWeb ? 'https://corsproxy.io/?${global.imgBaseurl}${homeController.bannerList[index].bannerImage}' : '${global.imgBaseurl}${homeController.bannerList[index].bannerImage}',
                                         imageBuilder: (context, imageProvider) {
                                           return homeController.checkBannerValid(startDate: homeController.bannerList[index].fromDate, endDate: homeController.bannerList[index].toDate)
-                                              ? Card(child: Container(height: Get.height * 0.2, width: Get.width, decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), image: DecorationImage(fit: BoxFit.cover, image: imageProvider))))
+                                              ? Card(
+                                                elevation: 2,
+                                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                                child: Container(height: Get.height * 0.2, width: Get.width, decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), image: DecorationImage(fit: BoxFit.cover, image: imageProvider))),
+                                              )
                                               : Container(color: Colors.green);
                                         },
                                         placeholder: (context, url) => Skeletonizer(containersColor: Colors.grey.shade400, enabled: true, child: SizedBox(width: 30.w, height: 10.h)),
@@ -731,9 +595,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 : SizedBox(
                                   height: 160,
                                   child: Card(
-                                    elevation: 0,
+                                    elevation: 1,
                                     margin: EdgeInsets.only(top: 6),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                                    color: Theme.of(context).colorScheme.surface,
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(vertical: 10),
                                       child: Column(
@@ -744,7 +609,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
-                                                Row(children: [Text('My orders', style: Get.theme.primaryTextTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)).tr()]),
+                                                Row(children: [Text('My orders', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface)).tr()]),
                                                 GestureDetector(
                                                   onTap: () async {
                                                     final HistoryController historyController = Get.find<HistoryController>();
@@ -773,7 +638,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     global.hideLoader();
                                                     bottomController.setBottomIndex(4, 0);
                                                   },
-                                                  child: Text('View All', style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w400, color: Colors.blue[500])).tr(),
+                                                  child: Text('View All', style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary)).tr(),
                                                 ),
                                               ],
                                             ),
@@ -938,9 +803,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 : SizedBox(
                                   height: 29.h,
                                   child: Card(
-                                    elevation: 0,
+                                    elevation: 1,
                                     margin: EdgeInsets.only(top: 6),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                                    color: Theme.of(context).colorScheme.surface,
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(vertical: 10),
                                       child: Column(
@@ -953,7 +819,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               children: [
                                                 Row(
                                                   children: [
-                                                    Text('Live Astrologers', style: Get.theme.primaryTextTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)).tr(),
+                                                    Text('Live Astrologers', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface)).tr(),
                                                     Padding(
                                                       padding: EdgeInsets.only(left: 5),
                                                       child: GestureDetector(
@@ -971,7 +837,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   onTap: () async {
                                                     Get.to(() => LiveAstrologerListScreen());
                                                   },
-                                                  child: Text('View All', style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w400, color: Colors.blue[500])).tr(),
+                                                  child: Text('View All', style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary)).tr(),
                                                 ),
                                               ],
                                             ),
@@ -1103,12 +969,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('Categories', style: Get.theme.primaryTextTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)).tr(),
+                                  Text('Categories', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface)).tr(),
                                   GestureDetector(
                                     onTap: () {
                                       Get.to(() => CategoryScreen());
                                     },
-                                    child: Text('View All', style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w400, color: Colors.blue[500])).tr(),
+                                    child: Text('View All', style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary)).tr(),
                                   ),
                                 ],
                               ),
@@ -1166,9 +1032,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 : SizedBox(
                                   height: 34.h,
                                   child: Card(
-                                    elevation: 0,
+                                    elevation: 1,
                                     margin: EdgeInsets.only(top: 6),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                                    color: Theme.of(context).colorScheme.surface,
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                                     child: Padding(
                                       padding: const EdgeInsets.only(top: 10, bottom: 5),
                                       child: Column(
@@ -1181,14 +1048,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                               children: [
                                                 Container(
                                                   margin: EdgeInsets.symmetric(horizontal: FontSizes(context).width3()),
-                                                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('Astrologers', style: Get.theme.primaryTextTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)).tr()]),
+                                                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('Astrologers', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface)).tr()]),
                                                 ),
                                                 GestureDetector(
                                                   onTap: () {
                                                     bottomController.bottomNavIndex = 1;
                                                     bottomController.update();
                                                   },
-                                                  child: Text('View All', style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w400, color: Colors.blue[500])).tr(),
+                                                  child: Text('View All', style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary)).tr(),
                                                 ),
                                               ],
                                             ),
@@ -1254,9 +1121,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   maxLine: 1,
                                                                 ),
                                                                 Container(
-                                                                  decoration: BoxDecoration(color: greenColor, borderRadius: BorderRadius.circular(FontSizes(context).width6())),
+                                                                  decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.circular(20)),
                                                                   padding: EdgeInsets.symmetric(vertical: FontSizes(context).height1(), horizontal: FontSizes(context).width6()),
-                                                                  child: CustomText(text: "Connect", fontsize: FontSizes(context).font03(), fontWeight: FontWeight.w400, color: whiteColor),
+                                                                  child: CustomText(text: "Connect", fontsize: FontSizes(context).font03(), fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onPrimary),
                                                                 ),
                                                               ],
                                                             ),
@@ -1283,9 +1150,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 : SizedBox(
                                   height: 200,
                                   child: Card(
-                                    elevation: 0,
+                                    elevation: 1,
                                     margin: EdgeInsets.only(top: 6),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                                    color: Theme.of(context).colorScheme.surface,
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                                     child: Padding(
                                       padding: const EdgeInsets.only(top: 10, bottom: 1),
                                       child: Column(
@@ -1296,7 +1164,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
-                                                Container(margin: EdgeInsets.symmetric(horizontal: 5), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('Shop Now', style: Get.theme.primaryTextTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)).tr()])),
+                                                Container(
+                                                  margin: EdgeInsets.symmetric(horizontal: 5),
+                                                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('Shop Now', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface)).tr()]),
+                                                ),
                                                 GestureDetector(
                                                   onTap: () async {
                                                     final AstromallController astromallController = Get.find<AstromallController>();
@@ -1308,7 +1179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     global.hideLoader();
                                                     Get.to(() => AstromallScreen());
                                                   },
-                                                  child: Text('View All', style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w400, color: Colors.blue[500])).tr(),
+                                                  child: Text('View All', style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary)).tr(),
                                                 ),
                                               ],
                                             ),
@@ -1339,14 +1210,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     child: Column(
                                                       mainAxisSize: MainAxisSize.min,
                                                       children: [
-                                                        Expanded(child: CircleAvatar(backgroundColor: Colors.white, radius: 35.sp, backgroundImage: NetworkImage("${global.imgBaseurl}${astromallController.astroCategory[index].categoryImage}"))),
+                                                        Expanded(child: CircleAvatar(backgroundColor: Theme.of(context).colorScheme.surface, radius: 35.sp, backgroundImage: NetworkImage("${global.imgBaseurl}${astromallController.astroCategory[index].categoryImage}"))),
                                                         Container(
-                                                          color: Colors.white,
+                                                          color: Theme.of(context).colorScheme.surface,
                                                           width: Get.width,
                                                           height: 45,
                                                           alignment: Alignment.center,
                                                           padding: const EdgeInsets.all(8),
-                                                          child: Text(astromallController.astroCategory[index].name, textAlign: TextAlign.center, overflow: TextOverflow.ellipsis, style: Get.textTheme.bodyMedium!.copyWith(fontSize: 11, color: Colors.black, fontWeight: FontWeight.w500)).tr(),
+                                                          child:
+                                                              Text(
+                                                                astromallController.astroCategory[index].name,
+                                                                textAlign: TextAlign.center,
+                                                                overflow: TextOverflow.ellipsis,
+                                                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 11, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
+                                                              ).tr(),
                                                         ),
                                                       ],
                                                     ),
@@ -2116,6 +1993,46 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               );
             },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildServiceCard({required BuildContext context, required String title, required String imageUrl, required VoidCallback onTap}) {
+    return SizedBox(
+      width: 100,
+      child: Card(
+        elevation: 0,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16), side: BorderSide(color: Theme.of(context).colorScheme.outlineVariant, width: 1)),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: 48,
+                  width: 48,
+                  child: CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    placeholder:
+                        (context, url) => Container(
+                          decoration: BoxDecoration(color: Theme.of(context).colorScheme.surfaceContainerHighest, borderRadius: BorderRadius.circular(8)),
+                          child: Center(child: SizedBox(width: 24, height: 24, child: CircularProgressIndicator(strokeWidth: 2, color: Theme.of(context).colorScheme.primary))),
+                        ),
+                    errorWidget:
+                        (context, url, error) =>
+                            Container(decoration: BoxDecoration(color: Theme.of(context).colorScheme.surfaceContainerHighest, borderRadius: BorderRadius.circular(8)), child: Icon(Icons.image_not_supported_outlined, color: Theme.of(context).colorScheme.onSurfaceVariant, size: 24)),
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Text(title, textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500, height: 1.2), maxLines: 2, overflow: TextOverflow.ellipsis),
+              ],
+            ),
           ),
         ),
       ),

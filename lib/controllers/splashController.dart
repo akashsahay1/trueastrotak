@@ -8,7 +8,7 @@ import 'package:trueastrotalk/model/current_user_model.dart';
 import 'package:trueastrotalk/model/systemFlagModel.dart';
 import 'package:trueastrotalk/utils/global.dart';
 import 'package:trueastrotalk/utils/services/api_helper.dart';
-import 'package:trueastrotalk/views/loginScreen.dart';
+import 'package:trueastrotalk/views/onboardingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trueastrotalk/utils/global.dart' as global;
@@ -129,7 +129,7 @@ class SplashController extends GetxController {
                   sp!.clear();
 
                   homeController.myOrders.clear();
-                  Get.off(() => LoginScreen());
+                  Get.off(() => const OnboardingScreen());
                 }
               });
             }
@@ -139,7 +139,7 @@ class SplashController extends GetxController {
             version = packageInfo.version;
             update();
           });
-          Get.off(() => LoginScreen());
+          Get.off(() => const OnboardingScreen());
         }
       } catch (e) {
         print('Exception in _inIt():' + e.toString());

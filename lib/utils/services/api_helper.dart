@@ -54,16 +54,16 @@ class APIHelper {
   // login & signup
   Future<dynamic> loginSignUp(LoginModel loginModel) async {
     try {
-      log("loginSignUp called ${json.encode(loginModel)}");
+      debugPrint("loginSignUp called ${json.encode(loginModel)}");
       final response = await http.post(Uri.parse('$baseUrl/loginAppUser'), body: json.encode(loginModel), headers: await global.getApiHeaders(false));
       dynamic recordList;
-      log('loginSignUp response ${response.body}');
-      log('loginSignUp status ${response.statusCode}');
+      debugPrint('loginSignUp response ${response.body}');
+      debugPrint('loginSignUp status ${response.statusCode}');
       if (response.statusCode == 200) {
         recordList = json.decode(response.body);
       } else if (response.statusCode == 400) {
         recordList = json.decode(response.body);
-        log('loginSignUp data ${recordList['error']['contactNo']}');
+        debugPrint('loginSignUp data ${recordList['error']['contactNo']}');
 
         global.showToast(message: '${recordList['error']['contactNo']}', textColor: textColor, bgColor: Colors.white);
       } else {
@@ -72,6 +72,40 @@ class APIHelper {
       return getAPIResult(response, recordList);
     } catch (e) {
       debugPrint("Exception in loginSignUp():-" + e.toString());
+    }
+  }
+
+  Future<dynamic> signupUser(LoginModel loginModel) async {
+    try {
+      debugPrint("signupUser called ${json.encode(loginModel)}");
+      final response = await http.post(Uri.parse('$baseUrl/signupAppUser'), body: json.encode(loginModel), headers: await global.getApiHeaders(false));
+      dynamic recordList;
+      debugPrint('signupUser response ${response.body}');
+      debugPrint('signupUser status ${response.statusCode}');
+      if (response.statusCode == 200) {
+        recordList = json.decode(response.body);
+      } else if (response.statusCode == 400) {
+        recordList = json.decode(response.body);
+        debugPrint('signupUser error ${recordList}');
+        
+        // Handle validation errors
+        if (recordList['error'] != null) {
+          String errorMessage = "";
+          if (recordList['error']['email'] != null) {
+            errorMessage = recordList['error']['email'][0];
+          } else if (recordList['error']['contactNo'] != null) {
+            errorMessage = recordList['error']['contactNo'][0];
+          } else {
+            errorMessage = "Signup failed. Please try again.";
+          }
+          global.showToast(message: errorMessage, textColor: textColor, bgColor: Colors.white);
+        }
+      } else {
+        recordList = null;
+      }
+      return getAPIResult(response, recordList);
+    } catch (e) {
+      debugPrint("Exception in signupUser():-" + e.toString());
     }
   }
 
@@ -192,13 +226,27 @@ class APIHelper {
       final response = await http.post(Uri.parse("$baseUrl/getCustomerHome"));
       dynamic recordList;
       if (response.statusCode == 200) {
-        recordList = List<home_model.Banner>.from(json.decode(response.body)["banner"].map((x) => home_model.Banner.fromJson(x)));
+        try {
+          final responseBody = json.decode(response.body);
+          final banner = responseBody["banner"];
+          if (banner != null && banner is List) {
+            recordList = List<home_model.Banner>.from(banner.map((x) => home_model.Banner.fromJson(x)));
+          } else {
+            recordList = <home_model.Banner>[];
+            debugPrint('Failed to get banners: banner is null or not a list');
+          }
+        } catch (parseError) {
+          debugPrint('JSON parsing error in getHomeBanner: $parseError');
+          recordList = <home_model.Banner>[];
+        }
       } else {
-        recordList = null;
+        debugPrint('API Error - Status Code: ${response.statusCode}');
+        recordList = <home_model.Banner>[];
       }
       return getAPIResult(response, recordList);
     } catch (e) {
       debugPrint('Exception in getHomeBanner():' + e.toString());
+      return getAPIResult(null, <home_model.Banner>[]);
     }
   }
 
@@ -207,13 +255,28 @@ class APIHelper {
       final response = await http.post(Uri.parse("$baseUrl/getCustomerHome"), headers: await global.getApiHeaders(true));
       dynamic recordList;
       if (response.statusCode == 200) {
-        recordList = List<TopOrder>.from(json.decode(response.body)["topOrders"].map((x) => TopOrder.fromJson(x)));
+        try {
+          final responseBody = json.decode(response.body);
+          final topOrders = responseBody["topOrders"];
+          if (topOrders != null && topOrders is List) {
+            recordList = List<TopOrder>.from(topOrders.map((x) => TopOrder.fromJson(x)));
+          } else {
+            recordList = <TopOrder>[];
+            debugPrint('Failed to get my orders: topOrders is null or not a list');
+          }
+        } catch (parseError) {
+          debugPrint('JSON parsing error in getHomeOrder: $parseError');
+          recordList = <TopOrder>[];
+        }
       } else {
-        recordList = null;
+        debugPrint('API Error - Status Code: ${response.statusCode}');
+        debugPrint('Response Body: ${response.body}');
+        recordList = <TopOrder>[];
       }
       return getAPIResult(response, recordList);
     } catch (e) {
       debugPrint('Exception in getHomeOrder():' + e.toString());
+      return getAPIResult(null, <TopOrder>[]);
     }
   }
 
@@ -222,13 +285,27 @@ class APIHelper {
       final response = await http.post(Uri.parse("$baseUrl/getCustomerHome"));
       dynamic recordList;
       if (response.statusCode == 200) {
-        recordList = List<Blog>.from(json.decode(response.body)["blog"].map((x) => Blog.fromJson(x)));
+        try {
+          final responseBody = json.decode(response.body);
+          final blog = responseBody["blog"];
+          if (blog != null && blog is List) {
+            recordList = List<Blog>.from(blog.map((x) => Blog.fromJson(x)));
+          } else {
+            recordList = <Blog>[];
+            debugPrint('Failed to get blogs: blog is null or not a list');
+          }
+        } catch (parseError) {
+          debugPrint('JSON parsing error in getHomeBlog: $parseError');
+          recordList = <Blog>[];
+        }
       } else {
-        recordList = null;
+        debugPrint('API Error - Status Code: ${response.statusCode}');
+        recordList = <Blog>[];
       }
       return getAPIResult(response, recordList);
     } catch (e) {
       debugPrint('Exception in getHomeBlog():' + e.toString());
+      return getAPIResult(null, <Blog>[]);
     }
   }
 
@@ -309,13 +386,27 @@ class APIHelper {
       final response = await http.post(Uri.parse("$baseUrl/getCustomerHome"));
       dynamic recordList;
       if (response.statusCode == 200) {
-        recordList = List<AstrotalkInNews>.from(json.decode(response.body)["astrotalkInNews"].map((x) => AstrotalkInNews.fromJson(x)));
+        try {
+          final responseBody = json.decode(response.body);
+          final astrotalkInNews = responseBody["astrotalkInNews"];
+          if (astrotalkInNews != null && astrotalkInNews is List) {
+            recordList = List<AstrotalkInNews>.from(astrotalkInNews.map((x) => AstrotalkInNews.fromJson(x)));
+          } else {
+            recordList = <AstrotalkInNews>[];
+            debugPrint('Failed to get astro news: astrotalkInNews is null or not a list');
+          }
+        } catch (parseError) {
+          debugPrint('JSON parsing error in getAstroNews: $parseError');
+          recordList = <AstrotalkInNews>[];
+        }
       } else {
-        recordList = null;
+        debugPrint('API Error - Status Code: ${response.statusCode}');
+        recordList = <AstrotalkInNews>[];
       }
       return getAPIResult(response, recordList);
     } catch (e) {
       debugPrint('Exception in getAstroNews():' + e.toString());
+      return getAPIResult(null, <AstrotalkInNews>[]);
     }
   }
 
@@ -324,13 +415,27 @@ class APIHelper {
       final response = await http.post(Uri.parse("$baseUrl/getCustomerHome"));
       dynamic recordList;
       if (response.statusCode == 200) {
-        recordList = List<AstrologyVideo>.from(json.decode(response.body)["astrologyVideo"].map((x) => AstrologyVideo.fromJson(x)));
+        try {
+          final responseBody = json.decode(response.body);
+          final astrologyVideo = responseBody["astrologyVideo"];
+          if (astrologyVideo != null && astrologyVideo is List) {
+            recordList = List<AstrologyVideo>.from(astrologyVideo.map((x) => AstrologyVideo.fromJson(x)));
+          } else {
+            recordList = <AstrologyVideo>[];
+            debugPrint('Failed to get astrology videos: astrologyVideo is null or not a list');
+          }
+        } catch (parseError) {
+          debugPrint('JSON parsing error in getAstroVideos: $parseError');
+          recordList = <AstrologyVideo>[];
+        }
       } else {
-        recordList = null;
+        debugPrint('API Error - Status Code: ${response.statusCode}');
+        recordList = <AstrologyVideo>[];
       }
       return getAPIResult(response, recordList);
     } catch (e) {
-      debugPrint('Exception in getAstroNews():' + e.toString());
+      debugPrint('Exception in getAstroVideos():' + e.toString());
+      return getAPIResult(null, <AstrologyVideo>[]);
     }
   }
 
@@ -953,10 +1058,34 @@ class APIHelper {
   dynamic getAPIResult<T>(final response, T recordList) {
     try {
       dynamic result;
-      result = APIResult.fromJson(json.decode(response.body), recordList);
+
+      // Handle HTTP error status codes
+      if (response.statusCode != 200) {
+        debugPrint("API Error - Status Code: ${response.statusCode}");
+        debugPrint("Response Body: ${response.body}");
+
+        // Return a structured error response
+        result = APIResult(status: response.statusCode.toString(), recordList: recordList);
+        return result;
+      }
+
+      // Try to parse the response body
+      Map<String, dynamic> responseJson;
+      try {
+        responseJson = json.decode(response.body);
+      } catch (e) {
+        debugPrint("Failed to parse JSON response: $e");
+        result = APIResult(status: "PARSE_ERROR", recordList: recordList);
+        return result;
+      }
+
+      // Create successful result
+      result = APIResult.fromJson(responseJson, recordList);
       return result;
     } catch (e) {
-      debugPrint("Exception - getAPIResult():" + e.toString());
+      debugPrint("Exception - getAPIResult(): $e");
+      // Return error result instead of null
+      return APIResult(status: "ERROR", recordList: recordList);
     }
   }
 

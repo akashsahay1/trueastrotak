@@ -503,22 +503,24 @@ class BottomNavigationController extends GetxController {
       await global.checkBody().then((result) async {
         if (result) {
           await apiHelper.getAstrologer(sortingKey: sortBy, skills: skills, language: language, gender: gender, startIndex: startIndex, fetchRecords: fetchRecord).then((result) {
-            if (result.status == "200") {
-              astrologerList.addAll(result.recordList);
+            if (result != null && result.status == "200") {
+              astrologerList.addAll(result.recordList ?? []);
               log('astrologer list length ${astrologerList.length} ');
-              if (result.recordList.length == 0) {
+              if ((result.recordList ?? []).length == 0) {
                 isMoreDataAvailable = false;
                 isAllDataLoaded = true;
               }
               update();
             } else {
-              log('fail to get astrologer list');
+              debugPrint('Failed to get astrologer list: ${result?.status ?? "null response"}');
             }
+          }).catchError((error) {
+            debugPrint('API error in getAstrologer: $error');
           });
         }
       });
     } catch (e) {
-      print("Exception in getAstrologerList :-" + e.toString());
+      debugPrint("Exception in getAstrologerList: $e");
     }
   }
 
@@ -594,27 +596,25 @@ class BottomNavigationController extends GetxController {
       await global.checkBody().then((result) async {
         if (result) {
           await apiHelper.getAstrologer(sortingKey: sortBy, skills: skills, language: language, gender: gender, catId: id, startIndex: startIndex, fetchRecords: fetchRecord).then((result) {
-            if (result.status == "200") {
-              astrologerList.addAll(result.recordList);
-              print('cat astrologer length :- ${astrologerList.length}');
-              if (result.recordList.length == 0) {
+            if (result != null && result.status == "200") {
+              astrologerList.addAll(result.recordList ?? []);
+              print('cat astrologer length: ${astrologerList.length}');
+              final recordLength = (result.recordList ?? []).length;
+              if (recordLength == 0 || recordLength < 30) {
                 isMoreDataAvailable = false;
                 isAllDataLoaded = true;
               }
-              if (result.recordList.length < 30) {
-                isMoreDataAvailable = false;
-                isAllDataLoaded = true;
-              }
-
               update();
             } else {
-              global.showToast(message: 'Failed to get Category', textColor: global.textColor, bgColor: global.toastBackGoundColor);
+              debugPrint('Failed to get astrologer category: ${result?.status ?? "null response"}');
             }
+          }).catchError((error) {
+            debugPrint('API error in getAstrologer (category): $error');
           });
         }
       });
     } catch (e) {
-      print('Exception in getAstrocat():' + e.toString());
+      debugPrint('Exception in astroCat: $e');
     }
   }
 
@@ -623,16 +623,24 @@ class BottomNavigationController extends GetxController {
       await global.checkBody().then((result) async {
         if (result) {
           await apiHelper.getLiveAstrologer().then((result) {
-            if (result.status == "200") {
-              liveAstrologer = result.recordList;
-            } else {}
+            if (result != null && result.status == "200") {
+              liveAstrologer = result.recordList ?? [];
+            } else {
+              debugPrint('Failed to get live astrologer list: ${result?.status ?? "null response"}');
+              liveAstrologer.clear();
+            }
+            update();
+          }).catchError((error) {
+            debugPrint('API error in getLiveAstrologer: $error');
+            liveAstrologer.clear();
             update();
           });
         }
       });
-      // return liveAstrologer;
     } catch (e) {
-      print("Exception in  getLiveAstrologerList:-" + e.toString());
+      liveAstrologer.clear();
+      update();
+      debugPrint("Exception in getLiveAstrologerList: $e");
     }
   }
 
@@ -641,19 +649,26 @@ class BottomNavigationController extends GetxController {
       await global.checkBody().then((result) async {
         if (result) {
           await apiHelper.getAvailability(astrologerId).then((result) {
-            if (result.status == "200") {
-              astrologerAvailavility = result.recordList;
+            if (result != null && result.status == "200") {
+              astrologerAvailavility = result.recordList ?? [];
               update();
             } else {
-              global.showToast(message: 'Failed to get Astrologer available time', textColor: global.textColor, bgColor: global.toastBackGoundColor);
+              debugPrint('Failed to get astrologer availability: ${result?.status ?? "null response"}');
+              astrologerAvailavility.clear();
+              update();
             }
+          }).catchError((error) {
+            debugPrint('API error in getAvailability: $error');
+            astrologerAvailavility.clear();
             update();
           });
         }
       });
-      return liveAstrologer;
+      return astrologerAvailavility;
     } catch (e) {
-      print("Exception in  getLiveAstrologerList:-" + e.toString());
+      astrologerAvailavility.clear();
+      update();
+      debugPrint("Exception in getAstrologerAvailibility: $e");
     }
   }
 
@@ -662,20 +677,28 @@ class BottomNavigationController extends GetxController {
       await global.checkBody().then((result) async {
         if (result) {
           await apiHelper.getAstrologerById(astrologerId, global.currentUserId).then((result) {
-            if (result.status == "200") {
+            if (result != null && result.status == "200" && result.recordList != null) {
               astrologerbyId = result.recordList;
-              print("astrologer id");
-              print("${astrologerbyId[0].id}");
-              // homeController.getAstroStory();
+              if (astrologerbyId.isNotEmpty) {
+                print("astrologer id: ${astrologerbyId[0].id}");
+              }
               update();
             } else {
-              global.showToast(message: 'Fail to get profile', textColor: global.textColor, bgColor: global.toastBackGoundColor);
+              debugPrint('Failed to get astrologer profile: ${result?.status ?? "null response"}');
+              astrologerbyId.clear();
+              update();
             }
+          }).catchError((error) {
+            debugPrint('API error in getAstrologerById: $error');
+            astrologerbyId.clear();
+            update();
           });
         }
       });
     } catch (e) {
-      print("Exception in getAstrologerbyId :-" + e.toString());
+      astrologerbyId.clear();
+      update();
+      debugPrint("Exception in getAstrologerbyId: $e");
     }
   }
 

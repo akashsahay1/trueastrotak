@@ -217,7 +217,15 @@ void main() async {
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Get.theme.primaryColor, statusBarIconBrightness: Brightness.light));
-  runApp(EasyLocalization(supportedLocales: const [Locale('en', 'US'), Locale('hi', 'IN')], path: 'assets/translations', fallbackLocale: const Locale('en', 'US'), startLocale: const Locale('en', 'US'), child: MyApp()));
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('en', 'US'), Locale('hi', 'IN'), Locale('bn', 'IN'), Locale('es', 'ES'), Locale('gu', 'IN'), Locale('kn', 'IN'), Locale('ml', 'IN'), Locale('mr', 'IN'), Locale('ta', 'IN')],
+      path: 'assets/translations',
+      fallbackLocale: const Locale('en', 'US'),
+      startLocale: const Locale('en', 'US'),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -490,7 +498,7 @@ class _MyAppState extends State<MyApp> {
         return GetMaterialApp(
           navigatorKey: Get.key,
           debugShowCheckedModeBanner: false,
-          enableLog: true,
+          enableLog: false,
           theme: nativeTheme(),
           initialBinding: NetworkBinding(),
           locale: context.locale,

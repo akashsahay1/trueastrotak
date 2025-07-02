@@ -5,10 +5,9 @@ import 'package:trueastrotalk/controllers/splashController.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
-
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import '../utils/images.dart';
 
@@ -58,27 +57,21 @@ class BlogScreen extends StatelessWidget {
       ),
       body:
           title == "News"
-              ? InAppWebView(
-                initialUrlRequest: URLRequest(url: WebUri(link)),
-                initialSettings: InAppWebViewSettings(javaScriptEnabled: true, transparentBackground: true),
-                onProgressChanged: (controller, progress) {
-                  debugPrint('onProgressChanged progress$progress');
-                },
-                onReceivedError: (controller, request, error) {
-                  debugPrint('Terms condition error: $error');
-                },
-                onLoadStop: (controller, url) {},
-                onWebViewCreated: (controller) {},
-                onConsoleMessage: (controller, consoleMessage) {
-                  debugPrint('console web $consoleMessage');
-                },
+              ? WebViewWidget(
+                controller: WebViewController()
+                  ..setJavaScriptMode(JavaScriptMode.unrestricted)
+                  ..setBackgroundColor(Colors.transparent)
+                  ..loadRequest(Uri.parse(link)),
               )
               : Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
                     child: Center(
-                      child: YoutubePlayer(aspectRatio: 16 / 13, controller: controller!, showVideoProgressIndicator: true, progressColors: ProgressBarColors(playedColor: Colors.red, handleColor: Colors.grey), bottomActions: [CurrentPosition(), ProgressBar(isExpanded: true), RemainingDuration()]),
+                      child: YoutubePlayer(
+                      controller: controller!,
+                      aspectRatio: 16 / 13,
+                    ),
                     ),
                   ),
                   SizedBox(height: 20),

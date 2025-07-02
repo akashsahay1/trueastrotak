@@ -14,10 +14,10 @@ class ThemeController extends GetxController implements GetxService {
   bool get darkTheme => _darkTheme;
   int pickColorInt = 0xff000000;
 
-  Color _pickColor = Color(0xffef5350);
+  Color _pickColor = Color(0xFF2196F3);
   Color get pickColor => _pickColor;
 
-  Color _pickSecondaryColor = Color(0xff000000);
+  Color _pickSecondaryColor = Color(0xFF03DAC6);
   Color get pickSecondaryColor => _pickSecondaryColor;
 
   void _loadCurrentTheme() async {
@@ -27,9 +27,9 @@ class ThemeController extends GetxController implements GetxService {
       _pickColor = Color(colorVal!);
       pickColorInt = colorVal;
     } else {
-      _pickColor = Color(0xffef5350);
-      _pickSecondaryColor = Color(0xff000000);
-      pickColorInt = 0xffef5350;
+      _pickColor = Color(0xFF2196F3);
+      _pickSecondaryColor = Color(0xFF03DAC6);
+      pickColorInt = 0xFF2196F3;
     }
 
     update();

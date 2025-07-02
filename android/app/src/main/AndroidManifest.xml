@@ -24,14 +24,21 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-						<intent-filter>
-							<action android:name="android.intent.action.VIEW" />
-							<category android:name="android.intent.category.DEFAULT" />
-							<category android:name="android.intent.category.BROWSABLE" />
-							<data
-									android:host="otpless"
-									android:scheme= "otpless.v2ixf52onf0oep8ey64m"/>
-						</intent-filter>
+            <!-- Google Sign-In intent filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="com.trueastrotalk.user" />
+            </intent-filter>
+            
+            <!-- Firebase Auth redirect -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="trueastrotalk-1" android:host="auth" />
+            </intent-filter>
         </activity>
         <meta-data
             android:name="flutterEmbedding"

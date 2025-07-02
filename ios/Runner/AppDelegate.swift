@@ -1,7 +1,7 @@
 import Flutter
 import UIKit
 import Firebase
-import OtplessBM
+import FirebaseAuth
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
@@ -27,18 +27,10 @@ import OtplessBM
     ) -> Bool {
         print("🔗 Deep link received: \(url.absoluteString)")
         
-        // Handle OTPless deep links
-        if Otpless.shared.isOtplessDeeplink(url: url) {
-            print("📱 OTPless deep link detected")
-            Task(priority: .userInitiated) {
-                do {
-                    await Otpless.shared.handleDeeplink(url)
-                    print("✅ OTPless deep link handled successfully")
-                } catch {
-                    print("❌ Error handling OTPless deep link: \(error)")
-                }
-            }
-            return true
+        // Handle Firebase Auth deep links
+        if Auth.auth().canHandle(url) {
+            print("🔥 Firebase Auth deep link detected")
+            return Auth.auth().canHandle(url)
         }
         
         // Let Flutter handle other deep links

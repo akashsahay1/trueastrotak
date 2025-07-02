@@ -22,7 +22,7 @@ class DefaultFirebaseOptions {
     projectId: "trueastrotalk-1",
     storageBucket: "trueastrotalk-1.firebasestorage.app",
     messagingSenderId: "540290890159", //381086206621
-    appId: "1:540290890159:ios:e889c01ea401aa4904175a",
+    appId: "1:540290890159:android:f5a0857dab1db6ba04175a",
     measurementId: "",
   );
 

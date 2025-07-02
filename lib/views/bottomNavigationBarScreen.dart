@@ -8,9 +8,7 @@ import 'package:trueastrotalk/controllers/liveController.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 import '../controllers/splashController.dart';
-import '../utils/AppColors.dart';
 import '../utils/global.dart' as global;
 
 class BottomNavigationBarScreen extends StatelessWidget {
@@ -30,6 +28,9 @@ class BottomNavigationBarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    
     return WillPopScope(
       onWillPop: () async {
         return false;
@@ -37,101 +38,32 @@ class BottomNavigationBarScreen extends StatelessWidget {
       child: GetBuilder<BottomNavigationController>(
         builder: (controller) {
           return Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: colorScheme.surface,
             bottomNavigationBar: GetBuilder<BottomNavigationController>(
               builder: (c) {
-                return SizedBox(
-                  height: 10.h,
-                  child: BottomNavigationBar(
-                    backgroundColor: Colors.white,
-                    type: BottomNavigationBarType.fixed,
-                    selectedItemColor: Get.theme.primaryColor,
-                    unselectedItemColor: blackColor,
-                    iconSize: 21.sp,
-                    currentIndex: bottomNavigationController.bottomNavIndex,
-                    showSelectedLabels: true,
-                    selectedLabelStyle: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-                    unselectedLabelStyle: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-                    selectedFontSize: 16.sp,
-                    unselectedFontSize: 16.sp,
-                    showUnselectedLabels: true,
-                    elevation: 5,
-                    items: List.generate(iconList.length, (index) {
-                      if (index == 0) {
-                        if (bottomNavigationController.isValueShow == false) {
-                          bottomNavigationController.isValueShow = true;
-                        }
-
-                        return BottomNavigationBarItem(icon: Icon(iconList[index]), activeIcon: Icon(iconList[index]), label: tr(tabList[index]));
-                      } else if (index == 1) {
-                        if (bottomNavigationController.isValueShowChat == false) {
-                          bottomNavigationController.isValueShowChat = true;
-                        }
-                        return BottomNavigationBarItem(icon: Icon(iconList[index]), activeIcon: Icon(iconList[index]), label: tr(tabList[index]));
-                      } else if (index == 2) {
-                        if (bottomNavigationController.isValueShowLive == false) {
-                          bottomNavigationController.isValueShowLive = true;
-                        }
-                        return BottomNavigationBarItem(
-                          activeIcon: CircleAvatar(
-                            backgroundColor: Get.theme.primaryColor,
-                            child: Image.asset(
-                              "assets/images/live.gif",
-                              height: 45,
-                              fit: BoxFit.fitHeight,
-                              //width: 40,
-                            ),
-                          ),
-                          icon: Image.asset(
-                            "assets/images/live.gif",
-                            height: 45,
-                            fit: BoxFit.fill,
-                            //width: 40,
-                          ),
-                          label: tr(tabList[index]),
-                          backgroundColor: Colors.white,
-                        );
-                      } else if (index == 3) {
-                        if (bottomNavigationController.isValueShowCall == false) {
-                          bottomNavigationController.isValueShowCall = true;
-                        }
-                        return BottomNavigationBarItem(activeIcon: Icon(Icons.phone_in_talk_sharp), icon: Icon(Icons.phone_in_talk_sharp), label: tr(tabList[index]), backgroundColor: Colors.white);
-                      } else {
-                        if (bottomNavigationController.isValueShowHist == false) {
-                          bottomNavigationController.isValueShowHist = true;
-                        }
-                        return BottomNavigationBarItem(activeIcon: Icon(Icons.history_sharp), icon: Icon(Icons.history_sharp), label: tr(tabList[index]));
-                      }
-                    }),
-                    onTap: (index) async {
-                      if (index == 0) {
-                        // global.warningDialog(context);
-                        bottomNavigationController.setBottomIndex(index, bottomNavigationController.historyIndex);
-                      } else if (index == 1 || index == 3) {
-                        bottomNavigationController.setBottomIndex(index, bottomNavigationController.historyIndex);
-                      } else if (index == 2) {
-                        bool isLogin = await global.isLogin();
-                        if (isLogin) {
-                          global.showOnlyLoaderDialog(context);
-                          await bottomNavigationController.getLiveAstrologerList();
-                          global.hideLoader();
-                          bottomNavigationController.setBottomIndex(index, bottomNavigationController.historyIndex);
-                        }
-                      } else if (index == 4) {
-                        bool isLogin = await global.isLogin();
-                        if (isLogin) {
-                          global.showOnlyLoaderDialog(context);
-                          await global.splashController.getCurrentUserData();
-                          await historyController.getPaymentLogs(global.currentUserId!, false);
-                          historyController.walletTransactionList = [];
-                          historyController.walletTransactionList.clear();
-                          historyController.walletAllDataLoaded = false;
-                          await historyController.getWalletTransaction(global.currentUserId!, false);
-                          global.hideLoader();
-                          bottomNavigationController.setBottomIndex(index, bottomNavigationController.historyIndex);
-                        }
-                      }
-                    },
+                return Container(
+                  decoration: BoxDecoration(
+                    color: colorScheme.surface,
+                    boxShadow: [
+                      BoxShadow(
+                        color: colorScheme.shadow.withOpacity(0.1),
+                        blurRadius: 8,
+                        offset: const Offset(0, -2),
+                      ),
+                    ],
+                  ),
+                  child: SafeArea(
+                    child: NavigationBar(
+                      backgroundColor: colorScheme.surface,
+                      indicatorColor: colorScheme.secondaryContainer,
+                      selectedIndex: bottomNavigationController.bottomNavIndex,
+                      labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+                      height: kBottomNavigationBarHeight + 10,
+                      destinations: _buildNavigationDestinations(context, colorScheme),
+                      onDestinationSelected: (index) async {
+                        await _handleNavigation(index, context);
+                      },
+                    ),
                   ),
                 );
               },
@@ -141,6 +73,152 @@ class BottomNavigationBarScreen extends StatelessWidget {
         },
       ),
     );
-    //);
+  }
+  
+  List<NavigationDestination> _buildNavigationDestinations(BuildContext context, ColorScheme colorScheme) {
+    return List.generate(iconList.length, (index) {
+      _initializeShowFlags(index);
+      
+      switch (index) {
+        case 0:
+          return NavigationDestination(
+            icon: Icon(iconList[index]),
+            selectedIcon: Icon(iconList[index], color: colorScheme.onSecondaryContainer),
+            label: tr(tabList[index]),
+          );
+        case 1:
+          return NavigationDestination(
+            icon: Icon(iconList[index]),
+            selectedIcon: Icon(iconList[index], color: colorScheme.onSecondaryContainer),
+            label: tr(tabList[index]),
+          );
+        case 2:
+          return NavigationDestination(
+            icon: _buildLiveIcon(false, colorScheme),
+            selectedIcon: _buildLiveIcon(true, colorScheme),
+            label: tr(tabList[index]),
+          );
+        case 3:
+          return NavigationDestination(
+            icon: const Icon(Icons.phone_in_talk_sharp),
+            selectedIcon: Icon(Icons.phone_in_talk_sharp, color: colorScheme.onSecondaryContainer),
+            label: tr(tabList[index]),
+          );
+        case 4:
+          return NavigationDestination(
+            icon: const Icon(Icons.history_sharp),
+            selectedIcon: Icon(Icons.history_sharp, color: colorScheme.onSecondaryContainer),
+            label: tr(tabList[index]),
+          );
+        default:
+          return NavigationDestination(
+            icon: Icon(iconList[index]),
+            selectedIcon: Icon(iconList[index], color: colorScheme.onSecondaryContainer),
+            label: tr(tabList[index]),
+          );
+      }
+    });
+  }
+  
+  Widget _buildLiveIcon(bool isSelected, ColorScheme colorScheme) {
+    const double iconSize = 28.0;
+    
+    if (isSelected) {
+      return Container(
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: colorScheme.primary.withOpacity(0.2),
+          shape: BoxShape.circle,
+        ),
+        child: ClipOval(
+          child: Image.asset(
+            "assets/images/live.gif",
+            height: iconSize,
+            width: iconSize,
+            fit: BoxFit.cover,
+          ),
+        ),
+      );
+    }
+    
+    return ClipOval(
+      child: Image.asset(
+        "assets/images/live.gif",
+        height: iconSize,
+        width: iconSize,
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+  
+  void _initializeShowFlags(int index) {
+    switch (index) {
+      case 0:
+        if (bottomNavigationController.isValueShow == false) {
+          bottomNavigationController.isValueShow = true;
+        }
+        break;
+      case 1:
+        if (bottomNavigationController.isValueShowChat == false) {
+          bottomNavigationController.isValueShowChat = true;
+        }
+        break;
+      case 2:
+        if (bottomNavigationController.isValueShowLive == false) {
+          bottomNavigationController.isValueShowLive = true;
+        }
+        break;
+      case 3:
+        if (bottomNavigationController.isValueShowCall == false) {
+          bottomNavigationController.isValueShowCall = true;
+        }
+        break;
+      case 4:
+        if (bottomNavigationController.isValueShowHist == false) {
+          bottomNavigationController.isValueShowHist = true;
+        }
+        break;
+    }
+  }
+  
+  Future<void> _handleNavigation(int index, BuildContext context) async {
+    switch (index) {
+      case 0:
+        bottomNavigationController.setBottomIndex(index, bottomNavigationController.historyIndex);
+        break;
+      case 1:
+      case 3:
+        bottomNavigationController.setBottomIndex(index, bottomNavigationController.historyIndex);
+        break;
+      case 2:
+        bool isLogin = await global.isLogin();
+        if (isLogin) {
+          global.showOnlyLoaderDialog(context);
+          try {
+            await bottomNavigationController.getLiveAstrologerList();
+            bottomNavigationController.setBottomIndex(index, bottomNavigationController.historyIndex);
+          } finally {
+            global.hideLoader();
+          }
+        }
+        break;
+      case 4:
+        bool isLogin = await global.isLogin();
+        if (isLogin) {
+          global.showOnlyLoaderDialog(context);
+          try {
+            await global.splashController.getCurrentUserData();
+            await historyController.getPaymentLogs(global.currentUserId!, false);
+            historyController.walletTransactionList = [];
+            historyController.walletTransactionList.clear();
+            historyController.walletAllDataLoaded = false;
+            await historyController.getWalletTransaction(global.currentUserId!, false);
+            bottomNavigationController.setBottomIndex(index, bottomNavigationController.historyIndex);
+          } finally {
+            global.hideLoader();
+          }
+        }
+        break;
+    }
   }
 }

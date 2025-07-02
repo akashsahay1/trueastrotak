@@ -54,12 +54,12 @@ final DateFormat formatter = DateFormat("dd MMM yy, hh:mm a");
 
 String stripeBaseApi = 'https://api.stripe.com/v1';
 
-String baseUrl = "https://trueastrotalk.stime.in/api";
-String imgBaseurl = "https://trueastrotalk.stime.in/";
-String webBaseUrl = "https://trueastrotalk.stime.in/api/";
+String baseUrl = "https://www.trueastrotalk.com/api";
+String imgBaseurl = "https://www.trueastrotalk.com/";
+String webBaseUrl = "https://www.trueastrotalk.com/api/";
 String appMode = "LIVE";
 Map<String, dynamic> appParameters = {
-  "LIVE": {"apiUrl": "https://trueastrotalk.stime.in/api", "imageBaseurl": "https://trueastrotalk.stime.in/"},
+  "LIVE": {"apiUrl": "https://www.trueastrotalk.com/api", "imageBaseurl": "https://www.trueastrotalk.com/"},
   "DEV": {"apiUrl": "http://192.168.29.223:8001/api", "imageBaseurl": "http://192.168.29.223:8001/"},
 };
 String agoraChannelName = ""; //valid 24hr
@@ -208,8 +208,8 @@ showOnlyLoaderDialog(context) {
         //backgroundColor: Colors.transparent,
         child:
             kIsWeb
-                ? Container(width: Get.width * 0.10, padding: EdgeInsets.all(18.0), child: Row(children: [CircularProgressIndicator(color: Colors.black), const SizedBox(width: 10), const Text("please wait", style: TextStyle(color: Colors.black)).tr()]))
-                : Padding(padding: const EdgeInsets.all(18.0), child: Row(children: [CircularProgressIndicator(color: Colors.black), const SizedBox(width: 10), const Text("please wait", style: TextStyle(color: Colors.black)).tr()])),
+                ? Container(width: Get.width * 0.10, padding: EdgeInsets.all(18.0), child: Row(children: [CircularProgressIndicator(color: Colors.black), const SizedBox(width: 10), const Text("Please wait", style: TextStyle(color: Colors.black)).tr()]))
+                : Padding(padding: const EdgeInsets.all(18.0), child: Row(children: [CircularProgressIndicator(color: Colors.black), const SizedBox(width: 10), const Text("Please wait", style: TextStyle(color: Colors.black)).tr()])),
       );
     },
   );
@@ -230,40 +230,19 @@ Future<bool> checkBody() async {
     if (networkController.connectionStatus.value != 0) {
       result = true;
     } else {
-      print(networkController.connectionStatus.value);
-      Get.snackbar(
-        'Warning',
-        'No internet connection',
-        snackPosition: SnackPosition.BOTTOM,
-        messageText: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Icon(Icons.signal_wifi_off, color: Colors.white),
-            Expanded(child: Padding(padding: const EdgeInsets.only(left: 16.0), child: Text('No internet available', textAlign: TextAlign.start).tr())),
-            GestureDetector(
-              onTap: () {
-                if (networkController.connectionStatus.value != 0) {
-                  Get.back();
-                }
-              },
-              child: Container(padding: EdgeInsets.all(3), decoration: BoxDecoration(color: Colors.white), height: 30, width: 55, child: Center(child: Text('Retry', style: TextStyle(color: Get.theme.primaryColor)).tr())),
-            ),
-          ],
-        ),
-        duration: Duration(days: 1),
-        backgroundColor: Get.theme.primaryColor,
-        colorText: Colors.white,
-      );
-
+      print("No internet connection detected: ${networkController.connectionStatus.value}");
+      // Only show snackbar if Get context is available and during normal app usage
+      if (Get.context != null && Get.routing.current != '/') {
+        Get.snackbar('Warning', 'No internet connection', snackPosition: SnackPosition.BOTTOM, duration: Duration(seconds: 3), backgroundColor: Get.theme.primaryColor, colorText: Colors.white);
+      }
       result = false;
     }
 
     return result;
   } catch (e) {
     print("Exception - checkBodyController - checkBody():" + e.toString());
-    return false;
+    // Return true to allow app initialization to continue even if network check fails
+    return true;
   }
 }
 
@@ -346,13 +325,64 @@ String getAppVersion() {
 }
 
 String getSystemFlagValue(String flag) {
-  String value = splashController.currentUser!.systemFlagList!.firstWhere((e) => e.name == flag).value;
-  return splashController.currentUser!.systemFlagList!.firstWhere((e) => e.name == flag).value;
+  try {
+    if (splashController.currentUser?.systemFlagList == null) {
+      debugPrint('SystemFlagList is null, returning fallback for flag: $flag');
+      return _getFallbackValue(flag);
+    }
+
+    // Try to find the flag
+    try {
+      var flagItem = splashController.currentUser!.systemFlagList!.firstWhere((e) => e.name == flag);
+      return flagItem.value;
+    } on StateError {
+      debugPrint('System flag not found in currentUser: $flag, using fallback');
+      return _getFallbackValue(flag);
+    }
+  } catch (e) {
+    debugPrint('Error getting system flag "$flag": $e');
+    return _getFallbackValue(flag);
+  }
 }
 
 String getSystemFlagValueForLogin(String flag) {
-  String value = splashController.syatemFlag.firstWhere((e) => e.name == flag).value;
-  return splashController.syatemFlag.firstWhere((e) => e.name == flag).value;
+  try {
+    if (splashController.syatemFlag.isEmpty) {
+      debugPrint('syatemFlag list is empty, returning fallback for flag: $flag');
+      return _getFallbackValue(flag);
+    }
+
+    // Try to find the flag
+    try {
+      var flagItem = splashController.syatemFlag.firstWhere((e) => e.name == flag);
+      return flagItem.value;
+    } on StateError {
+      debugPrint('System flag not found: $flag, using fallback');
+      return _getFallbackValue(flag);
+    }
+  } catch (e) {
+    debugPrint('Error getting system flag "$flag": $e');
+    return _getFallbackValue(flag);
+  }
+}
+
+String _getFallbackValue(String flag) {
+  // Fallback values for common flags based on actual flag names
+  switch (flag) {
+    case 'currencySymbol':
+      return '\$';
+    case 'AppName':
+      return 'True Astrotalk';
+    case 'PaymentMode':
+      return 'Razorpay';
+    case 'Gst':
+      return '18';
+    case 'BehindScenes':
+      return '0'; // Default to disabled to prevent video loading errors
+    default:
+      debugPrint('No fallback value available for flag: $flag');
+      return '';
+  }
 }
 
 showToast({required String message, required Color textColor, required Color bgColor}) async {
@@ -458,10 +488,16 @@ Future<Map<String, String>> getApiHeaders(bool authorizationRequired) async {
 
   if (authorizationRequired) {
     sp = await SharedPreferences.getInstance();
+    String? token = sp!.getString("token");
     String tokenType = sp!.getString("tokenType") ?? "Bearer";
-    String token = sp!.getString("token") ?? "invalid token";
-    print('authentication token :- $token');
-    apiHeader.addAll({"Authorization": " $tokenType $token"});
+
+    if (token != null && token.isNotEmpty) {
+      debugPrint('Using authentication token');
+      apiHeader.addAll({"Authorization": " $tokenType $token"});
+    } else {
+      debugPrint('No valid authentication token found - user may need to log in');
+      // Don't add Authorization header if no valid token exists
+    }
   }
   apiHeader.addAll({"Content-Type": "application/json"});
   apiHeader.addAll({"Accept": "application/json"});

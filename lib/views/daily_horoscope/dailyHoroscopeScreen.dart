@@ -55,13 +55,13 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar:
           kIsWeb
               ? AppBar(leading: SizedBox())
               : AppBar(
                 backgroundColor: Get.theme.appBarTheme.systemOverlayStyle!.statusBarColor,
-                title: Text('Daily Horoscope', style: Get.theme.primaryTextTheme.titleLarge!.copyWith(fontSize: 18, fontWeight: FontWeight.normal, color: Colors.white)).tr(),
+                title: Text('Daily Horoscope', style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18, fontWeight: FontWeight.normal, color: Theme.of(context).colorScheme.onPrimary)).tr(),
                 leading: IconButton(
                   onPressed: () => Get.back(),
                   icon: Icon(
@@ -70,7 +70,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                         : Platform.isIOS
                         ? Icons.arrow_back_ios
                         : Icons.arrow_back,
-                    color: Colors.white, //Get.theme.iconTheme.color,
+                    color: Theme.of(context).colorScheme.onPrimary,
                   ),
                 ),
                 actions: [
@@ -81,8 +81,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Container(
-                        decoration: BoxDecoration(border: Border.all(color: Colors.white), borderRadius: BorderRadius.circular(5)),
-                        child: Row(children: [Image.asset(Images.whatsapp, height: 40, width: 40), Padding(padding: const EdgeInsets.all(4.0), child: Text('Share', style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, color: Colors.white)).tr())]),
+                        decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.onPrimary), borderRadius: BorderRadius.circular(8)),
+                        child: Row(children: [Image.asset(Images.whatsapp, height: 40, width: 40), Padding(padding: const EdgeInsets.all(4.0), child: Text('Share', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.onPrimary)).tr())]),
                       ),
                     ),
                   ),
@@ -137,7 +137,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                     ),
                                                   ),
                                                 ),
-                                                Text(global.hororscopeSignList[index].name, textAlign: TextAlign.center, style: Get.textTheme.titleMedium!.copyWith(fontSize: 10)).tr(),
+                                                Text(global.hororscopeSignList[index].name, textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelSmall).tr(),
                                               ],
                                             ),
                                           );
@@ -164,11 +164,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                           child: Container(
                                             padding: EdgeInsets.fromLTRB(18, 8, 18, 8),
                                             decoration: BoxDecoration(
-                                              color: selectHoroscope == 0 ? Color.fromARGB(255, 247, 243, 214) : Colors.transparent,
-                                              border: Border.all(color: dailyHoroscopeController.isWeek ? Get.theme.primaryColor : Colors.grey),
+                                              color: selectHoroscope == 0 ? Theme.of(context).colorScheme.secondaryContainer : Colors.transparent,
+                                              border: Border.all(color: dailyHoroscopeController.isWeek ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline),
                                               borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), bottomLeft: Radius.circular(10.0)),
                                             ),
-                                            child: Text("Today \n Horoscope", textAlign: TextAlign.center, style: Get.textTheme.titleMedium!.copyWith(fontSize: 12)).tr(),
+                                            child: Text("Today \n Horoscope", textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelMedium).tr(),
                                           ),
                                         ),
                                       ),
@@ -182,8 +182,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                           },
                                           child: Container(
                                             padding: EdgeInsets.fromLTRB(18, 8, 18, 8),
-                                            decoration: BoxDecoration(color: selectHoroscope == 1 ? Color.fromARGB(255, 247, 243, 214) : Colors.transparent, border: Border.all(color: dailyHoroscopeController.isMonth ? Get.theme.primaryColor : Colors.grey)),
-                                            child: Text("Weekly \n Horoscope", textAlign: TextAlign.center, style: Get.textTheme.titleMedium!.copyWith(fontSize: 12)).tr(),
+                                            decoration: BoxDecoration(color: selectHoroscope == 1 ? Theme.of(context).colorScheme.secondaryContainer : Colors.transparent, border: Border.all(color: dailyHoroscopeController.isMonth ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline)),
+                                            child: Text("Weekly \n Horoscope", textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelMedium).tr(),
                                           ),
                                         ),
                                       ),
@@ -198,11 +198,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                           child: Container(
                                             padding: EdgeInsets.fromLTRB(18, 8, 18, 8),
                                             decoration: BoxDecoration(
-                                              color: selectHoroscope == 2 ? Color.fromARGB(255, 247, 243, 214) : Colors.transparent,
-                                              border: Border.all(color: dailyHoroscopeController.isYear ? Get.theme.primaryColor : Colors.grey),
+                                              color: selectHoroscope == 2 ? Theme.of(context).colorScheme.secondaryContainer : Colors.transparent,
+                                              border: Border.all(color: dailyHoroscopeController.isYear ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline),
                                               borderRadius: BorderRadius.only(topRight: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
                                             ),
-                                            child: Text("Yearly \n Horoscope", textAlign: TextAlign.center, style: Get.textTheme.titleMedium!.copyWith(fontSize: 12)).tr(),
+                                            child: Text("Yearly \n Horoscope", textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelMedium).tr(),
                                           ),
                                         ),
                                       ),
@@ -223,8 +223,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                 padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.03, vertical: MediaQuery.of(context).size.height * 0.02),
                                                 width: MediaQuery.of(context).size.width,
                                                 decoration: BoxDecoration(
-                                                  color: Colors.grey.shade400, //Get.theme.primaryColor,
-                                                  borderRadius: BorderRadius.circular(10),
+                                                  color: Theme.of(context).colorScheme.primaryContainer, //Theme.of(context).colorScheme.primary,
+                                                  borderRadius: BorderRadius.circular(12),
                                                 ),
                                                 child: Stack(
                                                   alignment: Alignment.centerRight,
@@ -234,34 +234,34 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                       children: [
                                                         Text(
                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['date'].toString().split(" ").first}",
-                                                          style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: Colors.white),
+                                                          style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: Colors.white),
                                                           textAlign: TextAlign.center,
                                                         ).tr(),
-                                                        SizedBox(height: 4),
-                                                        Text("Today Horoscope", style: Get.textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.white)).tr(),
-                                                        SizedBox(height: 4),
+                                                        SizedBox(height: 8),
+                                                        Text("Today Horoscope", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.white)).tr(),
+                                                        SizedBox(height: 8),
                                                         Row(
                                                           mainAxisAlignment: MainAxisAlignment.center,
                                                           children: [
                                                             Column(
                                                               crossAxisAlignment: CrossAxisAlignment.center,
                                                               children: [
-                                                                Text("Lucky Color", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)),
+                                                                Text("Lucky Color", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)),
                                                                 dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['color_code'].toString() == ""
                                                                     ? SizedBox()
                                                                     : CircleAvatar(backgroundColor: Color(int.parse(dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['color_code'])), radius: 7),
                                                               ],
                                                             ),
-                                                            SizedBox(width: 10),
+                                                            SizedBox(width: 16),
                                                             Container(width: 1, height: 20, color: Colors.white),
-                                                            SizedBox(width: 10),
+                                                            SizedBox(width: 16),
                                                             Column(
                                                               crossAxisAlignment: CrossAxisAlignment.center,
                                                               children: [
-                                                                Text("Lucky Number", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
+                                                                Text("Lucky Number", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
                                                                 Text(
                                                                   "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['lucky_number'].replaceAll("[", "").replaceAll("]", "")}",
-                                                                  style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                  style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white),
                                                                 ),
                                                               ],
                                                             ),
@@ -276,12 +276,12 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   ],
                                                 ),
                                               ),
-                                              SizedBox(height: 6),
-                                              Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['bot_response']}", style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500, fontSize: 12), textAlign: TextAlign.center).tr(),
-                                              SizedBox(height: 6),
-                                              SizedBox(height: 6),
-                                              Text("Today Horoscrope of ${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['zodiac']}", style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
-                                              SizedBox(height: 6),
+                                              SizedBox(height: 12),
+                                              Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['bot_response']}", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500, fontSize: 12), textAlign: TextAlign.center).tr(),
+                                              SizedBox(height: 12),
+                                              SizedBox(height: 12),
+                                              Text("Today Horoscrope of ${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['zodiac']}", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
+                                              SizedBox(height: 12),
 
                                               ///daily horoscope list
                                               Row(
@@ -291,7 +291,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //   width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -302,9 +302,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.sports_gymnastics, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.sports_gymnastics, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Physique", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Physique", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -314,9 +314,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['physique'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['physique']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -329,7 +329,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       // width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -340,9 +340,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.monetization_on_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.monetization_on_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Finances", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Finances", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -352,9 +352,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['finances'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['finances']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -367,7 +367,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //   width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -378,9 +378,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.handshake_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.handshake_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Relationship", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Relationship", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -390,9 +390,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['relationship'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['relationship']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -405,7 +405,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //  width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -416,9 +416,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.book_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.book_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Career", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Career", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -428,9 +428,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['career'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['career']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -449,7 +449,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -460,9 +460,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.travel_explore, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.travel_explore, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Travel", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Travel", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -472,9 +472,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['travel'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['travel']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -488,7 +488,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //  width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -499,9 +499,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.people_alt_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.people_alt_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Family", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Family", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -511,9 +511,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['family'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['family']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -526,7 +526,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //  width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -537,9 +537,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.people_alt_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.people_alt_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Friends", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Friends", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -549,9 +549,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['friends'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['friends']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -565,7 +565,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //  width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -576,9 +576,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.health_and_safety_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.health_and_safety_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Health", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Health", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -588,9 +588,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['health'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['health']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -608,7 +608,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                 children: [
                                                   Container(
                                                     margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                    decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                    decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                     padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                     width: MediaQuery.of(context).size.width / 5,
                                                     child: Column(
@@ -617,7 +617,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Row(
                                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                           children: [
-                                                            Row(children: [Icon(Icons.photo_size_select_actual_sharp, color: Colors.red, size: 11.sp), SizedBox(width: Get.width * 0.01), Text("Status", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr()]),
+                                                            Row(children: [Icon(Icons.photo_size_select_actual_sharp, color: Theme.of(context).colorScheme.error, size: 11.sp), SizedBox(width: Get.width * 0.01), Text("Status", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr()]),
                                                             Container(
                                                               child: CircularPercentIndicator(
                                                                 radius: 11.sp,
@@ -625,9 +625,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                 percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['status'] / 100,
                                                                 center: Text(
                                                                   "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['status']}%",
-                                                                  style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                  style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                 ),
-                                                                progressColor: Colors.green,
+                                                                progressColor: Theme.of(context).colorScheme.primary,
                                                               ),
                                                             ),
                                                           ],
@@ -655,8 +655,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                 padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.03, vertical: MediaQuery.of(context).size.height * 0.02),
                                                 width: MediaQuery.of(context).size.width,
                                                 decoration: BoxDecoration(
-                                                  color: Colors.grey.shade400, //Get.theme.primaryColor,
-                                                  borderRadius: BorderRadius.circular(10),
+                                                  color: Theme.of(context).colorScheme.primaryContainer, //Theme.of(context).colorScheme.primary,
+                                                  borderRadius: BorderRadius.circular(12),
                                                 ),
                                                 child: Stack(
                                                   alignment: Alignment.centerRight,
@@ -666,34 +666,34 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                       children: [
                                                         Text(
                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['date'].toString().split(" ").first}",
-                                                          style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: Colors.white),
+                                                          style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: Colors.white),
                                                           textAlign: TextAlign.center,
                                                         ).tr(),
-                                                        SizedBox(height: 4),
-                                                        Text("Weekly Horoscope", style: Get.textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.white)).tr(),
-                                                        SizedBox(height: 4),
+                                                        SizedBox(height: 8),
+                                                        Text("Weekly Horoscope", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.white)).tr(),
+                                                        SizedBox(height: 8),
                                                         Row(
                                                           mainAxisAlignment: MainAxisAlignment.center,
                                                           children: [
                                                             Column(
                                                               crossAxisAlignment: CrossAxisAlignment.center,
                                                               children: [
-                                                                Text("Lucky Color", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
+                                                                Text("Lucky Color", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
                                                                 dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['color_code'].toString() == ""
                                                                     ? SizedBox()
                                                                     : CircleAvatar(backgroundColor: Color(int.parse(dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['color_code'])), radius: 7),
                                                               ],
                                                             ),
-                                                            SizedBox(width: 10),
+                                                            SizedBox(width: 16),
                                                             Container(width: 1, height: 20, color: Colors.white),
-                                                            SizedBox(width: 10),
+                                                            SizedBox(width: 16),
                                                             Column(
                                                               crossAxisAlignment: CrossAxisAlignment.center,
                                                               children: [
-                                                                Text("Lucky Number", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
+                                                                Text("Lucky Number", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
                                                                 Text(
                                                                   "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['lucky_number'].replaceAll("[", "").replaceAll("]", "")}",
-                                                                  style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, color: Colors.white, fontWeight: FontWeight.bold),
+                                                                  style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, color: Colors.white, fontWeight: FontWeight.bold),
                                                                 ),
                                                               ],
                                                             ),
@@ -708,11 +708,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   ],
                                                 ),
                                               ),
-                                              SizedBox(height: 6),
-                                              Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['bot_response']}", style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500, fontSize: 12), textAlign: TextAlign.center).tr(),
-                                              SizedBox(height: 6),
-                                              Text("Weekly Horoscope of ${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['zodiac']}", style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
-                                              SizedBox(height: 6),
+                                              SizedBox(height: 12),
+                                              Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['bot_response']}", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500, fontSize: 12), textAlign: TextAlign.center).tr(),
+                                              SizedBox(height: 12),
+                                              Text("Weekly Horoscope of ${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['zodiac']}", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
+                                              SizedBox(height: 12),
 
                                               ///daily horoscope list
                                               ///physique
@@ -724,7 +724,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.01, vertical: MediaQuery.of(context).size.height * 0.01),
                                                       //   width: MediaQuery.of(context).size.width,
                                                       child: Row(
@@ -732,9 +732,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         children: [
                                                           Row(
                                                             children: [
-                                                              Icon(Icons.sports_gymnastics, color: Colors.red, size: 11.sp),
+                                                              Icon(Icons.sports_gymnastics, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                               SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                              Text("Physique", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                              Text("Physique", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                             ],
                                                           ),
                                                           SizedBox(width: MediaQuery.of(context).size.width * 0.01),
@@ -745,9 +745,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                               percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['physique'] / 100,
                                                               center: Text(
                                                                 "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['physique']}%",
-                                                                style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                               ),
-                                                              progressColor: Colors.green,
+                                                              progressColor: Theme.of(context).colorScheme.primary,
                                                             ),
                                                           ),
                                                         ],
@@ -760,7 +760,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       // width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -771,9 +771,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.monetization_on_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.monetization_on_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Finances", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Finances", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               SizedBox(width: MediaQuery.of(context).size.width * 0.01),
@@ -784,9 +784,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['finances'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['finances']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -799,7 +799,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //   width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -810,9 +810,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.handshake_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.handshake_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Relationship", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Relationship", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -822,9 +822,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['relationship'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['relationship']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -838,7 +838,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //  width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -849,9 +849,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.book_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.book_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Career", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Career", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -861,9 +861,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['career'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['career']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -880,7 +880,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -891,9 +891,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.travel_explore, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.travel_explore, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Travel", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Travel", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -903,9 +903,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['travel'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['travel']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -919,7 +919,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //  width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -930,9 +930,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.people_alt_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.people_alt_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Family", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Family", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -942,9 +942,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['family'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['family']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -957,7 +957,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //  width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -968,9 +968,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.people_alt_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.people_alt_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Friends", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Friends", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -980,9 +980,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['friends'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['friends']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -996,7 +996,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //  width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -1007,9 +1007,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.health_and_safety_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.health_and_safety_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Health", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Health", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -1019,9 +1019,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['health'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['health']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -1038,7 +1038,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                 children: [
                                                   Container(
                                                     margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                    decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                    decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                     padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                     width: MediaQuery.of(context).size.width / 5,
                                                     child: Column(
@@ -1047,7 +1047,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Row(
                                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                           children: [
-                                                            Row(children: [Icon(Icons.photo_size_select_actual_sharp, color: Colors.red, size: 11.sp), SizedBox(width: Get.width * 0.01), Text("Status", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr()]),
+                                                            Row(children: [Icon(Icons.photo_size_select_actual_sharp, color: Theme.of(context).colorScheme.error, size: 11.sp), SizedBox(width: Get.width * 0.01), Text("Status", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr()]),
                                                             Container(
                                                               child: CircularPercentIndicator(
                                                                 radius: 11.sp,
@@ -1055,9 +1055,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                 percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['status'] / 100,
                                                                 center: Text(
                                                                   "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['status']}%",
-                                                                  style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                  style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                 ),
-                                                                progressColor: Colors.green,
+                                                                progressColor: Theme.of(context).colorScheme.primary,
                                                               ),
                                                             ),
                                                           ],
@@ -1085,8 +1085,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                 padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.03, vertical: MediaQuery.of(context).size.height * 0.02),
                                                 width: MediaQuery.of(context).size.width,
                                                 decoration: BoxDecoration(
-                                                  color: Colors.grey.shade400, //Get.theme.primaryColor,
-                                                  borderRadius: BorderRadius.circular(10),
+                                                  color: Theme.of(context).colorScheme.primaryContainer, //Theme.of(context).colorScheme.primary,
+                                                  borderRadius: BorderRadius.circular(12),
                                                 ),
                                                 child: Stack(
                                                   alignment: Alignment.centerRight,
@@ -1096,34 +1096,34 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                       children: [
                                                         Text(
                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['date'].toString().split(" ").first}",
-                                                          style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: Colors.white),
+                                                          style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: Colors.white),
                                                           textAlign: TextAlign.center,
                                                         ).tr(),
-                                                        SizedBox(height: 4),
-                                                        Text("Yearly Horoscope", style: Get.textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.white)).tr(),
-                                                        SizedBox(height: 4),
+                                                        SizedBox(height: 8),
+                                                        Text("Yearly Horoscope", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.white)).tr(),
+                                                        SizedBox(height: 8),
                                                         Row(
                                                           mainAxisAlignment: MainAxisAlignment.center,
                                                           children: [
                                                             Column(
                                                               crossAxisAlignment: CrossAxisAlignment.center,
                                                               children: [
-                                                                Text("Lucky Color", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
+                                                                Text("Lucky Color", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
                                                                 dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['color_code'].toString() == ""
                                                                     ? SizedBox(height: 8)
                                                                     : CircleAvatar(backgroundColor: Color(int.parse(dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['color_code'])), radius: 7),
                                                               ],
                                                             ),
-                                                            SizedBox(width: 10),
+                                                            SizedBox(width: 16),
                                                             Container(width: 1, height: 20, color: Colors.white),
-                                                            SizedBox(width: 10),
+                                                            SizedBox(width: 16),
                                                             Column(
                                                               crossAxisAlignment: CrossAxisAlignment.center,
                                                               children: [
-                                                                Text("Lucky Number", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
+                                                                Text("Lucky Number", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
                                                                 Text(
                                                                   "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['lucky_number'].replaceAll("[", "").replaceAll("]", "")}",
-                                                                  style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                  style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white),
                                                                 ),
                                                               ],
                                                             ),
@@ -1138,11 +1138,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   ],
                                                 ),
                                               ),
-                                              SizedBox(height: 6),
-                                              Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['bot_response']}", style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500, fontSize: 12), textAlign: TextAlign.center).tr(),
-                                              SizedBox(height: 6),
-                                              Text("Yearly Horoscope of ${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['zodiac']}", style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
-                                              SizedBox(height: 6),
+                                              SizedBox(height: 12),
+                                              Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['bot_response']}", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500, fontSize: 12), textAlign: TextAlign.center).tr(),
+                                              SizedBox(height: 12),
+                                              Text("Yearly Horoscope of ${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['zodiac']}", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
+                                              SizedBox(height: 12),
 
                                               ///daily horoscope list
                                               ///physique
@@ -1154,7 +1154,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //   width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -1165,9 +1165,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.sports_gymnastics, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.sports_gymnastics, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Physique", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Physique", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -1177,9 +1177,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['physique'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['physique']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -1193,7 +1193,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       // width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -1204,9 +1204,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.monetization_on_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.monetization_on_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Finances", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Finances", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -1216,9 +1216,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['finances'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['finances']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -1231,7 +1231,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //   width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -1242,9 +1242,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.handshake_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.handshake_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Relationship", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Relationship", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -1254,9 +1254,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['relationship'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['relationship']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -1269,7 +1269,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //  width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -1280,9 +1280,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.book_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.book_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Career", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Career", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -1292,9 +1292,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['career'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['career']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -1312,7 +1312,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -1323,9 +1323,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.travel_explore, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.travel_explore, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Travel", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Travel", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -1335,9 +1335,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['travel'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['travel']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -1351,7 +1351,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //  width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -1362,9 +1362,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.people_alt_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.people_alt_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Family", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Family", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -1374,9 +1374,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['family'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['family']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -1390,7 +1390,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //  width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -1401,9 +1401,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.people_alt_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.people_alt_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Friends", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Friends", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -1413,9 +1413,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['friends'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['friends']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -1430,7 +1430,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                      decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       //  width: MediaQuery.of(context).size.width,
                                                       child: Column(
@@ -1441,9 +1441,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.health_and_safety_outlined, color: Colors.red, size: 11.sp),
+                                                                  Icon(Icons.health_and_safety_outlined, color: Theme.of(context).colorScheme.error, size: 11.sp),
                                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                                                                  Text("Health", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
+                                                                  Text("Health", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr(),
                                                                 ],
                                                               ),
                                                               Container(
@@ -1453,9 +1453,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['health'] / 100,
                                                                   center: Text(
                                                                     "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['health']}%",
-                                                                    style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                   ),
-                                                                  progressColor: Colors.green,
+                                                                  progressColor: Theme.of(context).colorScheme.primary,
                                                                 ),
                                                               ),
                                                             ],
@@ -1472,7 +1472,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                 children: [
                                                   Container(
                                                     margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                    decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                    decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                     padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                     width: MediaQuery.of(context).size.width / 5,
                                                     child: Column(
@@ -1481,7 +1481,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Row(
                                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                           children: [
-                                                            Row(children: [Icon(Icons.photo_size_select_actual_sharp, color: Colors.red, size: 11.sp), SizedBox(width: Get.width * 0.01), Text("Status", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr()]),
+                                                            Row(children: [Icon(Icons.photo_size_select_actual_sharp, color: Theme.of(context).colorScheme.error, size: 11.sp), SizedBox(width: Get.width * 0.01), Text("Status", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11.sp, fontWeight: FontWeight.bold)).tr()]),
                                                             Container(
                                                               child: CircularPercentIndicator(
                                                                 radius: 11.sp,
@@ -1489,9 +1489,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                 percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['status'] / 100,
                                                                 center: Text(
                                                                   "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['status']}%",
-                                                                  style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
+                                                                  style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0, fontSize: 11.sp),
                                                                 ),
-                                                                progressColor: Colors.green,
+                                                                progressColor: Theme.of(context).colorScheme.primary,
                                                               ),
                                                             ),
                                                           ],
@@ -1556,7 +1556,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             ),
                                                           ),
                                                         ),
-                                                        Text(global.hororscopeSignList[index].name, textAlign: TextAlign.center, style: Get.textTheme.titleMedium!.copyWith(fontSize: 10)).tr(),
+                                                        Text(global.hororscopeSignList[index].name, textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelSmall).tr(),
                                                       ],
                                                     ),
                                                   );
@@ -1581,11 +1581,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                 child: Container(
                                                   padding: EdgeInsets.fromLTRB(18, 8, 18, 8),
                                                   decoration: BoxDecoration(
-                                                    color: selectHoroscope == 0 ? Color.fromARGB(255, 247, 243, 214) : Colors.transparent,
-                                                    border: Border.all(color: dailyHoroscopeController.isWeek ? Get.theme.primaryColor : Colors.grey),
+                                                    color: selectHoroscope == 0 ? Theme.of(context).colorScheme.secondaryContainer : Colors.transparent,
+                                                    border: Border.all(color: dailyHoroscopeController.isWeek ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline),
                                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), bottomLeft: Radius.circular(10.0)),
                                                   ),
-                                                  child: Text("Today \n Horoscope", textAlign: TextAlign.center, style: Get.textTheme.titleMedium!.copyWith(fontSize: 12)).tr(),
+                                                  child: Text("Today \n Horoscope", textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelMedium).tr(),
                                                 ),
                                               ),
                                             ),
@@ -1599,8 +1599,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                 },
                                                 child: Container(
                                                   padding: EdgeInsets.fromLTRB(18, 8, 18, 8),
-                                                  decoration: BoxDecoration(color: selectHoroscope == 1 ? Color.fromARGB(255, 247, 243, 214) : Colors.transparent, border: Border.all(color: dailyHoroscopeController.isMonth ? Get.theme.primaryColor : Colors.grey)),
-                                                  child: Text("Weekly \n Horoscope", textAlign: TextAlign.center, style: Get.textTheme.titleMedium!.copyWith(fontSize: 12)).tr(),
+                                                  decoration: BoxDecoration(color: selectHoroscope == 1 ? Theme.of(context).colorScheme.secondaryContainer : Colors.transparent, border: Border.all(color: dailyHoroscopeController.isMonth ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline)),
+                                                  child: Text("Weekly \n Horoscope", textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelMedium).tr(),
                                                 ),
                                               ),
                                             ),
@@ -1615,11 +1615,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                 child: Container(
                                                   padding: EdgeInsets.fromLTRB(18, 8, 18, 8),
                                                   decoration: BoxDecoration(
-                                                    color: selectHoroscope == 2 ? Color.fromARGB(255, 247, 243, 214) : Colors.transparent,
-                                                    border: Border.all(color: dailyHoroscopeController.isYear ? Get.theme.primaryColor : Colors.grey),
+                                                    color: selectHoroscope == 2 ? Theme.of(context).colorScheme.secondaryContainer : Colors.transparent,
+                                                    border: Border.all(color: dailyHoroscopeController.isYear ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline),
                                                     borderRadius: BorderRadius.only(topRight: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
                                                   ),
-                                                  child: Text("Yearly \n Horoscope", textAlign: TextAlign.center, style: Get.textTheme.titleMedium!.copyWith(fontSize: 12)).tr(),
+                                                  child: Text("Yearly \n Horoscope", textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelMedium).tr(),
                                                 ),
                                               ),
                                             ),
@@ -1637,8 +1637,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.03, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       width: MediaQuery.of(context).size.width,
                                                       decoration: BoxDecoration(
-                                                        color: Colors.grey.shade400, //Get.theme.primaryColor,
-                                                        borderRadius: BorderRadius.circular(10),
+                                                        color: Theme.of(context).colorScheme.primaryContainer, //Theme.of(context).colorScheme.primary,
+                                                        borderRadius: BorderRadius.circular(12),
                                                       ),
                                                       child: Stack(
                                                         alignment: Alignment.centerRight,
@@ -1648,34 +1648,34 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Text(
                                                                 "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['date'].toString().split(" ").first}",
-                                                                style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: Colors.white),
+                                                                style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: Colors.white),
                                                                 textAlign: TextAlign.center,
                                                               ).tr(),
-                                                              SizedBox(height: 4),
-                                                              Text("Today Horoscope", style: Get.textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.white)).tr(),
-                                                              SizedBox(height: 4),
+                                                              SizedBox(height: 8),
+                                                              Text("Today Horoscope", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.white)).tr(),
+                                                              SizedBox(height: 8),
                                                               Row(
                                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                                 children: [
                                                                   Column(
                                                                     crossAxisAlignment: CrossAxisAlignment.center,
                                                                     children: [
-                                                                      Text("Lucky Color", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)),
+                                                                      Text("Lucky Color", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)),
                                                                       dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['color_code'].toString() == ""
                                                                           ? SizedBox()
                                                                           : CircleAvatar(backgroundColor: Color(int.parse(dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['color_code'])), radius: 7),
                                                                     ],
                                                                   ),
-                                                                  SizedBox(width: 10),
+                                                                  SizedBox(width: 16),
                                                                   Container(width: 1, height: 20, color: Colors.white),
-                                                                  SizedBox(width: 10),
+                                                                  SizedBox(width: 16),
                                                                   Column(
                                                                     crossAxisAlignment: CrossAxisAlignment.center,
                                                                     children: [
-                                                                      Text("Lucky Number", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
+                                                                      Text("Lucky Number", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
                                                                       Text(
                                                                         "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['lucky_number'].replaceAll("[", "").replaceAll("]", "")}",
-                                                                        style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                        style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white),
                                                                       ),
                                                                     ],
                                                                   ),
@@ -1690,12 +1690,12 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         ],
                                                       ),
                                                     ),
-                                                    SizedBox(height: 6),
-                                                    Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['bot_response']}", style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500, fontSize: 12), textAlign: TextAlign.center).tr(),
-                                                    SizedBox(height: 6),
-                                                    SizedBox(height: 6),
-                                                    Text("Today Horoscrope of ${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['zodiac']}", style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
-                                                    SizedBox(height: 6),
+                                                    SizedBox(height: 12),
+                                                    Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['bot_response']}", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500, fontSize: 12), textAlign: TextAlign.center).tr(),
+                                                    SizedBox(height: 12),
+                                                    SizedBox(height: 12),
+                                                    Text("Today Horoscrope of ${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['zodiac']}", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
+                                                    SizedBox(height: 12),
 
                                                     ///daily horoscope list
                                                     Row(
@@ -1705,7 +1705,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //   width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -1715,7 +1715,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                   children: [
                                                                     Row(
-                                                                      children: [Icon(Icons.sports_gymnastics, color: Colors.red), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Physique", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()],
+                                                                      children: [Icon(Icons.sports_gymnastics, color: Theme.of(context).colorScheme.error), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Physique", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()],
                                                                     ),
                                                                     SizedBox(width: 1),
                                                                     Container(
@@ -1725,9 +1725,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['physique'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['physique']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -1741,7 +1741,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             // width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -1752,9 +1752,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   children: [
                                                                     Row(
                                                                       children: [
-                                                                        Icon(Icons.monetization_on_outlined, color: Colors.red),
+                                                                        Icon(Icons.monetization_on_outlined, color: Theme.of(context).colorScheme.error),
                                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                                                                        Text("Finances", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
+                                                                        Text("Finances", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
                                                                       ],
                                                                     ),
                                                                     SizedBox(width: 1),
@@ -1765,15 +1765,15 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['finances'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['finances']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
                                                                 ),
                                                                 // Text("JASJKDNAKJ AJS DJ ASJD  AS DAS",
-                                                                //   style: Get.theme.primaryTextTheme.bodySmall!.copyWith(
+                                                                //   style: Theme.of(context).textTheme.bodySmall!.copyWith(
                                                                 //     fontWeight: FontWeight.w500,
                                                                 //     letterSpacing: -0.2,
                                                                 //     wordSpacing: 0,
@@ -1792,7 +1792,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //   width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -1803,9 +1803,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   children: [
                                                                     Row(
                                                                       children: [
-                                                                        Icon(Icons.handshake_outlined, color: Colors.red),
+                                                                        Icon(Icons.handshake_outlined, color: Theme.of(context).colorScheme.error),
                                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                                                                        Text("Relationship", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
+                                                                        Text("Relationship", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
                                                                       ],
                                                                     ),
                                                                     Container(
@@ -1815,15 +1815,15 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['relationship'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['relationship']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
                                                                 ),
                                                                 // Text("JASJKDNAKJ AJS DJ ASJD  AS DAS",
-                                                                //   style: Get.theme.primaryTextTheme.bodySmall!.copyWith(
+                                                                //   style: Theme.of(context).textTheme.bodySmall!.copyWith(
                                                                 //     fontWeight: FontWeight.w500,
                                                                 //     letterSpacing: -0.2,
                                                                 //     wordSpacing: 0,
@@ -1836,7 +1836,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //  width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -1845,7 +1845,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                 Row(
                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                   children: [
-                                                                    Row(children: [Icon(Icons.book_outlined, color: Colors.red), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Career", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
+                                                                    Row(children: [Icon(Icons.book_outlined, color: Theme.of(context).colorScheme.error), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Career", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
                                                                     Container(
                                                                       child: CircularPercentIndicator(
                                                                         radius: 17.0,
@@ -1853,9 +1853,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['career'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['career']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -1872,7 +1872,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -1881,7 +1881,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                 Row(
                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                   children: [
-                                                                    Row(children: [Icon(Icons.travel_explore, color: Colors.red), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Travel", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
+                                                                    Row(children: [Icon(Icons.travel_explore, color: Theme.of(context).colorScheme.error), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Travel", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
                                                                     Container(
                                                                       child: CircularPercentIndicator(
                                                                         radius: 17.0,
@@ -1889,9 +1889,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['travel'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['travel']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -1906,7 +1906,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //  width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -1916,7 +1916,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                   children: [
                                                                     Row(
-                                                                      children: [Icon(Icons.people_alt_outlined, color: Colors.red), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Family", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()],
+                                                                      children: [Icon(Icons.people_alt_outlined, color: Theme.of(context).colorScheme.error), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Family", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()],
                                                                     ),
                                                                     Container(
                                                                       child: CircularPercentIndicator(
@@ -1925,15 +1925,15 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['family'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['family']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
                                                                 ),
                                                                 // Text("JASJKDNAKJ AJS DJ ASJD  AS DAS",
-                                                                //   style: Get.theme.primaryTextTheme.bodySmall!.copyWith(
+                                                                //   style: Theme.of(context).textTheme.bodySmall!.copyWith(
                                                                 //     fontWeight: FontWeight.w500,
                                                                 //     letterSpacing: -0.2,
                                                                 //     wordSpacing: 0,
@@ -1950,7 +1950,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //  width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -1961,9 +1961,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   children: [
                                                                     Row(
                                                                       children: [
-                                                                        Icon(Icons.people_alt_outlined, color: Colors.red),
+                                                                        Icon(Icons.people_alt_outlined, color: Theme.of(context).colorScheme.error),
                                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                                                                        Text("Friends", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
+                                                                        Text("Friends", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
                                                                       ],
                                                                     ),
                                                                     Container(
@@ -1973,9 +1973,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['friends'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['friends']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -1990,7 +1990,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //  width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2001,9 +2001,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   children: [
                                                                     Row(
                                                                       children: [
-                                                                        Icon(Icons.health_and_safety_outlined, color: Colors.red),
+                                                                        Icon(Icons.health_and_safety_outlined, color: Theme.of(context).colorScheme.error),
                                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                                                                        Text("Health", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
+                                                                        Text("Health", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
                                                                       ],
                                                                     ),
                                                                     Container(
@@ -2013,9 +2013,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['health'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['health']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2031,7 +2031,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                       children: [
                                                         Container(
                                                           margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                          decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                          decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                           padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                           width: MediaQuery.of(context).size.width / 2.1,
                                                           child: Column(
@@ -2040,14 +2040,14 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                               Row(
                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                 children: [
-                                                                  Row(children: [Icon(Icons.photo_size_select_actual_sharp, color: Colors.red), SizedBox(width: Get.width * 0.02), Text("Status", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
+                                                                  Row(children: [Icon(Icons.photo_size_select_actual_sharp, color: Theme.of(context).colorScheme.error), SizedBox(width: Get.width * 0.02), Text("Status", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
                                                                   Container(
                                                                     child: CircularPercentIndicator(
                                                                       radius: 17.0,
                                                                       lineWidth: 3.0,
                                                                       percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['status'] / 100,
-                                                                      center: Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['status']}%", style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0)),
-                                                                      progressColor: Colors.green,
+                                                                      center: Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['todayHoroscope'][0]['status']}%", style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0)),
+                                                                      progressColor: Theme.of(context).colorScheme.primary,
                                                                     ),
                                                                   ),
                                                                 ],
@@ -2072,8 +2072,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.03, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       width: MediaQuery.of(context).size.width,
                                                       decoration: BoxDecoration(
-                                                        color: Colors.grey.shade400, //Get.theme.primaryColor,
-                                                        borderRadius: BorderRadius.circular(10),
+                                                        color: Theme.of(context).colorScheme.primaryContainer, //Theme.of(context).colorScheme.primary,
+                                                        borderRadius: BorderRadius.circular(12),
                                                       ),
                                                       child: Stack(
                                                         alignment: Alignment.centerRight,
@@ -2083,34 +2083,34 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Text(
                                                                 "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['date'].toString().split(" ").first}",
-                                                                style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: Colors.white),
+                                                                style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: Colors.white),
                                                                 textAlign: TextAlign.center,
                                                               ).tr(),
-                                                              SizedBox(height: 4),
-                                                              Text("Weekly Horoscope", style: Get.textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.white)).tr(),
-                                                              SizedBox(height: 4),
+                                                              SizedBox(height: 8),
+                                                              Text("Weekly Horoscope", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.white)).tr(),
+                                                              SizedBox(height: 8),
                                                               Row(
                                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                                 children: [
                                                                   Column(
                                                                     crossAxisAlignment: CrossAxisAlignment.center,
                                                                     children: [
-                                                                      Text("Lucky Color", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
+                                                                      Text("Lucky Color", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
                                                                       dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['color_code'].toString() == ""
                                                                           ? SizedBox()
                                                                           : CircleAvatar(backgroundColor: Color(int.parse(dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['color_code'])), radius: 7),
                                                                     ],
                                                                   ),
-                                                                  SizedBox(width: 10),
+                                                                  SizedBox(width: 16),
                                                                   Container(width: 1, height: 20, color: Colors.white),
-                                                                  SizedBox(width: 10),
+                                                                  SizedBox(width: 16),
                                                                   Column(
                                                                     crossAxisAlignment: CrossAxisAlignment.center,
                                                                     children: [
-                                                                      Text("Lucky Number", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
+                                                                      Text("Lucky Number", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
                                                                       Text(
                                                                         "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['lucky_number'].replaceAll("[", "").replaceAll("]", "")}",
-                                                                        style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, color: Colors.white, fontWeight: FontWeight.bold),
+                                                                        style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, color: Colors.white, fontWeight: FontWeight.bold),
                                                                       ),
                                                                     ],
                                                                   ),
@@ -2125,11 +2125,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         ],
                                                       ),
                                                     ),
-                                                    SizedBox(height: 6),
-                                                    Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['bot_response']}", style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500, fontSize: 12), textAlign: TextAlign.center).tr(),
-                                                    SizedBox(height: 6),
-                                                    Text("Weekly Horoscope of ${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['zodiac']}", style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
-                                                    SizedBox(height: 6),
+                                                    SizedBox(height: 12),
+                                                    Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['bot_response']}", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500, fontSize: 12), textAlign: TextAlign.center).tr(),
+                                                    SizedBox(height: 12),
+                                                    Text("Weekly Horoscope of ${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['zodiac']}", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
+                                                    SizedBox(height: 12),
 
                                                     ///daily horoscope list
                                                     ///physique
@@ -2141,7 +2141,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //   width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2151,7 +2151,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                   children: [
                                                                     Row(
-                                                                      children: [Icon(Icons.sports_gymnastics, color: Colors.red), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Physique", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()],
+                                                                      children: [Icon(Icons.sports_gymnastics, color: Theme.of(context).colorScheme.error), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Physique", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()],
                                                                     ),
                                                                     SizedBox(width: 1),
                                                                     Container(
@@ -2161,15 +2161,15 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['physique'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['physique']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
                                                                 ),
                                                                 // Text("JASJKDNAKJ AJS DJ ASJD  AS DAS",
-                                                                //   style: Get.theme.primaryTextTheme.bodySmall!.copyWith(
+                                                                //   style: Theme.of(context).textTheme.bodySmall!.copyWith(
                                                                 //     fontWeight: FontWeight.w500,
                                                                 //     letterSpacing: -0.2,
                                                                 //     wordSpacing: 0,
@@ -2183,7 +2183,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             // width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2194,9 +2194,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   children: [
                                                                     Row(
                                                                       children: [
-                                                                        Icon(Icons.monetization_on_outlined, color: Colors.red),
+                                                                        Icon(Icons.monetization_on_outlined, color: Theme.of(context).colorScheme.error),
                                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                                                                        Text("Finances", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
+                                                                        Text("Finances", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
                                                                       ],
                                                                     ),
                                                                     SizedBox(width: 1),
@@ -2207,9 +2207,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['finances'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['finances']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2228,7 +2228,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //   width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2239,9 +2239,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   children: [
                                                                     Row(
                                                                       children: [
-                                                                        Icon(Icons.handshake_outlined, color: Colors.red),
+                                                                        Icon(Icons.handshake_outlined, color: Theme.of(context).colorScheme.error),
                                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                                                                        Text("Relationship", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
+                                                                        Text("Relationship", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
                                                                       ],
                                                                     ),
                                                                     Container(
@@ -2251,9 +2251,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['relationship'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['relationship']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2266,7 +2266,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //  width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2275,7 +2275,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                 Row(
                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                   children: [
-                                                                    Row(children: [Icon(Icons.book_outlined, color: Colors.red), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Career", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
+                                                                    Row(children: [Icon(Icons.book_outlined, color: Theme.of(context).colorScheme.error), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Career", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
                                                                     Container(
                                                                       child: CircularPercentIndicator(
                                                                         radius: 17.0,
@@ -2283,9 +2283,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['career'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['career']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2302,7 +2302,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2311,7 +2311,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                 Row(
                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                   children: [
-                                                                    Row(children: [Icon(Icons.travel_explore, color: Colors.red), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Travel", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
+                                                                    Row(children: [Icon(Icons.travel_explore, color: Theme.of(context).colorScheme.error), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Travel", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
                                                                     Container(
                                                                       child: CircularPercentIndicator(
                                                                         radius: 17.0,
@@ -2319,9 +2319,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['travel'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['travel']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2336,7 +2336,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //  width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2346,7 +2346,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                   children: [
                                                                     Row(
-                                                                      children: [Icon(Icons.people_alt_outlined, color: Colors.red), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Family", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()],
+                                                                      children: [Icon(Icons.people_alt_outlined, color: Theme.of(context).colorScheme.error), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Family", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()],
                                                                     ),
                                                                     Container(
                                                                       child: CircularPercentIndicator(
@@ -2355,9 +2355,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['family'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['family']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2374,7 +2374,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //  width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2385,9 +2385,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   children: [
                                                                     Row(
                                                                       children: [
-                                                                        Icon(Icons.people_alt_outlined, color: Colors.red),
+                                                                        Icon(Icons.people_alt_outlined, color: Theme.of(context).colorScheme.error),
                                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                                                                        Text("Friends", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
+                                                                        Text("Friends", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
                                                                       ],
                                                                     ),
                                                                     Container(
@@ -2397,9 +2397,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['friends'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['friends']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2414,7 +2414,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //  width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2425,9 +2425,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   children: [
                                                                     Row(
                                                                       children: [
-                                                                        Icon(Icons.health_and_safety_outlined, color: Colors.red),
+                                                                        Icon(Icons.health_and_safety_outlined, color: Theme.of(context).colorScheme.error),
                                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                                                                        Text("Health", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
+                                                                        Text("Health", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
                                                                       ],
                                                                     ),
                                                                     Container(
@@ -2437,9 +2437,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['health'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['health']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2455,7 +2455,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                       children: [
                                                         Container(
                                                           margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                          decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                          decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                           padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                           width: MediaQuery.of(context).size.width / 2.1,
                                                           child: Column(
@@ -2464,7 +2464,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                               Row(
                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                 children: [
-                                                                  Row(children: [Icon(Icons.photo_size_select_actual_sharp, color: Colors.red), SizedBox(width: Get.width * 0.02), Text("Status", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
+                                                                  Row(children: [Icon(Icons.photo_size_select_actual_sharp, color: Theme.of(context).colorScheme.error), SizedBox(width: Get.width * 0.02), Text("Status", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
                                                                   Container(
                                                                     child: CircularPercentIndicator(
                                                                       radius: 17.0,
@@ -2472,9 +2472,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                       percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['status'] / 100,
                                                                       center: Text(
                                                                         "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['weeklyHoroScope'][0]['status']}%",
-                                                                        style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                        style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                       ),
-                                                                      progressColor: Colors.green,
+                                                                      progressColor: Theme.of(context).colorScheme.primary,
                                                                     ),
                                                                   ),
                                                                 ],
@@ -2499,8 +2499,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.03, vertical: MediaQuery.of(context).size.height * 0.02),
                                                       width: MediaQuery.of(context).size.width,
                                                       decoration: BoxDecoration(
-                                                        color: Colors.grey.shade400, //Get.theme.primaryColor,
-                                                        borderRadius: BorderRadius.circular(10),
+                                                        color: Theme.of(context).colorScheme.primaryContainer, //Theme.of(context).colorScheme.primary,
+                                                        borderRadius: BorderRadius.circular(12),
                                                       ),
                                                       child: Stack(
                                                         alignment: Alignment.centerRight,
@@ -2510,34 +2510,34 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             children: [
                                                               Text(
                                                                 "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['date'].toString().split(" ").first}",
-                                                                style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: Colors.white),
+                                                                style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: Colors.white),
                                                                 textAlign: TextAlign.center,
                                                               ).tr(),
-                                                              SizedBox(height: 4),
-                                                              Text("Yearly Horoscope", style: Get.textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.white)).tr(),
-                                                              SizedBox(height: 4),
+                                                              SizedBox(height: 8),
+                                                              Text("Yearly Horoscope", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.white)).tr(),
+                                                              SizedBox(height: 8),
                                                               Row(
                                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                                 children: [
                                                                   Column(
                                                                     crossAxisAlignment: CrossAxisAlignment.center,
                                                                     children: [
-                                                                      Text("Lucky Color", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
+                                                                      Text("Lucky Color", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
                                                                       dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['color_code'].toString() == ""
                                                                           ? SizedBox(height: 8)
                                                                           : CircleAvatar(backgroundColor: Color(int.parse(dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['color_code'])), radius: 7),
                                                                     ],
                                                                   ),
-                                                                  SizedBox(width: 10),
+                                                                  SizedBox(width: 16),
                                                                   Container(width: 1, height: 20, color: Colors.white),
-                                                                  SizedBox(width: 10),
+                                                                  SizedBox(width: 16),
                                                                   Column(
                                                                     crossAxisAlignment: CrossAxisAlignment.center,
                                                                     children: [
-                                                                      Text("Lucky Number", style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
+                                                                      Text("Lucky Number", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)).tr(),
                                                                       Text(
                                                                         "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['lucky_number'].replaceAll("[", "").replaceAll("]", "")}",
-                                                                        style: Get.textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                        style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white),
                                                                       ),
                                                                     ],
                                                                   ),
@@ -2552,11 +2552,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         ],
                                                       ),
                                                     ),
-                                                    SizedBox(height: 6),
-                                                    Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['bot_response']}", style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500, fontSize: 12), textAlign: TextAlign.center).tr(),
-                                                    SizedBox(height: 6),
-                                                    Text("Yearly Horoscope of ${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['zodiac']}", style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
-                                                    SizedBox(height: 6),
+                                                    SizedBox(height: 12),
+                                                    Text("${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['bot_response']}", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500, fontSize: 12), textAlign: TextAlign.center).tr(),
+                                                    SizedBox(height: 12),
+                                                    Text("Yearly Horoscope of ${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['zodiac']}", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
+                                                    SizedBox(height: 12),
 
                                                     ///daily horoscope list
                                                     ///physique
@@ -2568,7 +2568,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //   width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2578,7 +2578,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                   children: [
                                                                     Row(
-                                                                      children: [Icon(Icons.sports_gymnastics, color: Colors.red), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Physique", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()],
+                                                                      children: [Icon(Icons.sports_gymnastics, color: Theme.of(context).colorScheme.error), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Physique", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()],
                                                                     ),
                                                                     SizedBox(width: 1),
                                                                     Container(
@@ -2588,9 +2588,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['physique'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['physique']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2604,7 +2604,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             // width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2615,9 +2615,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   children: [
                                                                     Row(
                                                                       children: [
-                                                                        Icon(Icons.monetization_on_outlined, color: Colors.red),
+                                                                        Icon(Icons.monetization_on_outlined, color: Theme.of(context).colorScheme.error),
                                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                                                                        Text("Finances", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
+                                                                        Text("Finances", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
                                                                       ],
                                                                     ),
                                                                     SizedBox(width: 1),
@@ -2628,9 +2628,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['finances'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['finances']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2649,7 +2649,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //   width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2660,9 +2660,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   children: [
                                                                     Row(
                                                                       children: [
-                                                                        Icon(Icons.handshake_outlined, color: Colors.red),
+                                                                        Icon(Icons.handshake_outlined, color: Theme.of(context).colorScheme.error),
                                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                                                                        Text("Relationship", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
+                                                                        Text("Relationship", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
                                                                       ],
                                                                     ),
                                                                     Container(
@@ -2672,9 +2672,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['relationship'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['relationship']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2687,7 +2687,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //  width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2696,7 +2696,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                 Row(
                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                   children: [
-                                                                    Row(children: [Icon(Icons.book_outlined, color: Colors.red), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Career", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
+                                                                    Row(children: [Icon(Icons.book_outlined, color: Theme.of(context).colorScheme.error), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Career", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
                                                                     Container(
                                                                       child: CircularPercentIndicator(
                                                                         radius: 17.0,
@@ -2704,9 +2704,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['career'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['career']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2723,7 +2723,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2732,7 +2732,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                 Row(
                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                   children: [
-                                                                    Row(children: [Icon(Icons.travel_explore, color: Colors.red), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Travel", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
+                                                                    Row(children: [Icon(Icons.travel_explore, color: Theme.of(context).colorScheme.error), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Travel", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
                                                                     Container(
                                                                       child: CircularPercentIndicator(
                                                                         radius: 17.0,
@@ -2740,9 +2740,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['travel'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['travel']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2757,7 +2757,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //  width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2767,7 +2767,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                   children: [
                                                                     Row(
-                                                                      children: [Icon(Icons.people_alt_outlined, color: Colors.red), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Family", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()],
+                                                                      children: [Icon(Icons.people_alt_outlined, color: Theme.of(context).colorScheme.error), SizedBox(width: MediaQuery.of(context).size.width * 0.02), Text("Family", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()],
                                                                     ),
                                                                     Container(
                                                                       child: CircularPercentIndicator(
@@ -2776,9 +2776,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['family'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['family']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2795,7 +2795,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //  width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2806,9 +2806,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   children: [
                                                                     Row(
                                                                       children: [
-                                                                        Icon(Icons.people_alt_outlined, color: Colors.red),
+                                                                        Icon(Icons.people_alt_outlined, color: Theme.of(context).colorScheme.error),
                                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                                                                        Text("Friends", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
+                                                                        Text("Friends", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
                                                                       ],
                                                                     ),
                                                                     Container(
@@ -2818,9 +2818,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['friends'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['friends']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2835,7 +2835,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         Expanded(
                                                           child: Container(
                                                             margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                            decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                            decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                             //  width: MediaQuery.of(context).size.width,
                                                             child: Column(
@@ -2846,9 +2846,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   children: [
                                                                     Row(
                                                                       children: [
-                                                                        Icon(Icons.health_and_safety_outlined, color: Colors.red),
+                                                                        Icon(Icons.health_and_safety_outlined, color: Theme.of(context).colorScheme.error),
                                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                                                                        Text("Health", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
+                                                                        Text("Health", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr(),
                                                                       ],
                                                                     ),
                                                                     Container(
@@ -2858,9 +2858,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['health'] / 100,
                                                                         center: Text(
                                                                           "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['health']}%",
-                                                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                         ),
-                                                                        progressColor: Colors.green,
+                                                                        progressColor: Theme.of(context).colorScheme.primary,
                                                                       ),
                                                                     ),
                                                                   ],
@@ -2876,7 +2876,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                       children: [
                                                         Container(
                                                           margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.005),
-                                                          decoration: BoxDecoration(border: Border.all(color: Colors.red.shade200), borderRadius: BorderRadius.circular(10), color: Colors.red.shade50),
+                                                          decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.errorContainer), borderRadius: BorderRadius.circular(12), color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.3)),
                                                           padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02, vertical: MediaQuery.of(context).size.height * 0.02),
                                                           width: MediaQuery.of(context).size.width / 2.1,
                                                           child: Column(
@@ -2885,7 +2885,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                               Row(
                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                 children: [
-                                                                  Row(children: [Icon(Icons.photo_size_select_actual_sharp, color: Colors.red), SizedBox(width: Get.width * 0.02), Text("Status", style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
+                                                                  Row(children: [Icon(Icons.photo_size_select_actual_sharp, color: Theme.of(context).colorScheme.error), SizedBox(width: Get.width * 0.02), Text("Status", style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold)).tr()]),
                                                                   Container(
                                                                     child: CircularPercentIndicator(
                                                                       radius: 17.0,
@@ -2893,9 +2893,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                       percent: dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['status'] / 100,
                                                                       center: Text(
                                                                         "${dailyHoroscopeController.dailyhoroscopeData!['vedicList']['yearlyHoroScope'][0]['status']}%",
-                                                                        style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
+                                                                        style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, letterSpacing: -0.2, wordSpacing: 0),
                                                                       ),
-                                                                      progressColor: Colors.green,
+                                                                      progressColor: Theme.of(context).colorScheme.primary,
                                                                     ),
                                                                   ),
                                                                 ],
@@ -2950,7 +2950,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             ),
                                                           ),
                                                         ),
-                                                        Text(global.hororscopeSignList[index].name, textAlign: TextAlign.center, style: Get.textTheme.titleMedium!.copyWith(fontSize: 10)).tr(),
+                                                        Text(global.hororscopeSignList[index].name, textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelSmall).tr(),
                                                       ],
                                                     ),
                                                   );
@@ -3003,7 +3003,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                       Get.to(() => LiveAstrologerListScreen());
                                                                     }
                                                                   },
-                                                                  child: Text('View All', style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontWeight: FontWeight.w400, color: Colors.grey[500])).tr(),
+                                                                  child: Text('View All', style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.outline)).tr(),
                                                                 ),
                                                               ],
                                                             ),
@@ -3061,7 +3061,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                                   margin: EdgeInsets.only(right: 4),
                                                                                   decoration: BoxDecoration(
                                                                                     color: Colors.black.withOpacity(0.3),
-                                                                                    borderRadius: BorderRadius.circular(10),
+                                                                                    borderRadius: BorderRadius.circular(12),
                                                                                     border: Border.all(color: Color.fromARGB(255, 214, 214, 214)),
                                                                                     image: DecorationImage(
                                                                                       fit: BoxFit.cover,
@@ -3076,7 +3076,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                                   margin: EdgeInsets.only(right: 4),
                                                                                   decoration: BoxDecoration(
                                                                                     color: Colors.black.withOpacity(0.3),
-                                                                                    borderRadius: BorderRadius.circular(10),
+                                                                                    borderRadius: BorderRadius.circular(12),
                                                                                     border: Border.all(color: Color.fromARGB(255, 214, 214, 214)),
                                                                                     image: DecorationImage(fit: BoxFit.cover, image: AssetImage(Images.deafultUser), colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.darken)),
                                                                                   ),
@@ -3086,14 +3086,14 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                               child: Column(
                                                                                 mainAxisSize: MainAxisSize.min,
                                                                                 children: [
-                                                                                  Container(decoration: BoxDecoration(color: Get.theme.primaryColor, borderRadius: BorderRadius.circular(5))),
+                                                                                  Container(decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.circular(8))),
                                                                                   Padding(
                                                                                     padding: const EdgeInsets.only(bottom: 20),
                                                                                     child: Column(
                                                                                       mainAxisSize: MainAxisSize.min,
                                                                                       children: [
                                                                                         Container(
-                                                                                          decoration: BoxDecoration(color: Get.theme.primaryColor, borderRadius: BorderRadius.circular(5)),
+                                                                                          decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.circular(8)),
                                                                                           padding: EdgeInsets.symmetric(horizontal: 3),
                                                                                           child: Row(children: [CircleAvatar(radius: 3, backgroundColor: Colors.green), SizedBox(width: 3), Text('LIVE', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w300)).tr()]),
                                                                                         ),
@@ -3152,10 +3152,10 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   child: Container(
                                                                     width: 20,
                                                                     height: 135,
-                                                                    decoration: BoxDecoration(color: Get.theme.primaryColor, borderRadius: BorderRadius.only(bottomRight: Radius.circular(10))),
+                                                                    decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.only(bottomRight: Radius.circular(10))),
                                                                     alignment: Alignment.topCenter,
                                                                     padding: EdgeInsets.only(top: 5),
-                                                                    child: RotatedBox(quarterTurns: -45, child: Text("${dailyHoroscopeController.dailyList!.yeasterdayInsight![index].title}", textAlign: TextAlign.center, style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontSize: 10)).tr()),
+                                                                    child: RotatedBox(quarterTurns: -45, child: Text("${dailyHoroscopeController.dailyList!.yeasterdayInsight![index].title}", textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 10)).tr()),
                                                                   ),
                                                                 ),
                                                               ),
@@ -3163,7 +3163,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             Text("\"${dailyHoroscopeController.dailyList!.yeasterdayInsight![index].title} \"", style: Get.theme.primaryTextTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)).tr(),
                                                             SizedBox(height: 10),
                                                             FutureBuilder(
-                                                              future: global.showHtml(html: dailyHoroscopeController.dailyList!.yeasterdayInsight![index].description ?? '', style: {"html": Style(color: Colors.grey)}),
+                                                              future: global.showHtml(html: dailyHoroscopeController.dailyList!.yeasterdayInsight![index].description ?? '', style: {"html": Style(color: Theme.of(context).colorScheme.outline)}),
                                                               builder: (context, snapshot) {
                                                                 return snapshot.data ?? const SizedBox();
                                                               },
@@ -3179,8 +3179,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   }
                                                                 }
                                                               },
-                                                              child: Text('Watch ${dailyHoroscopeController.dailyList!.yeasterdayInsight![index].title}', style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.w500)).tr(),
-                                                              style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.all(10)), backgroundColor: WidgetStateProperty.all(Get.theme.primaryColor), shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
+                                                              child: Text('Watch ${dailyHoroscopeController.dailyList!.yeasterdayInsight![index].title}', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.w500)).tr(),
+                                                              style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.all(10)), backgroundColor: WidgetStateProperty.all(Theme.of(context).colorScheme.primary), shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)))),
                                                             ),
                                                           ],
                                                         ),
@@ -3210,10 +3210,10 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   child: Container(
                                                                     width: 20,
                                                                     height: 135,
-                                                                    decoration: BoxDecoration(color: Get.theme.primaryColor, borderRadius: BorderRadius.only(bottomRight: Radius.circular(10))),
+                                                                    decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.only(bottomRight: Radius.circular(10))),
                                                                     alignment: Alignment.topCenter,
                                                                     padding: EdgeInsets.only(top: 5),
-                                                                    child: RotatedBox(quarterTurns: -45, child: Text(' ${dailyHoroscopeController.dailyList!.todayInsight![2].name}', textAlign: TextAlign.center, style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontSize: 10)).tr()),
+                                                                    child: RotatedBox(quarterTurns: -45, child: Text(' ${dailyHoroscopeController.dailyList!.todayInsight![2].name}', textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 10)).tr()),
                                                                   ),
                                                                 ),
                                                               ),
@@ -3228,8 +3228,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                             ),
                                                             TextButton(
                                                               onPressed: () async {},
-                                                              child: Text('Watch Movie', style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.w500)).tr(),
-                                                              style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.all(10)), backgroundColor: WidgetStateProperty.all(Get.theme.primaryColor), shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
+                                                              child: Text('Watch Movie', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.w500)).tr(),
+                                                              style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.all(10)), backgroundColor: WidgetStateProperty.all(Theme.of(context).colorScheme.primary), shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)))),
                                                             ),
                                                           ],
                                                         ),
@@ -3256,10 +3256,10 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                       child: Container(
                                                                         width: 20,
                                                                         height: 135,
-                                                                        decoration: BoxDecoration(color: Get.theme.primaryColor, borderRadius: BorderRadius.only(bottomRight: Radius.circular(10))),
+                                                                        decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.only(bottomRight: Radius.circular(10))),
                                                                         alignment: Alignment.topCenter,
                                                                         padding: EdgeInsets.only(top: 5),
-                                                                        child: RotatedBox(quarterTurns: -45, child: Text('${dailyHoroscopeController.dailyList!.tomorrowInsight![2].name}', textAlign: TextAlign.center, style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontSize: 10)).tr()),
+                                                                        child: RotatedBox(quarterTurns: -45, child: Text('${dailyHoroscopeController.dailyList!.tomorrowInsight![2].name}', textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 10)).tr()),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -3269,11 +3269,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                 Html(data: '${dailyHoroscopeController.dailyList!.tomorrowInsight![2].description}'),
                                                                 TextButton(
                                                                   onPressed: () {},
-                                                                  child: Text('Watch Movie', style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.w500)).tr(),
+                                                                  child: Text('Watch Movie', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.w500)).tr(),
                                                                   style: ButtonStyle(
                                                                     padding: WidgetStateProperty.all(EdgeInsets.all(10)),
-                                                                    backgroundColor: WidgetStateProperty.all(Get.theme.primaryColor),
-                                                                    shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                                                                    backgroundColor: WidgetStateProperty.all(Theme.of(context).colorScheme.primary),
+                                                                    shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
                                                                   ),
                                                                 ),
                                                               ],
@@ -3310,10 +3310,10 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   child: Container(
                                                                     width: 20,
                                                                     height: 135,
-                                                                    decoration: BoxDecoration(color: Get.theme.primaryColor, borderRadius: BorderRadius.only(bottomRight: Radius.circular(10))),
+                                                                    decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.only(bottomRight: Radius.circular(10))),
                                                                     alignment: Alignment.topCenter,
                                                                     padding: EdgeInsets.only(top: 5),
-                                                                    child: RotatedBox(quarterTurns: -45, child: Text('${dailyHoroscopeController.dailyList!.todayInsight![index].name}', textAlign: TextAlign.center, style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontSize: 10)).tr()),
+                                                                    child: RotatedBox(quarterTurns: -45, child: Text('${dailyHoroscopeController.dailyList!.todayInsight![index].name}', textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 10)).tr()),
                                                                   ),
                                                                 ),
                                                               ),
@@ -3337,8 +3337,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   }
                                                                 }
                                                               },
-                                                              child: Text('Watch ${dailyHoroscopeController.dailyList!.todayInsight![index].title}', style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.w500)).tr(),
-                                                              style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.all(10)), backgroundColor: WidgetStateProperty.all(Get.theme.primaryColor), shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
+                                                              child: Text('Watch ${dailyHoroscopeController.dailyList!.todayInsight![index].title}', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.w500)).tr(),
+                                                              style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.all(10)), backgroundColor: WidgetStateProperty.all(Theme.of(context).colorScheme.primary), shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)))),
                                                             ),
                                                           ],
                                                         ),
@@ -3373,10 +3373,10 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   child: Container(
                                                                     width: 20,
                                                                     height: 135,
-                                                                    decoration: BoxDecoration(color: Get.theme.primaryColor, borderRadius: BorderRadius.only(bottomRight: Radius.circular(10))),
+                                                                    decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.only(bottomRight: Radius.circular(10))),
                                                                     alignment: Alignment.topCenter,
                                                                     padding: EdgeInsets.only(top: 5),
-                                                                    child: RotatedBox(quarterTurns: -45, child: Text('${dailyHoroscopeController.dailyList!.tomorrowInsight![index].name}', textAlign: TextAlign.center, style: Get.theme.primaryTextTheme.bodySmall!.copyWith(fontSize: 10)).tr()),
+                                                                    child: RotatedBox(quarterTurns: -45, child: Text('${dailyHoroscopeController.dailyList!.tomorrowInsight![index].name}', textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 10)).tr()),
                                                                   ),
                                                                 ),
                                                               ),
@@ -3400,8 +3400,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   }
                                                                 }
                                                               },
-                                                              child: Text('Watch ${dailyHoroscopeController.dailyList!.tomorrowInsight![index].title}', style: Get.textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.w500)).tr(),
-                                                              style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.all(10)), backgroundColor: WidgetStateProperty.all(Get.theme.primaryColor), shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
+                                                              child: Text('Watch ${dailyHoroscopeController.dailyList!.tomorrowInsight![index].title}', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.w500)).tr(),
+                                                              style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.all(10)), backgroundColor: WidgetStateProperty.all(Theme.of(context).colorScheme.primary), shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)))),
                                                             ),
                                                           ],
                                                         ),
@@ -3424,11 +3424,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                 child: Container(
                                                   padding: EdgeInsets.fromLTRB(18, 8, 18, 8),
                                                   decoration: BoxDecoration(
-                                                    color: dailyHoroscopeController.isWeek ? Color.fromARGB(255, 247, 243, 214) : Colors.transparent,
-                                                    border: Border.all(color: dailyHoroscopeController.isWeek ? Get.theme.primaryColor : Colors.grey),
+                                                    color: dailyHoroscopeController.isWeek ? Theme.of(context).colorScheme.secondaryContainer : Colors.transparent,
+                                                    border: Border.all(color: dailyHoroscopeController.isWeek ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline),
                                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), bottomLeft: Radius.circular(10.0)),
                                                   ),
-                                                  child: Text('''Daily \n Horoscope''', textAlign: TextAlign.center, style: Get.textTheme.titleMedium!.copyWith(fontSize: 12)).tr(),
+                                                  child: Text('''Daily \n Horoscope''', textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelMedium).tr(),
                                                 ),
                                               ),
                                             ),
@@ -3440,8 +3440,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                 },
                                                 child: Container(
                                                   padding: EdgeInsets.fromLTRB(18, 8, 18, 8),
-                                                  decoration: BoxDecoration(color: dailyHoroscopeController.isMonth ? Color.fromARGB(255, 247, 243, 214) : Colors.transparent, border: Border.all(color: dailyHoroscopeController.isMonth ? Get.theme.primaryColor : Colors.grey)),
-                                                  child: Text('''Monthly \n Horoscope''', textAlign: TextAlign.center, style: Get.textTheme.titleMedium!.copyWith(fontSize: 12)).tr(),
+                                                  decoration: BoxDecoration(color: dailyHoroscopeController.isMonth ? Theme.of(context).colorScheme.secondaryContainer : Colors.transparent, border: Border.all(color: dailyHoroscopeController.isMonth ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline)),
+                                                  child: Text('''Monthly \n Horoscope''', textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelMedium).tr(),
                                                 ),
                                               ),
                                             ),
@@ -3454,11 +3454,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                 child: Container(
                                                   padding: EdgeInsets.fromLTRB(18, 8, 18, 8),
                                                   decoration: BoxDecoration(
-                                                    color: dailyHoroscopeController.isYear ? Color.fromARGB(255, 247, 243, 214) : Colors.transparent,
-                                                    border: Border.all(color: dailyHoroscopeController.isYear ? Get.theme.primaryColor : Colors.grey),
+                                                    color: dailyHoroscopeController.isYear ? Theme.of(context).colorScheme.secondaryContainer : Colors.transparent,
+                                                    border: Border.all(color: dailyHoroscopeController.isYear ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline),
                                                     borderRadius: BorderRadius.only(topRight: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
                                                   ),
-                                                  child: Text('''Yearly \n Horoscope''', textAlign: TextAlign.center, style: Get.textTheme.titleMedium!.copyWith(fontSize: 12)).tr(),
+                                                  child: Text('''Yearly \n Horoscope''', textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelMedium).tr(),
                                                 ),
                                               ),
                                             ),
@@ -3467,7 +3467,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                         SizedBox(height: 15),
                                         Container(
                                           width: double.infinity,
-                                          decoration: BoxDecoration(border: Border.all(color: Get.theme.primaryColor), borderRadius: BorderRadius.circular(10)),
+                                          decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.primary), borderRadius: BorderRadius.circular(12)),
                                           child:
                                               dailyHoroscopeController.isWeek
                                                   ? Padding(
@@ -3476,13 +3476,13 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                       mainAxisAlignment: MainAxisAlignment.start,
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
-                                                        Center(child: Text('Daily Horoscope', style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr()),
+                                                        Center(child: Text('Daily Horoscope', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr()),
                                                         SizedBox(height: 3),
                                                         Row(
                                                           mainAxisSize: MainAxisSize.min,
                                                           children: [
                                                             Expanded(child: Divider(color: Colors.black, height: 10, indent: 200, endIndent: 10)),
-                                                            Text('${DateFormat('dd MMM yyyy').format(DateTime.now())}', style: Get.textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.grey)),
+                                                            Text('${DateFormat('dd MMM yyyy').format(DateTime.now())}', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, color: Theme.of(context).colorScheme.outline)),
                                                             const Expanded(child: Divider(color: Colors.black, height: 10, indent: 200, endIndent: 10)),
                                                           ],
                                                         ),
@@ -3497,7 +3497,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                               mainAxisAlignment: MainAxisAlignment.start,
                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                               children: [
-                                                                Text(index == 0 ? "Daily Horoscope" : '${dailyHoroscopeController.dailyList!.weeklyHoroScope![index].title}', style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
+                                                                Text(index == 0 ? "Daily Horoscope" : '${dailyHoroscopeController.dailyList!.weeklyHoroScope![index].title}', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold), textAlign: TextAlign.center).tr(),
                                                                 SizedBox(height: 10),
                                                                 FutureBuilder(
                                                                   future: global.showHtml(html: dailyHoroscopeController.dailyList!.weeklyHoroScope![index].description ?? ''),
@@ -3520,13 +3520,13 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                         padding: const EdgeInsets.all(8.0),
                                                         child: Column(
                                                           children: [
-                                                            Text('Monthly horoscope', style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold)).tr(),
+                                                            Text('Monthly horoscope', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold)).tr(),
                                                             SizedBox(height: 3),
                                                             Row(
                                                               mainAxisSize: MainAxisSize.min,
                                                               children: [
                                                                 Expanded(child: Divider(color: Colors.black, height: 10, indent: 200, endIndent: 10)),
-                                                                Text(DateFormat('MMMM yyy').format(DateTime.now()), style: Get.textTheme.titleMedium!.copyWith(fontSize: 13, color: Colors.grey)),
+                                                                Text(DateFormat('MMMM yyy').format(DateTime.now()), style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, color: Theme.of(context).colorScheme.outline)),
                                                                 const Expanded(child: Divider(color: Colors.black, height: 10, indent: 200, endIndent: 10)),
                                                               ],
                                                             ),
@@ -3540,7 +3540,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                   mainAxisAlignment: MainAxisAlignment.start,
                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                   children: [
-                                                                    Text(dailyHoroscopeController.dailyList!.monthlyHoroScope![index].title!, style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold)).tr(),
+                                                                    Text(dailyHoroscopeController.dailyList!.monthlyHoroScope![index].title!, style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold)).tr(),
                                                                     SizedBox(height: 10),
                                                                     FutureBuilder(
                                                                       future: global.showHtml(html: dailyHoroscopeController.dailyList!.monthlyHoroScope![index].description ?? ''),
@@ -3566,7 +3566,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                         global.user.contactNo == null && global.currentUserId == null
                                             ? const SizedBox()
                                             : Container(
-                                              decoration: BoxDecoration(border: Border.all(color: Colors.grey), color: Color.fromARGB(255, 247, 243, 214), borderRadius: BorderRadius.circular(5)),
+                                              decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.outline), color: Theme.of(context).colorScheme.secondaryContainer, borderRadius: BorderRadius.circular(8)),
                                               child: TextButton(
                                                 onPressed: () {
                                                   dailyHoroscopeController.feedbackGroupValue = null;
@@ -3596,7 +3596,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                               builder: (d) {
                                                                 return Column(
                                                                   children: [
-                                                                    Padding(padding: const EdgeInsets.all(8.0), child: Text('How was your overall experience of Daily horoscope? ', style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold)).tr()),
+                                                                    Padding(padding: const EdgeInsets.all(8.0), child: Text('How was your overall experience of Daily horoscope? ', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold)).tr()),
                                                                     SizedBox(
                                                                       height: 25,
                                                                       child: RadioListTile(
@@ -3604,7 +3604,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         contentPadding: EdgeInsets.symmetric(horizontal: 0),
                                                                         title: Text("Great").tr(),
                                                                         value: "Great",
-                                                                        activeColor: Get.theme.primaryColor,
+                                                                        activeColor: Theme.of(context).colorScheme.primary,
                                                                         groupValue: dailyHoroscopeController.feedbackGroupValue,
                                                                         onChanged: (value) {
                                                                           dailyHoroscopeController.feedbackGroupValue = value;
@@ -3619,7 +3619,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         contentPadding: EdgeInsets.symmetric(horizontal: 0),
                                                                         title: Text("Average").tr(),
                                                                         value: "Average",
-                                                                        activeColor: Get.theme.primaryColor,
+                                                                        activeColor: Theme.of(context).colorScheme.primary,
                                                                         groupValue: dailyHoroscopeController.feedbackGroupValue,
                                                                         onChanged: (value) {
                                                                           dailyHoroscopeController.feedbackGroupValue = value;
@@ -3634,7 +3634,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         contentPadding: EdgeInsets.symmetric(horizontal: 0),
                                                                         title: Text("Needs improvement").tr(),
                                                                         value: "Needs improvement",
-                                                                        activeColor: Get.theme.primaryColor,
+                                                                        activeColor: Theme.of(context).colorScheme.primary,
                                                                         groupValue: dailyHoroscopeController.feedbackGroupValue,
                                                                         onChanged: (value) {
                                                                           dailyHoroscopeController.feedbackGroupValue = value;
@@ -3656,7 +3656,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                     mainAxisAlignment: MainAxisAlignment.start,
                                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                                     children: [
-                                                                      dailyHoroscopeController.feedbackGroupValue == null ? const SizedBox() : Text('Share your feedback', style: Get.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold)).tr(),
+                                                                      dailyHoroscopeController.feedbackGroupValue == null ? const SizedBox() : Text('Share your feedback', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold)).tr(),
                                                                       dailyHoroscopeController.feedbackGroupValue == null
                                                                           ? const SizedBox()
                                                                           : TextField(
@@ -3669,9 +3669,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                               isDense: true,
                                                                               hintText: 'Type here',
                                                                               hintStyle: TextStyle(fontSize: 10),
-                                                                              border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey), borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                                                                              enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey), borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                                                                              focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey), borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                                                                              border: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).colorScheme.outline), borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                                                                              enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).colorScheme.outline), borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                                                                              focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).colorScheme.outline), borderRadius: BorderRadius.all(Radius.circular(10.0))),
                                                                             ),
                                                                           ),
                                                                       SizedBox(
@@ -3679,8 +3679,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                                         child: TextButton(
                                                                           style: ButtonStyle(
                                                                             padding: WidgetStateProperty.all(EdgeInsets.all(0)),
-                                                                            backgroundColor: WidgetStateProperty.all(dailyHoroscopeController.feedbackGroupValue == null ? Colors.grey : Get.theme.primaryColor),
-                                                                            shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                                                                            backgroundColor: WidgetStateProperty.all(dailyHoroscopeController.feedbackGroupValue == null ? Theme.of(context).colorScheme.outline : Theme.of(context).colorScheme.primary),
+                                                                            shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
                                                                           ),
                                                                           onPressed: () async {
                                                                             dailyHoroscopeController.fFeedback.unfocus();
@@ -3709,7 +3709,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   crossAxisAlignment: CrossAxisAlignment.center,
                                                   children: [
-                                                    Text('Share Feedback', style: Get.textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.bold)),
+                                                    Text('Share Feedback', style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.bold)),
                                                     SizedBox(width: 5),
                                                     CircleAvatar(radius: 12, backgroundColor: Colors.black, child: Icon(Icons.arrow_forward_ios, size: 10, color: Colors.white)),
                                                   ],
